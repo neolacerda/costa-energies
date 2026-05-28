@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Costa Energies — Expert en Installation Électrique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;color:#3A3A4A;background:#fff;line-height:1.7;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+:root{--o:#F97316;--oh:#EA6A0A;--oc:#FFF0E6;--ov:#FB923C;--d1:#080808;--d2:#111111;--d3:#1A1A1A;--lw:100%;--lp:48px;}
+
+/* HEADER */
+header{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(8,8,8,0.95);border-bottom:1px solid rgba(232,93,4,0.2);backdrop-filter:blur(10px);}
+.hi{max-width:var(--lw);margin:0 auto;padding:0 var(--lp);height:90px;display:flex;align-items:center;justify-content:space-between;}
+.logo{display:flex;align-items:center;gap:12px;max-width:200px;}
+.li{width:38px;height:38px;background:var(--o);border-radius:8px;display:flex;align-items:center;justify-content:center;}
+.li svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.ln{font-family:'Sora',sans-serif;font-weight:700;font-size:18px;color:#fff;}
+.ln span{color:var(--ov);}
+.ls{font-size:9px;color:rgba(255,255,255,0.35);letter-spacing:1.2px;text-transform:uppercase;display:block;margin-top:1px;}
+nav{display:flex;align-items:center;gap:32px;}
+.nl{display:flex;align-items:center;gap:32px;}
+nav a{font-size:11px;font-weight:600;color:rgba(255,255,255,0.6);letter-spacing:1.2px;text-transform:uppercase;transition:color .2s;}
+nav a:hover{color:#fff;}
+.bn{background:var(--o)!important;color:#fff!important;padding:10px 20px!important;border-radius:6px;font-weight:700!important;display:inline-flex!important;align-items:center;gap:8px;transition:all .25s!important;}
+.bn:hover{background:var(--oh)!important;box-shadow:0 6px 20px rgba(232,93,4,0.4)!important;}
+.bn svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.5;}
+.hb{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.hb span{width:24px;height:2px;background:#fff;border-radius:2px;}
+
+/* HERO */
+.hf{position:relative;min-height:640px;height:88vh;max-height:860px;display:flex;flex-direction:column;overflow:hidden;}
+.hbg{position:absolute;inset:0;background-image:url('https://i.imgur.com/3vkOp3T.jpg');background-size:cover;background-position:center;z-index:0;}
+.hov{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.96) 0%,rgba(0,0,0,0.75) 50%,rgba(0,0,0,0.2) 100%);z-index:1;}
+.hc{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;max-width:var(--lw);margin:0 auto;padding:100px var(--lp) 40px;width:100%;}
+.he{font-size:10px;font-weight:600;color:rgba(255,255,255,0.35);letter-spacing:4px;text-transform:uppercase;margin-bottom:28px;display:flex;align-items:center;gap:16px;padding-top:8px;}
+.he::before{content:'';width:24px;height:2px;background:var(--o);border-radius:2px;flex-shrink:0;}
+.hf h1{font-family:'Sora',sans-serif;font-size:clamp(42px,5.5vw,76px);font-weight:800;line-height:1.0;margin-bottom:24px;letter-spacing:-3px;color:#fff;}
+.hd{font-size:18px;font-weight:300;color:rgba(255,255,255,0.72);line-height:1.78;margin-bottom:36px;max-width:520px;letter-spacing:0.15px;font-family:'DM Sans',sans-serif;}
+.hbt{display:flex;gap:14px;flex-wrap:wrap;}
+.bp{background:var(--o);color:#fff;padding:14px 28px;border-radius:6px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;transition:all .25s;letter-spacing:1px;text-transform:uppercase;}
+.bp svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.5;}
+.bp:hover{background:var(--oh);transform:translateY(-2px);box-shadow:0 10px 28px rgba(232,93,4,0.5);}
+.bs{background:transparent;color:#fff;padding:12px 28px;border-radius:6px;border:1.5px solid rgba(255,255,255,0.45);font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;display:inline-flex;align-items:center;gap:8px;transition:all .25s;letter-spacing:1px;text-transform:uppercase;}
+.bs:hover{border-color:#fff;background:rgba(255,255,255,0.08);}
+
+/* QUICK BAR */
+.qb{position:relative;z-index:2;background:var(--d2);border-top:1px solid rgba(232,93,4,0.25);}
+.qi-wrap{max-width:var(--lw);margin:0 auto;padding:0 var(--lp);display:grid;grid-template-columns:repeat(4,1fr);}
+.qi{display:flex;align-items:center;gap:18px;padding:26px 24px;border-right:1px solid rgba(255,255,255,0.05);transition:background .25s;position:relative;cursor:default;}
+.qi:hover{background:none;}
+.qi::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#E85D04,#FF8C42,transparent);transform:scaleX(0);transform-origin:left;transition:transform .4s ease;}
+.qi:hover::before{transform:scaleX(0);}
+.qi:hover .qico{background:rgba(232,93,4,0.10);border-color:rgba(232,93,4,0.20);}
+.qi:hover .ql{color:rgba(255,255,255,0.75);}
+.qi:first-child{padding-left:0;}
+.qi:last-child{border-right:none;}
+.qico{width:44px;height:44px;background:rgba(232,93,4,0.12);border:1px solid rgba(232,93,4,0.25);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .25s;}
+.qico svg{width:20px;height:20px;stroke:var(--ov);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.ql{font-size:10px;font-weight:800;color:var(--ov);letter-spacing:1.8px;text-transform:uppercase;margin-bottom:4px;transition:color .25s;}
+.qd{font-size:12px;color:rgba(255,255,255,0.42);}
+
+/* SECTIONS */
+section{padding:100px var(--lp);}
+.si{max-width:var(--lw);margin:0 auto;}
+.st{display:inline-block;font-size:11px;font-weight:700;color:var(--ov);background:rgba(232,93,4,0.12);padding:6px 16px;border-radius:30px;letter-spacing:1px;text-transform:uppercase;margin-bottom:18px;}
+.stit{font-family:'Sora',sans-serif;font-size:38px;font-weight:800;color:#fff;line-height:1.2;margin-bottom:14px;letter-spacing:-0.5px;}
+.ssub{font-size:17px;font-weight:300;color:rgba(255,255,255,0.48);max-width:560px;line-height:1.82;margin-bottom:52px;letter-spacing:0.15px;font-family:'DM Sans',sans-serif;}
+
+/* SERVICES */
+.sbg{background:var(--d1);}
+.sg{display:grid;grid-template-columns:1.2fr 1fr;grid-template-rows:repeat(4,130px) 110px 110px;gap:12px;}
+.sc{background:linear-gradient(135deg,rgba(232,93,4,0.06) 0%,var(--d3) 60%);border-radius:14px;border:1px solid rgba(232,93,4,0.12);transition:all .3s;position:relative;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;}
+.sc:hover{background:linear-gradient(135deg,rgba(232,93,4,0.14) 0%,var(--d3) 70%)!important;border-color:rgba(232,93,4,0.40)!important;transform:translateY(-3px)!important;box-shadow:0 16px 48px rgba(232,93,4,0.12)!important;}
+.sc.cb{grid-column:1;grid-row:1/span 4;padding:0;border:1px solid rgba(232,93,4,0.15)!important;background:linear-gradient(135deg,rgba(232,93,4,0.07) 0%,var(--d3) 60%)!important;}
+.sc.cb:hover{transform:none!important;}
+.cbi{position:absolute;inset:0;background-image:url('https://i.imgur.com/BgD8Q5Q.jpg');background-size:cover;background-position:center right;z-index:0;opacity:0.15;}
+.cbc{position:absolute;top:0;left:0;right:0;bottom:0;z-index:10;padding:32px 36px;display:flex;flex-direction:column;justify-content:space-between;box-sizing:border-box;}
+.sc.cl{grid-column:2;flex-direction:row;align-items:center;gap:18px;padding:20px 24px;background:linear-gradient(135deg,rgba(232,93,4,0.05) 0%,var(--d3) 70%)!important;border:1px solid rgba(232,93,4,0.10)!important;position:relative;overflow:hidden;}
+.sc.cl::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--o),var(--ov));opacity:0;transition:opacity .3s;}
+.sc.cl:hover::before{opacity:1;}
+.li2{width:44px;height:44px;background:rgba(232,93,4,0.10);border:1px solid rgba(232,93,4,0.20);border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s;}
+.sc.cl:hover .li2{background:rgba(232,93,4,0.22);border-color:rgba(232,93,4,0.45);}
+.li2 svg{width:20px;height:20px;stroke:var(--ov);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.lb{flex:1;}
+.lb h3{font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:#fff;margin-bottom:3px;line-height:1.3;}
+.lb p{font-size:12px;color:rgba(255,255,255,0.38);line-height:1.5;}
+.la{width:28px;height:28px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s;}
+.la svg{width:12px;height:12px;stroke:rgba(255,255,255,0.25);fill:none;stroke-width:2.5;transition:all .3s;}
+.sc.cl:hover .la{background:rgba(232,93,4,0.18);border-color:rgba(232,93,4,0.35);}
+.sc.cl:hover .la svg{stroke:var(--ov);transform:translateX(3px);}
+.sc.cw{grid-column:1/span 2;grid-row:5;flex-direction:row;align-items:center;gap:24px;padding:22px 32px;background:linear-gradient(90deg,rgba(232,93,4,0.08) 0%,var(--d3) 100%)!important;border:1px solid rgba(232,93,4,0.15)!important;transition:all .28s;}
+.wi{width:48px;height:48px;background:rgba(232,93,4,0.12);border:1px solid rgba(232,93,4,0.22);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s;}
+.wi svg{width:22px;height:22px;stroke:var(--ov);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.sc.cw:hover .wi{background:rgba(232,93,4,0.22);border-color:rgba(232,93,4,0.45);}
+.wb{flex:1;}
+.wb h3{font-family:'Sora',sans-serif;font-size:17px;font-weight:700;color:#fff;margin-bottom:4px;}
+.wb p{font-size:13px;color:rgba(255,255,255,0.38);line-height:1.6;max-width:680px;}
+.wl{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--ov);background:rgba(232,93,4,0.08);border:1px solid rgba(232,93,4,0.25);padding:10px 18px;border-radius:8px;cursor:pointer;font-family:'DM Sans',sans-serif;flex-shrink:0;transition:all .2s;white-space:nowrap;}
+.wl svg{width:14px;height:14px;stroke:var(--ov);fill:none;stroke-width:2.5;transition:transform .2s;}
+.sc.cw:hover .wl{background:rgba(232,93,4,0.18);border-color:rgba(232,93,4,0.45);}
+.sc.cw:hover .wl svg{transform:translateX(4px);}
+
+.sbg{background:#080808;}
+
+/* SERVICES — NAV + DETAIL LAYOUT */
+.sv-main{display:grid;grid-template-columns:300px 1fr;gap:12px;align-items:stretch;}
+
+/* Left nav */
+.sv-nav{display:flex;flex-direction:column;gap:6px;height:100%;}
+.sv-nav-item{display:flex;align-items:center;gap:14px;padding:16px 18px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden;flex:1;}
+.sv-nav-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--o),var(--ov));opacity:0;transition:opacity .25s;}
+.sv-nav-item:hover{background:rgba(232,93,4,0.06);border-color:rgba(232,93,4,0.18);transform:translateX(3px);}
+.sv-nav-item:hover::before,.sv-nav-item.active::before{opacity:1;}
+.sv-nav-item.active{background:rgba(232,93,4,0.09);border-color:rgba(232,93,4,0.28);transform:translateX(3px);}
+.sv-nav-featured{}
+.sv-nav-featured.active,.sv-nav-featured:hover{background:rgba(232,93,4,0.14)!important;border-color:rgba(232,93,4,0.35)!important;}
+.sv-nav-icon{width:38px;height:38px;background:rgba(232,93,4,0.10);border:1px solid rgba(232,93,4,0.20);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .25s;}
+.sv-nav-item.active .sv-nav-icon,.sv-nav-item:hover .sv-nav-icon{background:rgba(232,93,4,0.22);border-color:rgba(232,93,4,0.45);}
+.sv-nav-icon svg{width:18px;height:18px;stroke:var(--ov);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.sv-nav-text{flex:1;display:flex;flex-direction:column;gap:2px;}
+.sv-nav-label{font-size:10px;font-weight:600;color:rgba(255,255,255,0.35);letter-spacing:.8px;text-transform:uppercase;}
+.sv-nav-item.active .sv-nav-label{color:var(--ov);}
+.sv-nav-title{font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:#fff;line-height:1.3;}
+.sv-nav-arrow{width:24px;height:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0;opacity:0;transition:opacity .25s,transform .25s;}
+.sv-nav-arrow svg{width:14px;height:14px;stroke:var(--ov);fill:none;stroke-width:2.5;}
+.sv-nav-item.active .sv-nav-arrow,.sv-nav-item:hover .sv-nav-arrow{opacity:1;transform:translateX(2px);}
+
+/* Right detail */
+.sv-detail{display:flex;flex-direction:column;gap:0;background:rgba(255,255,255,0.02);border:1px solid rgba(232,93,4,0.14);border-radius:16px;overflow:hidden;height:100%;}
+.sv-detail-img{position:relative;height:300px;overflow:hidden;flex-shrink:0;}
+.sv-detail-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.sv-detail-img-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,8,8,0) 30%,rgba(8,8,8,0.85) 100%);}
+.sv-detail-badge{position:absolute;top:20px;left:20px;background:rgba(232,93,4,0.18);border:1px solid rgba(232,93,4,0.4);padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;color:#fff;letter-spacing:1px;}
+.sv-detail-body{padding:32px 36px;display:flex;flex-direction:column;gap:0;flex:1;}
+.sv-detail-body h3{font-family:'Sora',sans-serif;font-size:26px;font-weight:800;color:#fff;letter-spacing:-0.5px;margin-bottom:12px;line-height:1.15;}
+.sv-detail-body p{font-size:14px;color:rgba(255,255,255,0.55);line-height:1.78;margin-bottom:24px;}
+.sv-detail-pts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:28px;}
+.sv-dpt{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:rgba(255,255,255,0.7);line-height:1.5;}
+.sv-dpt svg{width:16px;height:16px;stroke:var(--ov);fill:none;stroke-width:2.5;flex-shrink:0;margin-top:2px;}
+.sv-detail-cta{display:inline-flex;align-items:center;gap:9px;background:var(--o);color:#fff;padding:13px 24px;border-radius:9px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:13px;border:none;cursor:pointer;transition:all .25s;letter-spacing:.5px;width:fit-content;}
+.sv-detail-cta svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.5;transition:transform .2s;}
+.sv-detail-cta:hover{background:var(--oh);box-shadow:0 10px 28px rgba(232,93,4,0.4);transform:translateY(-2px);}
+.sv-detail-cta:hover svg{transform:translateX(4px);}
+
+@media(max-width:900px){.sv-main{grid-template-columns:1fr;}.sv-nav{flex-direction:row;flex-wrap:wrap;}.sv-nav-item{flex:1;min-width:140px;}.sv-nav-arrow{display:none;}.sv-detail-pts{grid-template-columns:1fr;}}
+
+.abg{background:#0C0C0C;border-top:1px solid rgba(255,255,255,0.06);}
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.av{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 24px 64px rgba(232,93,4,0.12);}
+.av img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+.av:hover img{transform:scale(1.03);}
+.abg2{position:absolute;bottom:24px;left:24px;background:#1A1A1A;padding:14px 20px;border-radius:12px;border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;gap:12px;}
+.abi{width:38px;height:38px;background:var(--o);border-radius:9px;display:flex;align-items:center;justify-content:center;}
+.abi svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2.2;}
+.abl{font-size:10px;color:#8A8A9A;letter-spacing:.5px;text-transform:uppercase;margin-bottom:2px;}
+.abv{font-size:13px;color:#0D0D0D;font-weight:700;}
+.ac .st{background:rgba(232,93,4,0.10);color:var(--o);}
+.ac .stit{color:#0D0D0D;}
+.adesc{color:rgba(255,255,255,0.5);font-size:17px;font-weight:300;line-height:1.85;margin-bottom:28px;letter-spacing:0.15px;font-family:'DM Sans',sans-serif;}
+.alist{display:flex;flex-direction:column;gap:12px;margin-bottom:36px;}
+.ait{display:flex;align-items:flex-start;gap:12px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6;}
+.ach{width:20px;height:20px;background:rgba(255,255,255,0.06);border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.ach svg{width:11px;height:11px;stroke:var(--o);fill:none;stroke-width:2.5;}
+
+/* CONTACT */
+.csec{background:var(--d1);padding:100px var(--lp);}
+.cw2{max-width:var(--lw);margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:start;}
+.cbdg{display:inline-flex;align-items:center;gap:8px;background:rgba(232,93,4,0.12);border:1px solid rgba(232,93,4,0.3);padding:7px 16px;border-radius:30px;font-size:11px;font-weight:700;color:var(--ov);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:28px;}
+.cbdg svg{width:14px;height:14px;stroke:var(--ov);fill:none;stroke-width:2;}
+.cbt{font-family:'Sora',sans-serif;font-size:clamp(36px,4vw,52px);font-weight:800;color:#fff;line-height:1.05;letter-spacing:-2px;margin-bottom:24px;}
+.cbt span{color:var(--ov);}
+.cbd{font-size:17px;font-weight:300;color:rgba(255,255,255,0.5);line-height:1.82;margin-bottom:48px;max-width:460px;letter-spacing:0.15px;font-family:'DM Sans',sans-serif;}
+.cbd strong{color:var(--ov);font-weight:600;}
+.csteps{display:flex;flex-direction:column;gap:12px;margin-bottom:40px;}
+.cstep{display:flex;align-items:flex-start;gap:20px;padding:24px 28px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:16px;transition:all .3s;position:relative;overflow:hidden;}
+.cstep::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--o),var(--ov));opacity:0;transition:opacity .3s;}
+.cstep:hover{background:rgba(232,93,4,0.06);border-color:rgba(232,93,4,0.2);}
+.cstep:hover::before{opacity:1;}
+.sico{width:48px;height:48px;background:rgba(232,93,4,0.12);border:1px solid rgba(232,93,4,0.25);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s;}
+.cstep:hover .sico{background:rgba(232,93,4,0.22);border-color:rgba(232,93,4,0.5);}
+.sico svg{width:22px;height:22px;stroke:var(--ov);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.sbody{flex:1;}
+.stag{display:inline-block;font-size:10px;font-weight:700;color:var(--ov);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.sttl{font-family:'Sora',sans-serif;font-size:15px;font-weight:700;color:#fff;margin-bottom:5px;line-height:1.3;}
+.sdesc{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.65;}
+.sdesc strong{color:rgba(255,255,255,0.72);font-weight:600;}
+.spills{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;}
+.spill{font-size:11px;color:rgba(255,255,255,0.38);background:rgba(255,255,255,0.05);padding:4px 10px;border-radius:20px;}
+.ctrust{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+.tbg{display:flex;align-items:center;gap:12px;padding:14px 16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;transition:all .25s;}
+.tbg:hover{background:rgba(232,93,4,0.07);border-color:rgba(232,93,4,0.2);}
+.tbi{width:34px;height:34px;background:rgba(232,93,4,0.12);border:1px solid rgba(232,93,4,0.22);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.tbi svg{width:16px;height:16px;stroke:var(--ov);fill:none;stroke-width:2;stroke-linecap:round;}
+.tbl{font-size:13px;font-weight:700;color:#fff;line-height:1.2;margin-bottom:2px;}
+.tbs{font-size:11px;color:rgba(255,255,255,0.38);}
+.cfc{background:#151515;border:1px solid rgba(232,93,4,0.18);border-radius:20px;padding:44px 40px;box-shadow:0 32px 80px rgba(0,0,0,0.5);position:sticky;top:88px;}
+.fci{width:52px;height:52px;background:rgba(232,93,4,0.15);border:1px solid rgba(232,93,4,0.3);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+.fci svg{width:24px;height:24px;stroke:var(--ov);fill:none;stroke-width:1.8;stroke-linecap:round;}
+.fh{font-family:'Sora',sans-serif;font-size:26px;font-weight:800;color:#fff;margin-bottom:5px;line-height:1.2;letter-spacing:-0.5px;}
+.ft{font-size:13px;color:rgba(255,255,255,0.38);margin-bottom:30px;}
+.ft strong{color:var(--ov);font-weight:600;}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.fg{margin-bottom:14px;}
+.fg label{display:block;font-size:10px;font-weight:700;color:rgba(255,255,255,0.4);margin-bottom:7px;letter-spacing:1px;text-transform:uppercase;}
+.fg input,.fg textarea,.fg select{width:100%;padding:13px 16px;border:1px solid rgba(255,255,255,0.1);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:14px;color:#fff;background:rgba(255,255,255,0.05);outline:none;transition:border-color .2s,background .2s;appearance:none;}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,0.22);}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:rgba(232,93,4,0.6);background:rgba(232,93,4,0.06);}
+.fg select option{background:#151515;color:#fff;}
+.fg textarea{resize:vertical;min-height:110px;}
+.fcc{font-size:11px;color:rgba(255,255,255,0.25);text-align:right;margin-top:4px;}
+.fp{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.28);margin-bottom:14px;}
+.fp svg{width:14px;height:14px;stroke:rgba(255,255,255,0.28);fill:none;stroke-width:2;flex-shrink:0;}
+.fsub{width:100%;background:linear-gradient(135deg,var(--o),var(--oh));color:#fff;padding:17px;border-radius:12px;font-family:'DM Sans',sans-serif;font-weight:800;font-size:13px;border:none;cursor:pointer;transition:all .25s;letter-spacing:1.5px;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:10px;}
+.fsub svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2.5;transition:transform .2s;}
+.fsub:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(232,93,4,0.4);}
+.fsub:hover svg{transform:translateX(5px);}
+
+
+/* FOOTER */
+footer{background:#090909;color:rgba(255,255,255,0.45);padding:64px var(--lp) 32px;border-top:1px solid rgba(232,93,4,0.12);}
+.fi{max-width:var(--lw);margin:0 auto;}
+.ftop{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.05);}
+.flog{font-family:'Sora',sans-serif;font-weight:700;font-size:19px;color:#fff;display:block;margin-bottom:12px;}
+.flog span{color:var(--ov);}
+.fdesc{font-size:13px;line-height:1.75;max-width:260px;color:rgba(255,255,255,0.38);}
+.fcl{margin-top:20px;display:flex;flex-direction:column;gap:8px;}
+.fcl a{font-size:13px;color:rgba(255,255,255,0.38);display:flex;align-items:center;gap:7px;transition:color .2s;}
+.fcl a:hover{color:var(--ov);}
+.fcl svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0;}
+.fcol h4{font-family:'Sora',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,0.85);margin-bottom:16px;letter-spacing:1.5px;text-transform:uppercase;}
+.fcol ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.fcol ul li a{font-size:13px;color:rgba(255,255,255,0.38);display:flex;align-items:center;gap:5px;transition:color .2s;}
+.fcol ul li a::before{content:'';width:3px;height:3px;border-radius:50%;background:rgba(232,93,4,0.5);flex-shrink:0;}
+.fcol ul li a:hover{color:var(--ov);}
+.fcol ul li a:hover::before{background:var(--ov);}
+.siret{margin-top:18px;padding:12px 14px;background:rgba(232,93,4,0.08);border:1px solid rgba(232,93,4,0.18);border-radius:9px;}
+.siret-l{font-size:9px;font-weight:700;color:var(--ov);letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;}
+.siret-v{font-size:12px;color:rgba(255,255,255,0.4);}
+.fbot{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,0.25);}
+.fbot a{color:rgba(255,255,255,0.28);margin-left:20px;transition:color .2s;}
+.fbot a:hover{color:var(--ov);}
+
+/* MODAL */
+.mo{position:fixed;inset:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);z-index:9998;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;padding:24px;}
+.mo.open{opacity:1;pointer-events:all;}
+.mb{background:#141414;border:1px solid rgba(232,93,4,0.22);border-radius:24px;max-width:660px;width:100%;position:relative;transform:translateY(24px);transition:transform .35s;box-shadow:0 48px 120px rgba(0,0,0,0.8);overflow:hidden;max-height:90vh;overflow-y:auto;}
+.mb::-webkit-scrollbar{width:3px;}.mb::-webkit-scrollbar-thumb{background:rgba(232,93,4,0.3);border-radius:4px;}
+.mo.open .mb{transform:translateY(0);}
+/* Modal top stripe */
+.mb::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--o),var(--ov),transparent);}
+.mc{position:absolute;top:16px;right:16px;width:32px;height:32px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:rgba(255,255,255,0.5);font-size:18px;line-height:1;transition:all .2s;z-index:10;}
+.mc:hover{background:rgba(232,93,4,0.2);color:#fff;border-color:rgba(232,93,4,0.4);}
+/* Header */
+.mh{padding:36px 36px 24px;display:flex;align-items:flex-start;gap:18px;border-bottom:1px solid rgba(255,255,255,0.06);}
+.mico{width:52px;height:52px;background:rgba(232,93,4,0.15);border:1px solid rgba(232,93,4,0.3);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.mico svg{width:24px;height:24px;stroke:var(--ov);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.mh-text{flex:1;}
+.mtag{font-size:10px;font-weight:700;color:var(--ov);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;display:block;}
+.mtit{font-family:'Sora',sans-serif;font-size:22px;font-weight:800;color:#fff;line-height:1.2;letter-spacing:-0.3px;}
+/* Body */
+.mbody{padding:24px 36px 36px;}
+.mdesc{font-size:14px;color:rgba(255,255,255,0.55);line-height:1.8;margin-bottom:24px;padding:18px 20px;background:rgba(255,255,255,0.03);border-radius:12px;border-left:3px solid rgba(232,93,4,0.4);}
+.mpts-label{font-size:10px;font-weight:700;color:rgba(255,255,255,0.3);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;}
+.mpts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:28px;}
+.mpt{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;background:rgba(232,93,4,0.05);border:1px solid rgba(232,93,4,0.10);border-radius:10px;transition:background .2s,border-color .2s;}
+.mpt:hover{background:rgba(232,93,4,0.10);border-color:rgba(232,93,4,0.22);}
+.mpd{width:20px;height:20px;background:rgba(232,93,4,0.18);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.mpd svg{width:9px;height:9px;stroke:var(--ov);fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;}
+.mpt span{font-size:12.5px;color:rgba(255,255,255,0.72);line-height:1.45;font-weight:500;}
+.mcta{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,var(--o),var(--oh));color:#fff;padding:15px 24px;border-radius:10px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;transition:all .25s;border:none;cursor:pointer;width:100%;}
+.mcta:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(232,93,4,0.45);}
+.mcta svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.5;}
+
+/* ANIMATIONS */
+@keyframes fu{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.fade-up{opacity:0;animation:fu .7s ease forwards;}
+.fade-up.d1{animation-delay:.1s;}.fade-up.d2{animation-delay:.2s;}.fade-up.d3{animation-delay:.3s;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  :root{--lp:20px;}
+
+  /* Header */
+  .hi{height:70px;padding:0 20px;}
+  .hi img{height:44px!important;}
+  .nl{display:none;}
+  .hb{display:flex;}
+
+  /* Hero */
+  .hf{height:100svh;min-height:580px;max-height:none;}
+  .hov{background:linear-gradient(to bottom,rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.6) 100%);}
+  .hc{padding:90px 20px 40px;justify-content:flex-end;}
+  .hf h1{font-size:clamp(30px,8vw,48px);letter-spacing:-1.5px;line-height:1.05;}
+  .hd{font-size:15px;max-width:100%;}
+  .hbt{flex-direction:column;gap:10px;}
+  .hbt a{width:100%;justify-content:center;}
+
+  /* Quick bar */
+  .qi-wrap{grid-template-columns:1fr 1fr;padding:0 20px;}
+  .qi{border-right:none;border-bottom:1px solid rgba(255,255,255,0.05);padding:18px 12px;}
+  .qi:first-child{padding-left:12px;}
+  .ql{font-size:9px;}
+  .qd{font-size:11px;}
+  .qico{width:36px;height:36px;}
+
+  /* Services section */
+  .sbg section{padding:56px 20px!important;}
+  .sv-main{grid-template-columns:1fr!important;gap:24px!important;}
+  .sv-nav{flex-direction:column!important;flex-wrap:nowrap!important;gap:6px!important;}
+  .sv-nav-item{flex:none!important;padding:14px 16px!important;}
+  .sv-detail{border-radius:14px!important;}
+  .sv-detail-img{height:200px!important;}
+
+  /* Sections general */
+  section{padding:64px 20px!important;}
+  .stit{font-size:26px!important;letter-spacing:-0.5px!important;}
+  .ssub{font-size:15px!important;margin-bottom:36px!important;}
+
+  /* Services grid (old) */
+  .sg{grid-template-columns:1fr;grid-template-rows:auto;}
+  .sc.cb,.sc.cl,.sc.cw{grid-column:1;grid-row:auto;}
+  .sc.cb{min-height:320px;}
+  .sc.cw{flex-direction:column;align-items:flex-start;}
+
+  /* Processus */
+  .proc-sec{padding:64px 20px!important;}
+  .proc-header{grid-template-columns:1fr!important;gap:14px!important;margin-bottom:36px!important;}
+  .proc-bar{flex-direction:column!important;align-items:flex-start!important;padding:20px!important;}
+  .proc-bar a{width:100%!important;justify-content:center!important;}
+
+  /* Secteurs (references) */
+  .fr{grid-template-columns:1fr 1fr!important;}
+
+  /* About */
+  .ag{grid-template-columns:1fr!important;gap:32px!important;}
+  .av{height:260px!important;border-radius:14px!important;}
+  .alist{gap:10px!important;}
+  .ait{font-size:13px!important;}
+
+  /* Contact */
+  .cw2{grid-template-columns:1fr!important;gap:32px!important;}
+  .cbt{font-size:28px!important;letter-spacing:-1px!important;}
+  .cfc{position:static!important;}
+  .cbd{font-size:15px!important;}
+
+  /* Footer */
+  .ftop{grid-template-columns:1fr 1fr!important;gap:24px!important;}
+
+  /* Inline processus steps grid */
+  [style*="grid-template-columns:repeat(4,1fr)"][style*="border:1px solid rgba(255,255,255,0.07)"]{
+    grid-template-columns:1fr!important;
+  }
+  /* Inline header 5fr 4fr */
+  [style*="grid-template-columns:5fr 4fr"]{
+    grid-template-columns:1fr!important;
+    gap:16px!important;
+  }
+}
+
+@media(max-width:520px){
+  :root{--lp:16px;}
+  .proc-grid{grid-template-columns:1fr!important;border-radius:12px!important;}
+  .proc-grid > div{border-right:none!important;border-bottom:1px solid rgba(255,255,255,0.07)!important;}
+  .proc-grid > div:last-child{border-bottom:none!important;}
+
+  .hf h1{font-size:clamp(26px,9vw,38px);}
+  .hd{font-size:14px;}
+  .qi-wrap{grid-template-columns:1fr!important;}
+  .qi{padding:14px 16px!important;}
+  .ftop{grid-template-columns:1fr!important;}
+  .fbot{flex-direction:column!important;gap:10px!important;text-align:center!important;}
+  .fr{grid-template-columns:1fr!important;}
+  .mpts{grid-template-columns:1fr!important;}
+
+  /* Processus cards 1 col */
+  [style*="grid-template-columns:repeat(4,1fr)"][style*="border:1px solid rgba(255,255,255,0.07)"]{
+    grid-template-columns:1fr!important;
+  }
+  [style*="padding:36px 32px"]{
+    padding:24px 20px!important;
+  }
+
+  /* Secteurs logos */
+  .fr{grid-template-columns:1fr!important;}
+
+  /* About badges */
+  [style*="display:flex;gap:10px;flex-wrap:wrap"]{
+    gap:6px!important;
+  }
+  [style*="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.05)"]{
+    padding:6px 10px!important;
+  }
+
+  /* CTA section */
+  .cbt{font-size:24px!important;}
+  [style*="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px"]{
+    flex-direction:column!important;
+  }
+  [style*="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px"] a{
+    width:100%!important;
+    justify-content:center!important;
+  }
+}
+
+/* PROCESSUS */
+.proc-sec{background:#0C0C0C;padding:100px var(--lp);border-top:1px solid rgba(232,93,4,0.08);}
+.proc-wrap{max-width:var(--lw);margin:0 auto;width:100%;}
+.proc-header{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:72px;width:100%;}
+.proc-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;position:relative;width:100%;}
+.proc-steps::before{content:'';position:absolute;top:35px;left:calc(12.5% + 18px);right:calc(12.5% + 18px);height:1px;background:linear-gradient(90deg,rgba(232,93,4,0.2),rgba(232,93,4,0.5),rgba(232,93,4,0.2));z-index:0;}
+.ps{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 16px;position:relative;z-index:1;}
+.ps-ring{width:70px;height:70px;border-radius:50%;border:1px solid rgba(232,93,4,0.2);background:var(--d2);display:flex;align-items:center;justify-content:center;margin-bottom:24px;position:relative;transition:all .35s;}
+.ps:hover .ps-ring{border-color:rgba(232,93,4,0.6);background:rgba(232,93,4,0.08);box-shadow:0 0 28px rgba(232,93,4,0.15);}
+.ps-num{font-family:'Sora',sans-serif;font-size:20px;font-weight:800;color:#fff;}
+.ps-dot{position:absolute;bottom:-4px;right:-2px;width:16px;height:16px;background:var(--o);border-radius:50%;border:2px solid #0C0C0C;}
+.ps-tag{font-size:10px;font-weight:700;color:var(--ov);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;}
+.ps-title{font-family:'Sora',sans-serif;font-size:15px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.3;}
+.ps-desc{font-size:13px;color:rgba(255,255,255,0.38);line-height:1.72;max-width:190px;margin:0 auto;}
+.proc-bar{margin-top:56px;padding:26px 36px;background:rgba(232,93,4,0.06);border:1px solid rgba(232,93,4,0.18);border-radius:14px;display:flex;align-items:center;justify-content:space-between;gap:24px;width:100%;box-sizing:border-box;}
+.proc-bar p{font-size:15px;color:rgba(255,255,255,0.6);line-height:1.5;}
+.proc-bar strong{color:#fff;}
+
+/* TEMOIGNAGES */
+.testi-sec{background:#fff;padding:100px var(--lp);}
+.testi-wrap{max-width:var(--lw);margin:0 auto;}
+.testi-head{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:56px;}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.tc{background:#F8F7F4;border-radius:18px;padding:34px 30px;border:1px solid #EEECEA;position:relative;transition:all .3s;}
+.tc:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(232,93,4,0.09);border-color:rgba(232,93,4,0.15);}
+.tc.tf{background:#080808;border-color:rgba(232,93,4,0.2);}
+.tc-stars{margin-bottom:16px;font-size:13px;letter-spacing:2px;}
+.tc-qm{font-family:'Sora',sans-serif;font-size:44px;font-weight:800;color:rgba(232,93,4,0.15);line-height:0.7;margin-bottom:8px;display:block;}
+.tc.tf .tc-qm{color:rgba(232,93,4,0.3);}
+.tc-quote{font-size:14px;color:#4A5568;line-height:1.78;margin-bottom:24px;font-style:italic;}
+.tc.tf .tc-quote{color:rgba(255,255,255,0.6);}
+.tc-author{display:flex;align-items:center;gap:12px;padding-top:18px;border-top:1px solid #E8E5E0;}
+.tc.tf .tc-author{border-top-color:rgba(255,255,255,0.07);}
+.tc-av{width:44px;height:44px;border-radius:50%;background:rgba(232,93,4,0.1);border:2px solid rgba(232,93,4,0.2);display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-size:15px;font-weight:700;color:var(--o);flex-shrink:0;}
+.tc-name{font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:#0D0D0D;margin-bottom:2px;}
+.tc.tf .tc-name{color:#fff;}
+.tc-role{font-size:12px;color:#8A9AB0;}
+.tc-badge{position:absolute;top:18px;right:18px;background:rgba(232,93,4,0.10);border:1px solid rgba(232,93,4,0.2);padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;color:var(--o);letter-spacing:.5px;}
+.tc.tf .tc-badge{background:rgba(232,93,4,0.2);border-color:rgba(232,93,4,0.4);color:var(--ov);}
+.testi-metrics{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px;}
+.tm{background:#F8F7F4;border-radius:14px;padding:24px 28px;border:1px solid #EEECEA;display:flex;align-items:center;gap:18px;}
+.tm-icon{width:50px;height:50px;background:rgba(232,93,4,0.08);border:1px solid rgba(232,93,4,0.15);border-radius:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.tm-icon svg{width:22px;height:22px;stroke:var(--o);fill:none;stroke-width:1.8;stroke-linecap:round;}
+.tm-num{font-family:'Sora',sans-serif;font-size:30px;font-weight:800;color:#0D0D0D;letter-spacing:-1px;line-height:1;}
+.tm-num span{color:var(--o);}
+.tm-label{font-size:13px;color:#8A9AB0;margin-top:3px;}
+
+/* FAQ */
+.faq-sec{background:#080808;padding:100px var(--lp);border-top:1px solid rgba(232,93,4,0.08);}
+.faq-wrap{max-width:var(--lw);margin:0 auto;display:grid;grid-template-columns:340px 1fr;gap:72px;align-items:start;}
+.faq-left{position:sticky;top:90px;}
+.faq-left h2{font-family:'Sora',sans-serif;font-size:36px;font-weight:800;color:#fff;line-height:1.15;letter-spacing:-0.5px;margin-bottom:14px;margin-top:14px;}
+.faq-left p{font-size:14px;color:rgba(255,255,255,0.4);line-height:1.75;margin-bottom:32px;}
+.faq-ccard{background:#141414;border:1px solid rgba(232,93,4,0.18);border-radius:14px;padding:24px;}
+.faq-ccard-l{font-size:10px;font-weight:700;color:rgba(255,255,255,0.3);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;}
+.faq-ccard-t{font-family:'Sora',sans-serif;font-size:16px;font-weight:700;color:#fff;margin-bottom:6px;}
+.faq-ccard-s{font-size:13px;color:rgba(255,255,255,0.38);line-height:1.6;margin-bottom:18px;}
+.faq-ccard a{display:inline-flex;align-items:center;gap:8px;background:var(--o);color:#fff;padding:12px 20px;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;letter-spacing:.5px;transition:all .25s;width:100%;justify-content:center;}
+.faq-ccard a:hover{background:var(--oh);box-shadow:0 8px 24px rgba(232,93,4,0.4);}
+.faq-ccard svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.5;}
+.faq-list{display:flex;flex-direction:column;gap:8px;}
+.faq-item{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:13px;overflow:hidden;transition:border-color .25s;}
+.faq-item.open{border-color:rgba(232,93,4,0.25);background:rgba(232,93,4,0.03);}
+.faq-q{display:flex;align-items:center;gap:14px;padding:20px 22px;cursor:pointer;}
+.faq-q:hover{background:rgba(232,93,4,0.04);}
+.faq-ico{width:34px;height:34px;background:rgba(232,93,4,0.10);border:1px solid rgba(232,93,4,0.18);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .25s;}
+.faq-item.open .faq-ico{background:rgba(232,93,4,0.20);border-color:rgba(232,93,4,0.4);}
+.faq-ico svg{width:15px;height:15px;stroke:var(--ov);fill:none;stroke-width:1.8;stroke-linecap:round;}
+.faq-qt{flex:1;font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:#fff;line-height:1.35;}
+.faq-arr{width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .3s;}
+.faq-arr svg{width:15px;height:15px;stroke:rgba(255,255,255,0.25);fill:none;stroke-width:2.5;}
+.faq-item.open .faq-arr{transform:rotate(180deg);}
+.faq-item.open .faq-arr svg{stroke:var(--ov);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease;}
+.faq-item.open .faq-a{max-height:400px;}
+.faq-ai{padding:0 22px 22px 70px;font-size:14px;color:rgba(255,255,255,0.5);line-height:1.8;}
+.faq-ai strong{color:rgba(255,255,255,0.78);font-weight:600;}
+.faq-ai ul{margin-top:8px;display:flex;flex-direction:column;gap:6px;padding-left:0;list-style:none;}
+.faq-ai ul li{display:flex;align-items:flex-start;gap:8px;}
+.faq-ai ul li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--ov);flex-shrink:0;margin-top:8px;}
+
+@media(max-width:900px){
+  .proc-grid{grid-template-columns:1fr 1fr!important;}
+  .proc-grid > div{border-right:none!important;border-bottom:1px solid rgba(255,255,255,0.07)!important;}
+  .proc-grid > div:nth-child(odd){border-right:1px solid rgba(255,255,255,0.07)!important;}
+  .proc-grid > div:last-child,.proc-grid > div:nth-last-child(2){border-bottom:none!important;}
+}
+  .proc-steps{grid-template-columns:1fr 1fr;gap:16px;}
+  .proc-steps::before{display:none;}
+  .ps{align-items:flex-start;text-align:left;}
+  .ps-desc{margin:0;}
+  .testi-head{grid-template-columns:1fr;}
+  .testi-grid{grid-template-columns:1fr;}
+  .testi-metrics{grid-template-columns:1fr;}
+  .faq-wrap{grid-template-columns:1fr;gap:40px;}
+  .faq-left{position:static;}
+  .proc-bar{flex-direction:column;align-items:flex-start;}
+}
+@media(max-width:520px){
+  .proc-steps{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hi" style="gap:12px;">
+    <a href="#" class="logo">
+      <img src="https://i.imgur.com/MYv4RIr.png" alt="Costa Energies" style="height:60px;width:auto;object-fit:contain;"/>
+    </a>
+    <nav>
+      <div class="nl">
+        <a href="#">Accueil</a><a href="#services">Services</a><a href="#processus">Processus</a><a href="#about">À propos</a><a href="#contact">Contact</a>
+        <a href="#contact" class="bn"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Demander un devis</a>
+      </div>
+      <div class="hb" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    </nav>
+  </div>
+</header>
+
+<div class="hf">
+  <div class="hbg"></div>
+  <div class="hov"></div>
+  <div class="hc fade-up">
+
+    <h1>Votre installation<br>mérite des experts<br><span style="color:var(--ov);">qualifiés.</span></h1>
+    <p class="hd">Gestion globale de vos transferts de machines, lignes de production et ateliers complets, en France et à l'étranger.</p>
+    <div class="hbt">
+      <a href="#contact" class="bp"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>Demander un devis gratuit</a>
+      <a href="#services" class="bs">Voir nos services</a>
+    </div>
+  </div>
+  <div class="qb">
+    <div class="qi-wrap">
+      <div class="qi"><div class="qico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 9h8M8 13h5"/><path d="M6 3v18"/></svg></div><div><div class="ql">Câblage</div><div class="qd">Armoires & tableaux industriels</div></div></div>
+      <div class="qi"><div class="qico"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div><div><div class="ql">Maintenance</div><div class="qd">Préventive et curative, rapide</div></div></div>
+      <div class="qi"><div class="qico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="ql">Mise en conformité</div><div class="qd">Normes NF C 15-100</div></div></div>
+      <div class="qi"><div class="qico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div><div class="ql">Études électriques</div><div class="qd">Schémas et plans techniques</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESSUS -->
+<section class="proc-sec" id="processus">
+  <div class="proc-wrap">
+
+    <!-- Header -->
+    <div style="margin-bottom:64px;" class="fade-up">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
+        <div style="width:32px;height:1px;background:var(--o);flex-shrink:0;"></div>
+        <span style="font-size:10px;font-weight:700;color:var(--ov);letter-spacing:3px;text-transform:uppercase;">Notre processus</span>
+      </div>
+      <h2 style="font-family:'Sora',sans-serif;font-size:clamp(32px,3.5vw,52px);font-weight:800;color:#fff;line-height:1.05;letter-spacing:-2px;margin:0 0 20px;">Comment nous travaillons</h2>
+      <p style="font-size:17px;font-weight:300;color:rgba(255,255,255,0.55);line-height:1.82;margin:0;max-width:620px;letter-spacing:0.15px;font-family:'DM Sans',sans-serif;">De la première prise de contact à la remise du dossier technique, un processus transparent, rigoureux et adapté à votre calendrier de production.</p>
+    </div>
+
+    <!-- Steps grid -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);border:1px solid rgba(255,255,255,0.07);border-radius:16px;overflow:hidden;" class="fade-up d2 proc-grid">
+
+      <!-- Step 1 -->
+      <div style="padding:36px 32px;border-right:1px solid rgba(255,255,255,0.07);background:rgba(232,93,4,0.05);display:flex;flex-direction:column;transition:background .3s;" onmouseenter="this.style.background='rgba(232,93,4,0.09)'" onmouseleave="this.style.background='rgba(232,93,4,0.05)'">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;">
+          <div style="width:44px;height:44px;border:1.5px solid var(--o);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'Sora',sans-serif;font-size:13px;font-weight:800;color:var(--o);">01</span>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(232,93,4,0.45)" stroke-width="1.8" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9a19.79 19.79 0 01-3-8.57A2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div style="font-size:9px;font-weight:700;color:var(--ov);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:8px;">Prise de contact</div>
+        <div style="font-family:'Sora',sans-serif;font-size:18px;font-weight:700;color:#fff;line-height:1.25;margin-bottom:14px;">Analyse & devis</div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.75;margin:0;flex:1;">Vous décrivez votre besoin. Nous analysons vos contraintes, vos schémas et votre calendrier de production.</p>
+        <div style="margin-top:24px;display:inline-flex;align-items:center;gap:6px;background:rgba(232,93,4,0.12);border:1px solid rgba(232,93,4,0.28);border-radius:20px;padding:5px 12px;width:fit-content;">
+          <span style="font-size:11px;font-weight:600;color:var(--ov);">Devis sous 24h ouvrées</span>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div style="padding:36px 32px;border-right:1px solid rgba(255,255,255,0.07);background:rgba(232,93,4,0.05);display:flex;flex-direction:column;transition:background .3s;" onmouseenter="this.style.background='rgba(232,93,4,0.09)'" onmouseleave="this.style.background='rgba(232,93,4,0.05)'">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;">
+          <div style="width:44px;height:44px;border:1.5px solid var(--o);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'Sora',sans-serif;font-size:13px;font-weight:800;color:var(--o);">02</span>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(232,93,4,0.45)" stroke-width="1.8" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div style="font-size:9px;font-weight:700;color:var(--ov);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:8px;">Planification</div>
+        <div style="font-family:'Sora',sans-serif;font-size:18px;font-weight:700;color:#fff;line-height:1.25;margin-bottom:14px;">Étude & préparation</div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.75;margin:0;flex:1;">Visite technique, lecture des plans existants, validation du planning pour zéro impact sur votre production.</p>
+        <div style="margin-top:24px;display:inline-flex;align-items:center;gap:6px;background:rgba(232,93,4,0.12);border:1px solid rgba(232,93,4,0.28);border-radius:20px;padding:5px 12px;width:fit-content;">
+          <span style="font-size:11px;font-weight:600;color:var(--ov);">Zéro impact production</span>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div style="padding:36px 32px;border-right:1px solid rgba(255,255,255,0.07);background:rgba(232,93,4,0.05);display:flex;flex-direction:column;transition:background .3s;" onmouseenter="this.style.background='rgba(232,93,4,0.09)'" onmouseleave="this.style.background='rgba(232,93,4,0.05)'">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;">
+          <div style="width:44px;height:44px;border:1.5px solid var(--o);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'Sora',sans-serif;font-size:13px;font-weight:800;color:var(--o);">03</span>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(232,93,4,0.45)" stroke-width="1.8" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <div style="font-size:9px;font-weight:700;color:var(--ov);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:8px;">Réalisation</div>
+        <div style="font-family:'Sora',sans-serif;font-size:18px;font-weight:700;color:#fff;line-height:1.25;margin-bottom:14px;">Intervention terrain</div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.75;margin:0;flex:1;">Techniciens certifiés sur site, respect strict des normes NF et de vos exigences de sécurité.</p>
+        <div style="margin-top:24px;display:inline-flex;align-items:center;gap:6px;background:rgba(232,93,4,0.12);border:1px solid rgba(232,93,4,0.28);border-radius:20px;padding:5px 12px;width:fit-content;">
+          <span style="font-size:11px;font-weight:600;color:var(--ov);">Habilitations B2V · BR · BC</span>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div style="padding:36px 32px;background:rgba(232,93,4,0.05);display:flex;flex-direction:column;transition:background .3s;" onmouseenter="this.style.background='rgba(232,93,4,0.09)'" onmouseleave="this.style.background='rgba(232,93,4,0.05)'">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;">
+          <div style="width:44px;height:44px;border:1.5px solid var(--o);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'Sora',sans-serif;font-size:13px;font-weight:800;color:var(--o);">04</span>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(232,93,4,0.45)" stroke-width="1.8" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div style="font-size:9px;font-weight:700;color:var(--ov);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:8px;">Livraison</div>
+        <div style="font-family:'Sora',sans-serif;font-size:18px;font-weight:700;color:#fff;line-height:1.25;margin-bottom:14px;">Mise en service & dossier</div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.75;margin:0;flex:1;">Tests complets, validation et remise du dossier technique : schémas, rapports, bons d'intervention.</p>
+        <div style="margin-top:24px;display:inline-flex;align-items:center;gap:6px;background:rgba(232,93,4,0.12);border:1px solid rgba(232,93,4,0.28);border-radius:20px;padding:5px 12px;width:fit-content;">
+          <span style="font-size:11px;font-weight:600;color:var(--ov);">Documentation complète</span>
+        </div>
+      </div>
+
+    </div>
+
+
+</section>
+
+<section class="sbg" id="services">
+  <div class="si">
+    <div class="fade-up" style="margin-bottom:56px;">
+      <span class="st">Nos Services</span>
+      <h2 class="stit">Des solutions complètes<br>pour votre industrie</h2>
+      <p class="ssub">Partenaire de votre production, de la conception à la maintenance, nous prenons en charge l'ensemble de vos besoins en électrotechnique industrielle.</p>
+    </div>
+
+    <!-- LAYOUT PRINCIPAL: Photo + Tabs -->
+    <div class="sv-main fade-up">
+      <!-- Colonne gauche: navigation services -->
+      <div class="sv-nav">
+        <div class="sv-nav-item active" onclick="selectService(0,this)">
+          <div class="sv-nav-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 9h8M8 13h5"/><path d="M6 3v18"/></svg></div>
+          <div class="sv-nav-text">
+            <span class="sv-nav-label">Service principal</span>
+            <span class="sv-nav-title">Câblage d'armoire</span>
+          </div>
+          <div class="sv-nav-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+        <div class="sv-nav-item" onclick="selectService(1,this)">
+          <div class="sv-nav-icon"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+          <div class="sv-nav-text">
+            <span class="sv-nav-label">Raccordement</span>
+            <span class="sv-nav-title">Raccordement machines</span>
+          </div>
+          <div class="sv-nav-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+        <div class="sv-nav-item" onclick="selectService(2,this)">
+          <div class="sv-nav-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+          <div class="sv-nav-text">
+            <span class="sv-nav-label">Maintenance</span>
+            <span class="sv-nav-title">Maintenance préventive</span>
+          </div>
+          <div class="sv-nav-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+        <div class="sv-nav-item" onclick="selectService(3,this)">
+          <div class="sv-nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+          <div class="sv-nav-text">
+            <span class="sv-nav-label">Maintenance</span>
+            <span class="sv-nav-title">Maintenance curative</span>
+          </div>
+          <div class="sv-nav-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+
+        <div class="sv-nav-item" onclick="selectService(4,this)">
+          <div class="sv-nav-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/></svg></div>
+          <div class="sv-nav-text">
+            <span class="sv-nav-label">Études</span>
+            <span class="sv-nav-title">Schémas & études</span>
+          </div>
+          <div class="sv-nav-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+        <div class="sv-nav-item sv-nav-featured" onclick="selectService(5,this)">
+          <div class="sv-nav-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <div class="sv-nav-text">
+            <span class="sv-nav-label">⚡ Expertise principale</span>
+            <span class="sv-nav-title">Distribution BT</span>
+          </div>
+          <div class="sv-nav-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+      </div>
+
+      <!-- Colonne droite: contenu actif -->
+      <div class="sv-detail">
+        <div class="sv-detail-img">
+          <img id="sv-img" src="https://i.imgur.com/iEfWmAU.png" alt="Service Costa Energies"/>
+          <div class="sv-detail-img-overlay"></div>
+          <div class="sv-detail-badge" id="sv-badge">⭐ Service principal</div>
+        </div>
+        <div class="sv-detail-body">
+          <h3 id="sv-title">Câblage d'armoire électrique</h3>
+          <p id="sv-desc">Costa Energies assure le montage, le câblage et l'installation de vos équipements de production. Nous réalisons vos tableaux et armoires électriques industriels sur mesure, conformes aux normes NF C 15-100 et NF EN 61439.</p>
+          <div class="sv-detail-pts" id="sv-pts">
+            <div class="sv-dpt"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Conception sur plans ou schémas client</div>
+            <div class="sv-dpt"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Câblage BT / TBT, automates et variateurs</div>
+            <div class="sv-dpt"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Tests et mise en service inclus</div>
+            <div class="sv-dpt"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Dossier machine complet</div>
+          </div>
+          <button class="sv-detail-cta" id="sv-cta" onclick="openModal(0)">
+            Voir tous les détails
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- SECTEURS -->
+<section style="background:#080808;padding:100px var(--lp);border-top:1px solid rgba(232,93,4,0.08);">
+  <div style="max-width:var(--lw);margin:0 auto;">
+
+    <!-- Header 2 colonnes -->
+    <div style="display:grid;grid-template-columns:1fr;gap:0;margin-bottom:72px;" class="fade-up">
+      <div>
+        <span class="st">Nos références</span>
+        <h2 class="stit" style="margin-top:14px;font-size:40px;">Des entreprises qui<br>nous font confiance</h2>
+        <p style="font-size:15px;color:rgba(255,255,255,0.42);line-height:1.75;margin-top:16px;">Depuis 2022, Costa Energies intervient auprès d'industriels et de groupes internationaux pour leurs installations électriques les plus critiques.</p>
+      </div>
+    </div>
+
+    <!-- Grid de secteurs -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;" class="fade-up d2">
+
+      <!-- Card 1 -->
+      <div style="border-radius:16px;overflow:hidden;background:#F2F1EF;border:1px solid #E5E3DF;aspect-ratio:4/3;">
+        <img src="https://i.imgur.com/oiERLAq.png" style="width:100%;height:100%;object-fit:cover;"/>
+      </div>
+
+      <!-- Card 2 -->
+      <div style="border-radius:16px;overflow:hidden;background:#F2F1EF;border:1px solid #E5E3DF;aspect-ratio:4/3;">
+        <img src="https://i.imgur.com/27tes98.png" style="width:100%;height:100%;object-fit:cover;"/>
+      </div>
+
+      <!-- Card 3 -->
+      <div style="border-radius:16px;overflow:hidden;background:#F2F1EF;border:1px solid #E5E3DF;aspect-ratio:4/3;">
+        <img src="https://i.imgur.com/zfVln2j.png" style="width:100%;height:100%;object-fit:cover;"/>
+      </div>
+
+      <!-- Card 4 -->
+      <div style="border-radius:16px;overflow:hidden;background:#F2F1EF;border:1px solid #E5E3DF;aspect-ratio:4/3;">
+        <img src="https://i.imgur.com/EC66TBz.png" style="width:100%;height:100%;object-fit:cover;"/>
+      </div>
+
+    </div>
+
+
+
+  </div>
+</section>
+
+<!-- CTA CONTATO -->
+<section style="background:linear-gradient(135deg,#0D0D0D 0%,#1a0800 100%);padding:80px var(--lp);border-top:1px solid rgba(232,93,4,0.15);border-bottom:1px solid rgba(232,93,4,0.08);">
+  <div style="max-width:var(--lw);margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;">
+    <div>
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(232,93,4,0.12);border:1px solid rgba(232,93,4,0.25);padding:5px 14px;border-radius:20px;font-size:10px;font-weight:700;color:var(--ov);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:20px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FF8C42" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9a19.79 19.79 0 01-3-8.57A2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Disponible maintenant</div>
+      <h2 style="font-family:'Sora',sans-serif;font-size:36px;font-weight:800;color:#fff;letter-spacing:-1px;line-height:1.1;margin-bottom:14px;">Un projet industriel ?<br>On intervient.</h2>
+      <p style="font-size:15px;color:rgba(255,255,255,0.45);line-height:1.72;max-width:520px;">Devis gratuit sous 24h ouvrées. Nos techniciens certifiés analysent votre installation et vous proposent la solution la plus adaptée — sans engagement.</p>
+      <div style="display:flex;gap:32px;margin-top:28px;flex-wrap:wrap;">
+        <a href="tel:+33637923273" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+          <div style="width:38px;height:38px;background:rgba(232,93,4,0.15);border:1px solid rgba(232,93,4,0.3);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF8C42" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9a19.79 19.79 0 01-3-8.57A2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div><div style="font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:1px;text-transform:uppercase;font-weight:700;margin-bottom:2px;">Téléphone</div><div style="font-size:16px;font-weight:700;color:#fff;font-family:'Sora',sans-serif;">+33 6 37 92 32 73</div></div>
+        </a>
+        <a href="mailto:costaenergies@outlook.fr" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+          <div style="width:38px;height:38px;background:rgba(232,93,4,0.15);border:1px solid rgba(232,93,4,0.3);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF8C42" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div style="font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:1px;text-transform:uppercase;font-weight:700;margin-bottom:2px;">Email</div><div style="font-size:16px;font-weight:700;color:#fff;font-family:'Sora',sans-serif;">costaenergies@outlook.fr</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="abg" id="about">
+  <div class="si">
+    <div class="ag">
+      <div class="av" style="position:relative;">
+        <img src="https://i.imgur.com/ksvfMPE.png" alt="Technicien Costa Energies" style="width:100%;height:100%;object-fit:cover;"/>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:32px;background:linear-gradient(to top,rgba(0,0,0,0.85) 0%,transparent 100%);">
+          <p style="font-size:17px;font-weight:300;color:rgba(255,255,255,0.9);line-height:1.75;letter-spacing:0.15px;font-family:'DM Sans',sans-serif;margin:0;">Gestion globale de vos transferts de machines, lignes de production et ateliers complets, en France et à l'étranger.</p>
+        </div>
+      </div>
+      <div class="ac fade-up">
+        <span class="st">À propos</span>
+        <h2 class="stit" style="color:#fff;margin-top:8px;font-size:clamp(28px,3vw,44px);">Une seule priorité :<br>votre production ne s'arrête pas.</h2>
+        <p class="adesc">Fondée en 2022 à Saint-Fons (69), <strong>Costa Energies</strong> est une entreprise spécialisée en électrotechnique industrielle. Sous la direction de <strong>M. Reubler Costa</strong>, nous intervenons sur les installations les plus critiques avec la rigueur et la réactivité que l'industrie exige.</p>
+        <p class="adesc" style="margin-bottom:28px;">
+        <div class="alist">
+          <div class="ait"><div class="ach"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>Habilitations B2V, BR, BC, H0V — intervention sous tension possible</span></div>
+          <div class="ait"><div class="ach"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>Conformité NF C 15-100, NF EN 61439 et EN 60617 sur chaque chantier</span></div>
+          <div class="ait"><div class="ach"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>Déploiement France entière et international pour les transferts de machines</span></div>
+          <div class="ait"><div class="ach"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>SARL immatriculée — SIRET 917 579 724 00027 · RCS Lyon</span></div>
+        </div>
+        <!-- Badges certification -->
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;">
+          <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px 14px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E85D04" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:.3px;">NF C 15-100</span>
+          </div>
+          <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px 14px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E85D04" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:.3px;">NF EN 61439</span>
+          </div>
+          <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px 14px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E85D04" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:.3px;">Habilitations B2V · BR · BC</span>
+          </div>
+          <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px 14px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E85D04" stroke-width="2.5" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            <span style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:.3px;">Intervention urgence 24h</span>
+          </div>
+        </div>
+        <a href="#contact" class="bp"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>Travailler avec nous</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section class="csec" id="contact">
+  <div class="cw2">
+    <div class="fade-up">
+      <div class="cbdg"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Conciergerie premium</div>
+      <h2 class="cbt">L'électrotechnique<br>industrielle.<br><span style="color:var(--ov);">Sans compromis.</span></h2>
+      <p class="cbd">Un <strong>technicien certifié</strong> analyse votre projet et vous répond sous 24h ouvrées, sans frais et sans engagement.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px;">
+        <a href="#contact" class="bp" style="text-decoration:none;"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>Demander un devis</a>
+        <a href="tel:+33637923273" style="display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border:1.5px solid rgba(255,255,255,0.15);border-radius:8px;color:#fff;font-family:'DM Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:.5px;text-decoration:none;transition:all .25s;" onmouseover="this.style.borderColor='var(--o)';this.style.color='var(--ov)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)';this.style.color='#fff'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9a19.79 19.79 0 01-3-8.57A2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Appeler maintenant</a>
+      </div>
+      <!-- Contact direct -->
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:32px;margin-bottom:40px;">
+        <a href="tel:+33637923273" style="display:flex;align-items:center;gap:16px;padding:16px 20px;background:rgba(255,255,255,0.03);border:1px solid rgba(232,93,4,0.15);border-radius:12px;text-decoration:none;transition:all .25s;" onmouseover="this.style.background='rgba(232,93,4,0.08)';this.style.borderColor='rgba(232,93,4,0.35)'" onmouseout="this.style.background='rgba(255,255,255,0.03)';this.style.borderColor='rgba(232,93,4,0.15)'">
+          <div style="width:40px;height:40px;background:rgba(232,93,4,0.15);border:1px solid rgba(232,93,4,0.3);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF8C42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9a19.79 19.79 0 01-3-8.57A2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.35);letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Téléphone</div>
+            <div style="font-size:16px;font-weight:700;color:#fff;font-family:'Sora',sans-serif;">+33 6 37 92 32 73</div>
+          </div>
+        </a>
+        <a href="mailto:costaenergies@outlook.fr" style="display:flex;align-items:center;gap:16px;padding:16px 20px;background:rgba(255,255,255,0.03);border:1px solid rgba(232,93,4,0.15);border-radius:12px;text-decoration:none;transition:all .25s;" onmouseover="this.style.background='rgba(232,93,4,0.08)';this.style.borderColor='rgba(232,93,4,0.35)'" onmouseout="this.style.background='rgba(255,255,255,0.03)';this.style.borderColor='rgba(232,93,4,0.15)'">
+          <div style="width:40px;height:40px;background:rgba(232,93,4,0.15);border:1px solid rgba(232,93,4,0.3);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF8C42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.35);letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Email</div>
+            <div style="font-size:15px;font-weight:700;color:#fff;font-family:'Sora',sans-serif;">costaenergies@outlook.fr</div>
+          </div>
+        </a>
+      </div>
+
+
+    </div>
+    <div class="cfc fade-up d2">
+      <div class="fci"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+      <h3 class="fh">Demande personnalisée</h3>
+      <p class="ft">Un expert vous recontacte sous <strong>24h ouvrées.</strong></p>
+      <div class="fr"><div class="fg"><label>Prénom *</label><input type="text" placeholder="Jean"/></div><div class="fg"><label>Nom *</label><input type="text" placeholder="Dupont"/></div></div>
+      <div class="fg"><label>Email professionnel *</label><input type="email" placeholder="jean.dupont@entreprise.fr"/></div>
+      <div class="fr">
+        <div class="fg"><label>Téléphone *</label><input type="tel" placeholder="+33 6 00 00 00 00"/></div>
+        <div class="fg"><label>Type de service *</label><select><option value="">Sélectionnez un service</option><option>Câblage d'armoire électrique</option><option>Raccordement de machines</option><option>Maintenance préventive</option><option>Maintenance curative</option><option>Transfert de machines</option><option>Schémas & études électriques</option><option>Distribution Basse Tension</option><option>Autre demande</option></select></div>
+      </div>
+      <div class="fg"><label>Description du projet *</label><textarea id="pd" placeholder="Décrivez brièvement votre besoin..." oninput="uc(this)"></textarea><div class="fcc"><span id="cc">0</span> / 1000</div></div>
+      <div class="fp"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>Vos données sont confidentielles et ne seront jamais partagées.</div>
+      <button class="fsub" onclick="sf()">Être recontacté <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fi">
+    <div class="ftop">
+      <div><span class="flog">Costa <span>Energies</span></span><p class="fdesc">Spécialiste en installation électrique depuis 2022. Câblage, maintenance, raccordement — partout où vous en avez besoin.</p><div class="fcl"><a href="tel:+33637923273"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9a19.79 19.79 0 01-3-8.57A2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>+33 6 37 92 32 73</a><a href="mailto:costaenergies@outlook.fr"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>costaenergies@outlook.fr</a><a href="https://www.google.com/maps/search/?api=1&query=70+Rue+Mathieu+Dussurgey+69190+Saint-Fons" target="_blank"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>70 Rue Mathieu Dussurgey, 69190 Saint-Fons</a></div></div>
+      <div class="fcol"><h4>Services</h4><ul><li><a href="#services">Câblage d'armoire</a></li><li><a href="#services">Raccordement machines</a></li><li><a href="#services">Maintenance préventive</a></li><li><a href="#services">Maintenance curative</a></li><li><a href="#services">Transfert de machines</a></li><li><a href="#services">Études électriques</a></li><li><a href="#services">Distribution BT</a></li></ul></div>
+      <div class="fcol"><h4>Entreprise</h4><ul><li><a href="#about">À propos</a></li><li><a href="#contact">Demander un devis</a></li><li><a href="#">Mentions légales</a></li><li><a href="#">Confidentialité</a></li><li><a href="#">CGV</a></li></ul></div>
+      <div class="fcol"><h4>Horaires</h4><ul><li><a href="#">Lun – Ven : 7h00 – 18h00</a></li><li><a href="#">Samedi : Sur rendez-vous</a></li></ul><div class="siret"><div class="siret-l">SIRET</div><div class="siret-v">917 579 724 00027</div></div></div>
+    </div>
+    <div class="fbot"><p>© 2025 Costa Energies — SARL au capital de 500 € — RCS Lyon 917 579 724</p><div><a href="#">Mentions légales</a><a href="#">CGV</a><a href="#">Confidentialité</a></div></div>
+  </div>
+</footer>
+
+<div class="mo" id="sm" onclick="cmo(event)">
+  <div class="mb">
+    <button class="mc" onclick="cm()">×</button>
+    <div class="mh">
+      <div class="mico" id="mi"></div>
+      <div class="mh-text">
+        <span class="mtag" id="mt"></span>
+        <h2 class="mtit" id="mti"></h2>
+      </div>
+    </div>
+    <div class="mbody">
+      <p class="mdesc" id="md"></p>
+      <div class="mpts-label">Ce que nous réalisons</div>
+      <div class="mpts" id="mp"></div>
+      <a href="#contact" class="mcta" onclick="cm()">Demander un devis <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<script>
+const S=[
+  {t:'Service 01',n:"Câblage d'armoire électrique",i:'<svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 9h8M8 13h5"/><path d="M6 3v18"/></svg>',d:"Costa Energies assure le montage, le câblage et l'installation de vos équipements de production. Nous réalisons vos tableaux et armoires électriques industriels sur mesure, conformes aux normes NF C 15-100 et NF EN 61439.",p:["Conception sur plans ou schémas client","Câblage basse tension (BT) et très basse tension (TBT)","Intégration d'automates, variateurs et relais de protection","Assemblage et câblage d'armoires sur mesure","Vérification des serrages, connexions et étiquetage","Tests fonctionnels et mise en service inclus","Conformité NF EN 61439 et NF C 15-100","Documentation technique et dossier machine"]},
+  {t:'Service 02',n:'Raccordement de machines',i:'<svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>',d:"Costa Energies assure l'installation et le raccordement électrique complet de vos équipements industriels : du point d'alimentation jusqu'à la mise en service, sur site ou en atelier.",p:["Raccordement moteurs, convoyeurs, presses et lignes de production","Câblage d'automates, capteurs et actionneurs","Tirage de câbles, cheminement et chemins de câbles","Raccordement de PLCs, variateurs de vitesse et démarreurs","Habilitations électriques B2V, BR, BC","Intervention sous tension si nécessaire","Tests de continuité, d'isolement et mise en service","Conformité aux normes en vigueur"]},
+  {t:'Service 03',n:'Maintenance préventive',i:'<svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>',d:"Partenaire de votre production, Costa Energies vous accompagne tout au long de votre projet de maintenance : étude, diagnostic, contrats avec engagements. Nous vous proposons une solution sur mesure pour être au plus proche de vos attentes.",p:["Conseils, audits organisationnels et techniques","Élaboration de plans d'inspection et gammes de travail","Interventions systématiques selon échéances définies","Interventions conditionnelles selon l'état des équipements","Contrôle thermographique des armoires électriques","Vérification des serrages, connexions et isolements","Surveillance et mesures techniques préventives","Rapport d'intervention détaillé après chaque visite","Contrats de maintenance annuels ou pluriannuels disponibles"]},
+  {t:'Service 04',n:'Maintenance curative',i:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>',d:"Intervention rapide en cas de panne ou dysfonctionnement. Diagnostic précis, réparation efficace et remise en service dans les meilleurs délais pour minimiser l'impact sur votre production.",p:["Diagnostic de panne électrique et mécanique","Analyse et identification rapide de la cause racine","Réparation palliative d'urgence pour redémarrage rapide","Réparation curative permanente avec remplacement composants","Remise en état des machines et périphériques","Tests de bon fonctionnement après intervention","Disponibilité en urgence pour minimiser vos arrêts","Rapport de panne détaillé avec recommandations","Mise à jour de la documentation technique machine"]},
+  
+  {t:'Service 06',n:'Schémas & études électriques',i:'<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>',d:"Costa Energies réalise l'ensemble de vos études et schémas électriques pour vos projets industriels neufs ou en modification. Nos livrables sont conformes aux normes en vigueur et exploitables immédiatement par vos équipes.",p:["Schémas unifilaires et multifilaires","Plans de câblage et d'implantation des équipements","Études de faisabilité et bilan de puissance","Définition des sections de câbles et protections","Conformité NF C 15-100 et EN 60617","Constitution et mise à jour de dossier machine","Livrables en format PDF, DWG ou CAO","Documentation technique complète pour maintenance"]},
+  {t:'Service 07',n:'Distribution Basse Tension',i:'<svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>',d:"Le cœur de notre activité. Costa Energies dispose de toutes les compétences pour prendre en charge votre réseau de distribution électrique basse tension, du projet jusqu'à la construction, la mise en service et la maintenance.",p:["Tableaux généraux basse tension (TGBT) et tableaux de distribution","Équipements d'énergie de secours : groupes électrogènes et onduleurs (UPS)","Distribution d'énergie industrielle et éclairage","Installation de convertisseurs et variateurs de fréquence","Comptage d'énergie et métrologie","Systèmes UPS, chargeurs et batteries","Condensateurs et compensation d'énergie réactive","Installation de chemin de câbles et goulottes","Liaisons équipotentielles et mises à la terre","Tests diélectriques, essais et vérifications","Mise en service complète et commissioning","Maintenance et contrats d'entretien disponibles"]}
+];
+const SV_DATA = [
+  {img:'https://i.imgur.com/iEfWmAU.png',badge:'⭐ Service principal',title:"Câblage d'armoire électrique",desc:"Costa Energies assure le montage, le câblage et l'installation de vos équipements de production. Nous réalisons vos tableaux et armoires électriques industriels sur mesure, conformes aux normes NF C 15-100 et NF EN 61439.",pts:["Conception sur plans ou schémas client","Câblage BT / TBT, automates et variateurs","Tests et mise en service inclus","Dossier machine complet"],modal:0},
+  {img:'https://i.imgur.com/dxw3Nzh.png',badge:'Raccordement',title:"Raccordement de machines",desc:"Installation et raccordement électrique complet de vos équipements industriels, du point d'alimentation jusqu'à la mise en service, sur site ou en atelier.",pts:["Moteurs, PLCs, convoyeurs et automates","Habilitations B2V, BR, BC","Tests de continuité et isolement","Intervention sous tension disponible"],modal:1},
+  {img:'https://i.imgur.com/EU3JT8s.png',badge:'Maintenance préventive',title:"Maintenance préventive",desc:"Partenaire de votre production, nous vous accompagnons tout au long de votre projet de maintenance : étude, diagnostic, contrats avec engagements.",pts:["Audits techniques et plans d'inspection","Contrôle thermographique des armoires","Interventions systématiques et conditionnelles","Contrats annuels ou pluriannuels"],modal:2},
+  {img:'https://i.imgur.com/FGxkcH6.png',badge:'Maintenance curative',title:"Maintenance curative",desc:"Intervention rapide en cas de panne. Diagnostic précis, réparation efficace et remise en service pour minimiser l'impact sur votre production.",pts:["Diagnostic de panne et cause racine","Réparation palliative d'urgence","Remise en état et tests complets","Rapport détaillé post-intervention"],modal:3},
+  {img:'https://i.imgur.com/kk8Shkt.png',badge:'Schémas & études',title:"Schémas & études électriques",desc:"Réalisation de vos études et schémas électriques pour projets industriels neufs ou en modification, conformes NF C 15-100 et EN 60617.",pts:["Schémas unifilaires et multifilaires","Plans de câblage et d'implantation","Bilan de puissance et sections câbles","Livrables PDF, DWG ou CAO"],modal:4},
+  {img:'https://i.imgur.com/9JofGZH.png',badge:'⚡ Expertise principale',title:"Distribution Basse Tension",desc:"Le cœur de notre activité. Prise en charge complète de votre réseau de distribution BT, du projet jusqu'à la construction, la mise en service et la maintenance.",pts:["TGBT & tableaux de distribution","UPS, groupes électrogènes & onduleurs","Comptage d'énergie & condensateurs","Tests diélectriques & commissioning"],modal:5}
+];
+
+// Preload all service images once on load
+SV_DATA.forEach(d=>{const i=new Image();i.src=d.img;});
+
+function selectService(i, el){
+  document.querySelectorAll('.sv-nav-item').forEach(n=>n.classList.remove('active'));
+  el.classList.add('active');
+  const d=SV_DATA[i];
+  const img=document.getElementById('sv-img');
+  img.style.transition='opacity .15s';
+  img.style.opacity='0';
+  const newImg=new Image();
+  newImg.onload=()=>{img.src=newImg.src;img.style.opacity='1';};
+  newImg.onerror=()=>{img.src=d.img;img.style.opacity='1';};
+  newImg.src=d.img;
+  document.getElementById('sv-badge').textContent=d.badge;
+  document.getElementById('sv-title').textContent=d.title;
+  document.getElementById('sv-desc').textContent=d.desc;
+  document.getElementById('sv-pts').innerHTML=d.pts.map(p=>`<div class="sv-dpt"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>${p}</div>`).join('');
+  document.getElementById('sv-cta').onclick=()=>openModal(d.modal);
+}
+
+function openModal(i){const s=S[i];document.getElementById('mi').innerHTML=s.i;document.getElementById('mt').textContent=s.t;document.getElementById('mti').textContent=s.n;document.getElementById('md').textContent=s.d;document.getElementById('mp').innerHTML=s.p.map(p=>`<div class="mpt"><div class="mpd"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>${p}</span></div>`).join('');document.getElementById('sm').classList.add('open');document.body.style.overflow='hidden';}
+function cm(){document.getElementById('sm').classList.remove('open');document.body.style.overflow='';}
+function cmo(e){if(e.target.id==='sm')cm();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')cm();});
+function toggleMenu(){const nl=document.querySelector('.nl');const o=nl.style.display==='flex';nl.style.cssText=o?'':'display:flex;flex-direction:column;position:fixed;top:68px;left:0;right:0;background:rgba(8,8,8,0.99);padding:24px;gap:18px;border-bottom:1px solid rgba(232,93,4,0.2);z-index:998;';}
+function uc(el){const c=el.value.length;document.getElementById('cc').textContent=c;document.getElementById('cc').style.color=c>950?'#E85D04':'';}
+function sf(){const b=document.querySelector('.fsub');b.innerHTML='✓ Demande envoyée avec succès !';b.style.background='#059669';setTimeout(()=>{b.innerHTML='Être recontacté <svg viewBox="0 0 24 24" width="16" height="16" style="stroke:#fff;fill:none;stroke-width:2.5;vertical-align:middle;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';b.style.background='';},4000);}
+function tFaq(item){const o=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!o)item.classList.add('open');}
+const obs=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.style.animationPlayState='running';obs.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.fade-up').forEach(el=>{el.style.animationPlayState='paused';obs.observe(el);});
+
+
+window.addEventListener('scroll',()=>{document.querySelector('header').style.background=window.scrollY>50?'rgba(8,8,8,0.99)':'rgba(8,8,8,0.95)';},{passive:true});
+</script>
+</body>
+</html>
