@@ -16,7 +16,7 @@ img{max-width:100%;display:block;}
 
 /* HEADER */
 header{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(8,8,8,0.95);border-bottom:1px solid rgba(232,93,4,0.2);backdrop-filter:blur(10px);}
-.hi{max-width:var(--lw);margin:0 auto;padding:0 var(--lp);height:90px;display:flex;align-items:center;justify-content:space-between;}
+.hi{max-width:var(--lw);margin:0 auto;padding:0 var(--lp);height:110px;display:flex;align-items:center;justify-content:space-between;}
 .logo{display:flex;align-items:center;gap:12px;max-width:200px;}
 .li{width:38px;height:38px;background:var(--o);border-radius:8px;display:flex;align-items:center;justify-content:center;}
 .li svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
@@ -34,8 +34,8 @@ nav a:hover{color:#fff;}
 .hb span{width:24px;height:2px;background:#fff;border-radius:2px;}
 
 /* HERO */
-.hf{position:relative;min-height:640px;height:88vh;max-height:860px;display:flex;flex-direction:column;overflow:hidden;}
-.hbg{position:absolute;inset:0;background-image:url('https://i.imgur.com/3vkOp3T.jpg');background-size:cover;background-position:center;z-index:0;}
+.hf{position:relative;min-height:640px;height:100svh;max-height:960px;display:flex;flex-direction:column;overflow:hidden;}
+.hbg{position:absolute;inset:0;background-image:url('https://i.imgur.com/1gRvxEG.jpeg');background-size:cover;background-position:center top;z-index:0;}
 .hov{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.96) 0%,rgba(0,0,0,0.75) 50%,rgba(0,0,0,0.2) 100%);z-index:1;}
 .hc{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;max-width:var(--lw);margin:0 auto;padding:100px var(--lp) 40px;width:100%;}
 .he{font-size:10px;font-weight:600;color:rgba(255,255,255,0.35);letter-spacing:4px;text-transform:uppercase;margin-bottom:28px;display:flex;align-items:center;gap:16px;padding-top:8px;}
@@ -284,128 +284,111 @@ footer{background:#090909;color:rgba(255,255,255,0.45);padding:64px var(--lp) 32
 
 /* RESPONSIVE */
 @media(max-width:900px){
-  :root{--lp:20px;}
+  :root{--lp:18px;}
 
-  /* Header */
-  .hi{height:70px;padding:0 20px;}
-  .hi img{height:44px!important;}
+  /* HEADER */
+  .hi{height:64px;padding:0 18px;}
+  .hi img{height:40px!important;}
   .nl{display:none;}
   .hb{display:flex;}
 
-  /* Hero */
+  /* HERO */
   .hf{height:100svh;min-height:580px;max-height:none;}
-  .hov{background:linear-gradient(to bottom,rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.6) 100%);}
-  .hc{padding:90px 20px 40px;justify-content:flex-end;}
-  .hf h1{font-size:clamp(30px,8vw,48px);letter-spacing:-1.5px;line-height:1.05;}
-  .hd{font-size:15px;max-width:100%;}
+  .hov{background:linear-gradient(to bottom,rgba(0,0,0,0.88) 0%,rgba(0,0,0,0.55) 100%);}
+  .hc{padding:80px 18px 36px;justify-content:flex-end;}
+  .hf h1{font-size:clamp(28px,7.5vw,44px);letter-spacing:-1px;line-height:1.05;}
+  .hd{font-size:14px;max-width:100%;}
   .hbt{flex-direction:column;gap:10px;}
-  .hbt a{width:100%;justify-content:center;}
+  .hbt a{width:100%!important;justify-content:center;}
 
-  /* Quick bar */
-  .qi-wrap{grid-template-columns:1fr 1fr;padding:0 20px;}
-  .qi{border-right:none;border-bottom:1px solid rgba(255,255,255,0.05);padding:18px 12px;}
-  .qi:first-child{padding-left:12px;}
+  /* QUICK BAR */
+  .qi-wrap{grid-template-columns:1fr 1fr;}
+  .qi{border-right:none!important;border-bottom:1px solid rgba(255,255,255,0.05);padding:16px 14px;}
   .ql{font-size:9px;}
   .qd{font-size:11px;}
-  .qico{width:36px;height:36px;}
+  .qico{width:34px;height:34px;}
 
-  /* Services section */
-  .sbg section{padding:56px 20px!important;}
-  .sv-main{grid-template-columns:1fr!important;gap:24px!important;}
-  .sv-nav{flex-direction:column!important;flex-wrap:nowrap!important;gap:6px!important;}
-  .sv-nav-item{flex:none!important;padding:14px 16px!important;}
-  .sv-detail{border-radius:14px!important;}
-  .sv-detail-img{height:200px!important;}
+  /* SECTIONS */
+  section{padding:56px 18px!important;}
+  .si{padding:0!important;}
+  .stit{font-size:24px!important;letter-spacing:-0.5px!important;}
+  .ssub{font-size:14px!important;margin-bottom:28px!important;}
 
-  /* Sections general */
-  section{padding:64px 20px!important;}
-  .stit{font-size:26px!important;letter-spacing:-0.5px!important;}
-  .ssub{font-size:15px!important;margin-bottom:36px!important;}
+  /* SERVICES */
+  .sv-main{grid-template-columns:1fr!important;gap:20px!important;}
+  .sv-nav{flex-direction:column!important;flex-wrap:nowrap!important;gap:6px!important;max-height:none!important;}
+  .sv-nav-item{flex:none!important;padding:12px 14px!important;}
+  .sv-nav-title{font-size:14px!important;}
+  .sv-detail{border-radius:12px!important;}
+  .sv-detail-img{height:180px!important;}
+  .sv-detail-body{padding:20px!important;}
+  .sv-detail-pts{grid-template-columns:1fr!important;}
 
-  /* Services grid (old) */
-  .sg{grid-template-columns:1fr;grid-template-rows:auto;}
-  .sc.cb,.sc.cl,.sc.cw{grid-column:1;grid-row:auto;}
-  .sc.cb{min-height:320px;}
-  .sc.cw{flex-direction:column;align-items:flex-start;}
-
-  /* Processus */
-  .proc-sec{padding:64px 20px!important;}
-  .proc-header{grid-template-columns:1fr!important;gap:14px!important;margin-bottom:36px!important;}
-  .proc-bar{flex-direction:column!important;align-items:flex-start!important;padding:20px!important;}
+  /* PROCESSUS */
+  .proc-sec{padding:56px 18px!important;}
+  .proc-header{grid-template-columns:1fr!important;gap:12px!important;margin-bottom:32px!important;}
+  .proc-bar{flex-direction:column!important;align-items:flex-start!important;padding:18px!important;gap:14px!important;}
   .proc-bar a{width:100%!important;justify-content:center!important;}
+  .proc-grid{grid-template-columns:1fr 1fr!important;}
+  .proc-grid > div{border-right:none!important;border-bottom:1px solid rgba(255,255,255,0.07)!important;}
+  .proc-grid > div:nth-child(odd){border-right:1px solid rgba(255,255,255,0.07)!important;}
 
-  /* Secteurs (references) */
-  .fr{grid-template-columns:1fr 1fr!important;}
+  /* SECTEURS LOGOS */
+  [style*="grid-template-columns:repeat(6,1fr)"]{grid-template-columns:repeat(3,1fr)!important;}
 
-  /* About */
-  .ag{grid-template-columns:1fr!important;gap:32px!important;}
-  .av{height:260px!important;border-radius:14px!important;}
-  .alist{gap:10px!important;}
+  /* ABOUT */
+  .ag{grid-template-columns:1fr!important;gap:28px!important;}
+  .av{height:240px!important;border-radius:12px!important;}
+  .alist{gap:8px!important;}
   .ait{font-size:13px!important;}
+  [style*="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px"]{gap:8px!important;flex-wrap:wrap!important;}
 
-  /* Contact */
-  .cw2{grid-template-columns:1fr!important;gap:32px!important;}
-  .cbt{font-size:28px!important;letter-spacing:-1px!important;}
+  /* CONTACT CTA */
+  [style*="grid-template-columns:1fr auto"]{grid-template-columns:1fr!important;gap:24px!important;}
+  [style*="grid-template-columns:5fr 4fr"]{grid-template-columns:1fr!important;gap:14px!important;}
+
+  /* CONTACT FORM */
+  .cw2{grid-template-columns:1fr!important;gap:28px!important;}
+  .cbt{font-size:26px!important;letter-spacing:-1px!important;}
   .cfc{position:static!important;}
-  .cbd{font-size:15px!important;}
+  .cbd{font-size:14px!important;}
+  [style*="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px"]{flex-direction:column!important;}
+  [style*="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px"] a{width:100%!important;justify-content:center!important;}
 
-  /* Footer */
-  .ftop{grid-template-columns:1fr 1fr!important;gap:24px!important;}
+  /* FOOTER */
+  .ftop{grid-template-columns:1fr 1fr!important;gap:20px!important;}
 
-  /* Inline processus steps grid */
-  [style*="grid-template-columns:repeat(4,1fr)"][style*="border:1px solid rgba(255,255,255,0.07)"]{
-    grid-template-columns:1fr!important;
-  }
-  /* Inline header 5fr 4fr */
-  [style*="grid-template-columns:5fr 4fr"]{
-    grid-template-columns:1fr!important;
-    gap:16px!important;
-  }
+  /* INLINE GRIDS */
+  [style*="grid-template-columns:repeat(4,1fr)"][style*="border:1px solid rgba(255,255,255,0.07)"]{grid-template-columns:1fr 1fr!important;}
 }
 
-@media(max-width:520px){
+@media(max-width:480px){
   :root{--lp:16px;}
-  .proc-grid{grid-template-columns:1fr!important;border-radius:12px!important;}
-  .proc-grid > div{border-right:none!important;border-bottom:1px solid rgba(255,255,255,0.07)!important;}
-  .proc-grid > div:last-child{border-bottom:none!important;}
 
-  .hf h1{font-size:clamp(26px,9vw,38px);}
-  .hd{font-size:14px;}
+  .hf h1{font-size:clamp(24px,8.5vw,34px);}
+  .hd{font-size:13px;}
+
+  /* Quick bar 1 col */
   .qi-wrap{grid-template-columns:1fr!important;}
-  .qi{padding:14px 16px!important;}
+
+  /* Processus 1 col */
+  .proc-grid{grid-template-columns:1fr!important;}
+  .proc-grid > div{border-right:none!important;}
+
+  /* Logos 2 col */
+  [style*="grid-template-columns:repeat(6,1fr)"]{grid-template-columns:repeat(2,1fr)!important;}
+
+  /* Inline processus 1 col */
+  [style*="grid-template-columns:repeat(4,1fr)"][style*="border:1px solid rgba(255,255,255,0.07)"]{grid-template-columns:1fr!important;}
+  [style*="padding:36px 32px"]{padding:20px 16px!important;}
+
+  /* Footer 1 col */
   .ftop{grid-template-columns:1fr!important;}
   .fbot{flex-direction:column!important;gap:10px!important;text-align:center!important;}
   .fr{grid-template-columns:1fr!important;}
-  .mpts{grid-template-columns:1fr!important;}
 
-  /* Processus cards 1 col */
-  [style*="grid-template-columns:repeat(4,1fr)"][style*="border:1px solid rgba(255,255,255,0.07)"]{
-    grid-template-columns:1fr!important;
-  }
-  [style*="padding:36px 32px"]{
-    padding:24px 20px!important;
-  }
-
-  /* Secteurs logos */
-  .fr{grid-template-columns:1fr!important;}
-
-  /* About badges */
-  [style*="display:flex;gap:10px;flex-wrap:wrap"]{
-    gap:6px!important;
-  }
-  [style*="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.05)"]{
-    padding:6px 10px!important;
-  }
-
-  /* CTA section */
-  .cbt{font-size:24px!important;}
-  [style*="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px"]{
-    flex-direction:column!important;
-  }
-  [style*="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px"] a{
-    width:100%!important;
-    justify-content:center!important;
-  }
+  /* CTA buttons */
+  .cbt{font-size:22px!important;}
 }
 
 /* PROCESSUS */
@@ -516,7 +499,7 @@ footer{background:#090909;color:rgba(255,255,255,0.45);padding:64px var(--lp) 32
 <header>
   <div class="hi" style="gap:12px;">
     <a href="#" class="logo">
-      <img src="https://i.imgur.com/MYv4RIr.png" alt="Costa Energies" style="height:60px;width:auto;object-fit:contain;"/>
+      <img src="https://i.imgur.com/MYv4RIr.png" alt="Costa Energies" style="height:90px;width:auto;object-fit:contain;"/>
     </a>
     <nav>
       <div class="nl">
@@ -741,26 +724,30 @@ footer{background:#090909;color:rgba(255,255,255,0.45);padding:64px var(--lp) 32
     </div>
 
     <!-- Grid de secteurs -->
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;" class="fade-up d2">
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:rgba(255,255,255,0.06);border-radius:14px;overflow:hidden;" class="fade-up d2">
 
-      <!-- Card 1 -->
-      <div style="border-radius:16px;overflow:hidden;background:#F2F1EF;border:1px solid #E5E3DF;aspect-ratio:4/3;">
+      <div style="background:#F8F7F5;height:120px;overflow:hidden;">
         <img src="https://i.imgur.com/oiERLAq.png" style="width:100%;height:100%;object-fit:cover;"/>
       </div>
 
-      <!-- Card 2 -->
-      <div style="border-radius:16px;overflow:hidden;background:#F2F1EF;border:1px solid #E5E3DF;aspect-ratio:4/3;">
+      <div style="background:#F8F7F5;height:120px;overflow:hidden;">
         <img src="https://i.imgur.com/27tes98.png" style="width:100%;height:100%;object-fit:cover;"/>
       </div>
 
-      <!-- Card 3 -->
-      <div style="border-radius:16px;overflow:hidden;background:#F2F1EF;border:1px solid #E5E3DF;aspect-ratio:4/3;">
+      <div style="background:#F8F7F5;height:120px;overflow:hidden;">
         <img src="https://i.imgur.com/zfVln2j.png" style="width:100%;height:100%;object-fit:cover;"/>
       </div>
 
-      <!-- Card 4 -->
-      <div style="border-radius:16px;overflow:hidden;background:#F2F1EF;border:1px solid #E5E3DF;aspect-ratio:4/3;">
+      <div style="background:#F8F7F5;height:120px;overflow:hidden;">
         <img src="https://i.imgur.com/EC66TBz.png" style="width:100%;height:100%;object-fit:cover;"/>
+      </div>
+
+      <div style="background:#F8F7F5;height:120px;overflow:hidden;">
+        <img src="https://i.imgur.com/kQXa6aj.png" style="width:100%;height:100%;object-fit:cover;"/>
+      </div>
+
+      <div style="background:#F8F7F5;height:120px;overflow:hidden;">
+        <img src="https://i.imgur.com/8MDUSAe.png" style="width:100%;height:100%;object-fit:cover;"/>
       </div>
 
     </div>
@@ -796,9 +783,6 @@ footer{background:#090909;color:rgba(255,255,255,0.45);padding:64px var(--lp) 32
     <div class="ag">
       <div class="av" style="position:relative;">
         <img src="https://i.imgur.com/ksvfMPE.png" alt="Technicien Costa Energies" style="width:100%;height:100%;object-fit:cover;"/>
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:32px;background:linear-gradient(to top,rgba(0,0,0,0.85) 0%,transparent 100%);">
-          <p style="font-size:17px;font-weight:300;color:rgba(255,255,255,0.9);line-height:1.75;letter-spacing:0.15px;font-family:'DM Sans',sans-serif;margin:0;">Gestion globale de vos transferts de machines, lignes de production et ateliers complets, en France et à l'étranger.</p>
-        </div>
       </div>
       <div class="ac fade-up">
         <span class="st">À propos</span>
