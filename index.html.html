@@ -305,11 +305,12 @@ footer{background:#090909;color:rgba(255,255,255,0.45);padding:64px var(--lp) 32
   .hbt .bs{width:100%!important;justify-content:center!important;padding:15px!important;border-radius:50px!important;font-size:14px!important;}
 
   /* QUICK BAR */
-  .qi-wrap{grid-template-columns:1fr 1fr;}
-  .qi{border-right:none!important;border-bottom:1px solid rgba(255,255,255,0.05);padding:16px 14px;}
-  .ql{font-size:9px;}
-  .qd{font-size:11px;}
-  .qico{width:34px;height:34px;}
+  .qi-wrap{grid-template-columns:1fr 1fr!important;gap:0!important;}
+  .qi{border-right:none!important;border-bottom:1px solid rgba(255,255,255,0.05)!important;padding:14px 12px!important;gap:10px!important;}
+  .qi:nth-child(odd){border-right:1px solid rgba(255,255,255,0.05)!important;}
+  .ql{font-size:9px!important;}
+  .qd{font-size:12px!important;}
+  .qico{width:32px!important;height:32px!important;}
 
   /* SECTIONS */
   section{padding:56px 18px!important;}
@@ -336,8 +337,11 @@ footer{background:#090909;color:rgba(255,255,255,0.45);padding:64px var(--lp) 32
   .proc-grid > div{border-right:none!important;border-bottom:1px solid rgba(255,255,255,0.07)!important;}
   .proc-grid > div:nth-child(odd){border-right:1px solid rgba(255,255,255,0.07)!important;}
 
-  /* SECTEURS LOGOS */
-  [style*="grid-template-columns:repeat(6,1fr)"]{grid-template-columns:repeat(3,1fr)!important;}
+  /* LOGOS GRID MOBILE */
+  [style*="grid-template-columns:repeat(6,1fr)"]{grid-template-columns:repeat(2,1fr)!important;}
+
+  /* HERO MOBILE - fix photo showing */
+  .hbg{position:relative!important;inset:auto!important;height:260px!important;min-height:260px!important;max-height:260px!important;width:100%!important;display:block!important;background-size:cover!important;background-position:center!important;}
 
   /* ABOUT */
   .ag{grid-template-columns:1fr!important;gap:28px!important;}
