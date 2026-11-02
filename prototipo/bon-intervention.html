@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#080808">
+<meta name="robots" content="noindex">
+<title>Bons d'intervention — Costa Energies (prototype)</title>
+<link rel="icon" type="image/png" href="https://i.imgur.com/MYv4RIr.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --o:#F97316;--oh:#EA6A0A;--oc:#FFF0E6;--of:#B8470A;
+  --noir:#080808;--noir2:#141414;--fond:#F6F5F2;--carte:#FFFFFF;
+  --txt:#1B1B1F;--txt2:#5C5C66;--trait:#E2E0DB;
+  --ok:#0F7A4B;--okc:#E6F5EE;--ko:#B91C1C;--koc:#FDECEC;--warn:#8A5A00;--warnc:#FFF4DC;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-text-size-adjust:100%;}
+body{font-family:'DM Sans',system-ui,sans-serif;color:var(--txt);background:var(--noir);line-height:1.5;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:'Sora',system-ui,sans-serif;line-height:1.2;letter-spacing:-.2px;}
+button,input,select,textarea{font:inherit;color:inherit;}
+button{cursor:pointer;background:none;border:0;}
+:focus-visible{outline:3px solid var(--o);outline-offset:2px;}
+[tabindex="-1"]:focus{outline:none;}
+
+#app{max-width:480px;min-height:100dvh;margin:0 auto;background:var(--fond);display:flex;flex-direction:column;}
+#app.large{max-width:820px;}
+main{flex:1;padding:18px 16px 24px;}
+
+/* En-tête */
+.top{background:var(--noir);color:#fff;padding:12px 16px;display:flex;align-items:center;gap:12px;padding-top:max(12px,env(safe-area-inset-top));}
+.logo{height:44px;width:auto;display:block;}
+.logotxt{font-family:'Sora',sans-serif;font-weight:700;font-size:17px;color:#fff;}
+.logotxt span{color:var(--o);}
+.top-t{margin-left:auto;font-size:12px;color:rgba(255,255,255,.6);text-align:right;line-height:1.3;}
+.demo{background:var(--oc);color:var(--of);font-size:12.5px;font-weight:700;text-align:center;padding:7px 12px;}
+
+/* Boutons */
+.btn{min-height:50px;padding:12px 20px;border-radius:10px;font-weight:700;font-size:15.5px;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:background .18s,border-color .18s,transform .18s;}
+.btn:active{transform:scale(.98);}
+.btn-p{background:var(--o);color:#111;}
+.btn-p:hover{background:var(--oh);}
+.btn-s{background:var(--carte);color:var(--txt);border:1.5px solid var(--trait);}
+.btn-s:hover{border-color:var(--txt2);}
+.btn-full{width:100%;}
+.lien{color:var(--of);font-weight:700;font-size:14px;min-height:44px;padding:8px 2px;}
+.lien:hover{color:var(--o);}
+
+/* Accueil */
+.hello{font-size:22px;font-weight:800;margin-bottom:2px;}
+.sub{color:var(--txt2);font-size:14.5px;margin-bottom:16px;}
+.titre-s{font-size:15px;font-weight:700;margin:26px 0 10px;}
+.carte{background:var(--carte);border:1px solid var(--trait);border-radius:12px;}
+.ligne{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:13px 14px;background:var(--carte);border:1px solid var(--trait);border-radius:12px;margin-bottom:8px;min-height:64px;transition:border-color .18s;}
+.ligne:hover{border-color:var(--o);}
+.heure{font-family:'Sora',sans-serif;font-weight:700;font-size:15px;min-width:50px;color:var(--of);}
+.l-c{flex:1;min-width:0;}
+.l-t{display:block;font-weight:700;font-size:15px;overflow-wrap:anywhere;}
+.l-s{display:block;color:var(--txt2);font-size:13.5px;overflow-wrap:anywhere;}
+.fleche{color:var(--txt2);font-size:20px;flex-shrink:0;}
+.pastille{font-size:11.5px;font-weight:700;padding:3px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
+.p-ok{background:var(--okc);color:var(--ok);}
+.p-warn{background:var(--warnc);color:var(--warn);}
+.p-ko{background:var(--koc);color:var(--ko);}
+.reprendre{display:flex;align-items:center;gap:10px;background:var(--warnc);border-radius:12px;padding:10px 14px;margin-top:10px;font-size:14px;color:var(--warn);}
+.reprendre button{margin-left:auto;font-weight:700;color:var(--warn);text-decoration:underline;min-height:44px;padding:0 4px;}
+.vide{color:var(--txt2);font-size:14px;padding:12px 2px;}
+.pied{margin-top:22px;text-align:center;}
+
+/* Formulaire */
+.etapes{background:var(--noir);color:#fff;padding:0 16px 14px;}
+.etapes-l{display:flex;justify-content:space-between;font-size:12.5px;color:rgba(255,255,255,.65);margin-bottom:7px;}
+.barre{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;}
+.barre i{height:4px;border-radius:4px;background:rgba(255,255,255,.18);}
+.barre i.on{background:var(--o);}
+h1.h-e{font-size:21px;font-weight:800;margin-bottom:4px;}
+.champ{margin-top:15px;}
+.champ>label,.leg{display:block;font-size:13.5px;font-weight:700;margin-bottom:5px;}
+.req{color:var(--of);}
+.aide{font-size:13px;color:var(--txt2);margin-top:4px;}
+input,select,textarea{width:100%;min-height:50px;padding:12px 13px;background:var(--carte);border:1.5px solid var(--trait);border-radius:10px;font-size:16px;}
+textarea{min-height:104px;resize:vertical;line-height:1.45;}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--o);box-shadow:0 0 0 3px rgba(249,115,22,.2);}
+.deux{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.calc{margin-top:12px;background:var(--oc);border-radius:10px;padding:10px 13px;display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--of);}
+.calc b{font-family:'Sora',sans-serif;font-size:16px;}
+.err{margin-top:14px;background:var(--koc);color:var(--ko);border-radius:10px;padding:10px 13px;font-size:14px;font-weight:700;}
+.err:empty{display:none;}
+
+/* Pièces */
+.piece{display:grid;grid-template-columns:1fr 66px 44px;gap:6px;margin-bottom:6px;}
+.piece input{min-width:0;}
+.suppr{min-height:50px;border-radius:10px;color:var(--ko);font-size:22px;line-height:1;}
+.suppr:hover{background:var(--koc);}
+
+/* Mesures */
+.mes{background:var(--carte);border:1px solid var(--trait);border-radius:12px;padding:12px;margin-top:10px;}
+.mes-t{font-weight:700;font-size:14.5px;margin-bottom:8px;}
+.mes-v{position:relative;margin-bottom:8px;}
+.mes-v input{padding-right:48px;}
+.mes-v span{position:absolute;right:13px;top:50%;transform:translateY(-50%);color:var(--txt2);font-size:14px;pointer-events:none;}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;}
+.seg button{min-height:44px;border:1.5px solid var(--trait);border-radius:9px;background:var(--fond);font-size:13.5px;font-weight:700;color:var(--txt2);padding:4px;}
+.seg button[aria-pressed="true"].c{background:var(--okc);border-color:var(--ok);color:var(--ok);}
+.seg button[aria-pressed="true"].n{background:var(--koc);border-color:var(--ko);color:var(--ko);}
+.seg button[aria-pressed="true"].a{background:#E9E8E4;border-color:var(--txt2);color:var(--txt);}
+.choix{display:grid;gap:7px;}
+.choix button{min-height:52px;text-align:left;padding:10px 14px;border:1.5px solid var(--trait);border-radius:10px;background:var(--carte);font-weight:700;font-size:15px;}
+.choix button[aria-pressed="true"]{border-color:var(--o);background:var(--oc);color:var(--of);}
+
+/* Photos */
+.ph-btn{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;}
+.ph-grille{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;}
+.ph{position:relative;border-radius:10px;overflow:hidden;background:#ddd;aspect-ratio:4/3;}
+.ph img{width:100%;height:100%;object-fit:cover;display:block;}
+.ph em{position:absolute;left:6px;top:6px;background:rgba(0,0,0,.72);color:#fff;font-style:normal;font-size:11.5px;font-weight:700;padding:2px 7px;border-radius:6px;}
+.ph button{position:absolute;right:4px;top:4px;width:36px;height:36px;border-radius:9px;background:rgba(0,0,0,.72);color:#fff;font-size:18px;}
+
+/* Signature */
+.resume{background:var(--carte);border:1px solid var(--trait);border-radius:12px;padding:12px 14px;margin-top:14px;font-size:14px;}
+.resume div{display:flex;justify-content:space-between;gap:12px;padding:3px 0;}
+.resume span{color:var(--txt2);flex-shrink:0;}
+.resume b{text-align:right;overflow-wrap:anywhere;min-width:0;}
+#sig{display:block;width:100%;height:190px;background:var(--carte);border:1.5px dashed var(--txt2);border-radius:10px;touch-action:none;}
+.sig-a{display:flex;justify-content:space-between;align-items:center;}
+
+/* Barre du bas */
+.bas{position:sticky;bottom:0;display:grid;grid-template-columns:auto 1fr;gap:10px;padding:12px 16px;padding-bottom:max(12px,env(safe-area-inset-bottom));background:var(--fond);border-top:1px solid var(--trait);}
+.bas.un{grid-template-columns:1fr;}
+
+/* Bon (document) */
+.doc-actions{display:grid;gap:8px;margin-bottom:16px;}
+.ok-msg{background:var(--okc);color:var(--ok);border-radius:10px;padding:11px 14px;font-weight:700;font-size:14.5px;margin-bottom:12px;}
+.doc{background:#fff;border:1px solid var(--trait);border-radius:12px;overflow:hidden;font-size:14px;}
+.d-head{background:var(--noir);color:#fff;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.d-head .logo{height:36px;}
+.d-num{text-align:right;}
+.d-num strong{display:block;font-family:'Sora',sans-serif;font-size:15px;color:var(--o);}
+.d-num span{font-size:12.5px;color:rgba(255,255,255,.7);}
+.d-body{padding:6px 20px 16px;}
+.d-sec{padding:13px 0;border-bottom:1px solid var(--trait);}
+.d-sec:last-child{border-bottom:0;}
+.d-sec h2{font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--of);margin-bottom:7px;}
+.d-info{display:grid;grid-template-columns:1fr 1fr;gap:9px 18px;}
+.d-info span{display:block;color:var(--txt2);font-size:12.5px;}
+.d-info b{overflow-wrap:anywhere;}
+.d-txt{white-space:pre-wrap;overflow-wrap:anywhere;}
+table{width:100%;border-collapse:collapse;}
+th{text-align:left;font-size:12.5px;color:var(--txt2);font-weight:500;padding:0 8px 5px 0;}
+td{padding:6px 8px 6px 0;border-top:1px solid var(--trait);vertical-align:top;overflow-wrap:anywhere;}
+th:last-child,td:last-child{padding-right:0;text-align:right;}
+.d-ph{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
+.d-ph figure{break-inside:avoid;}
+.d-ph img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px;display:block;}
+.d-ph figcaption{font-size:12px;color:var(--txt2);margin-top:2px;}
+.d-sign{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.d-sign img{height:70px;max-width:100%;display:block;margin-top:4px;}
+.d-sign small{display:block;color:var(--txt2);font-size:12.5px;}
+.d-foot{background:var(--fond);padding:11px 20px;font-size:11.5px;color:var(--txt2);text-align:center;line-height:1.5;}
+.d-demo{color:var(--of);font-weight:700;}
+
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--noir2);color:#fff;font-size:14px;padding:10px 16px;border-radius:10px;max-width:calc(100% - 32px);z-index:50;}
+
+@media(min-width:560px){
+  #app{box-shadow:0 0 0 1px rgba(255,255,255,.08);}
+  .doc-actions{grid-template-columns:1fr 1fr;}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;}}
+@media print{
+  @page{size:A4;margin:11mm;}
+  html,body{background:#fff;}
+  .no-print{display:none!important;}
+  #app,#app.large{max-width:none;min-height:0;background:#fff;box-shadow:none;display:block;}
+  main{padding:0;}
+  .doc{border:0;border-radius:0;font-size:10.5pt;overflow:visible;}
+  .d-head,.d-foot{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .d-sec{break-inside:avoid;padding:9px 0;}
+  .d-body{padding:2px 20px 6px;}
+  .d-ph{grid-template-columns:repeat(4,1fr);}
+  .d-ph img{aspect-ratio:3/2;}
+  .d-info{gap:5px 18px;}
+  td{padding:3px 8px 3px 0;}
+  .d-sign img{height:50px;}
+  .d-foot{break-inside:avoid;padding:7px 20px;}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+/* Prototype : toutes les données sont fictives et restent dans ce navigateur. */
+const ENTREPRISE={nom:'Costa Energies',forme:'SARL',siret:'917 579 724 00027',adresse:'70 Rue Mathieu Dussurgey, 69190 Saint-Fons',tel:'+33 6 37 92 32 73'};
+const LOGO='https://i.imgur.com/MYv4RIr.png';
+
+const CLIENTS=[
+  {id:'c1',nom:'Métallurgie Démo',site:'Atelier de presses',machines:['Presse hydraulique P-12','Armoire TGBT-01','Convoyeur C-04']},
+  {id:'c2',nom:'Plasturgie Exemple',site:'Ligne d\'injection',machines:['Armoire de ligne L2','Injecteuse I-07','Compresseur K-02']},
+  {id:'c3',nom:'Agro Fictive',site:'Unité de conditionnement',machines:['Ensacheuse E-03','Tableau divisionnaire TD-5']}
+];
+const TYPES=['Maintenance préventive','Maintenance curative','Raccordement de machines','Câblage d\'armoire électrique','Transfert de machines','Schémas & études électriques','Distribution basse tension'];
+const TECHS=['Reubler Costa','Technicien 2'];
+const PLANNING=[
+  {heure:'08:30',client:'c1',machine:'Presse hydraulique P-12',type:'Maintenance préventive'},
+  {heure:'14:00',client:'c2',machine:'Armoire de ligne L2',type:'Maintenance curative'}
+];
+const MESURES=[
+  {nom:'Continuité de la terre',unite:'Ω'},
+  {nom:'Résistance d\'isolement',unite:'MΩ'},
+  {nom:'Tension d\'alimentation',unite:'V'},
+  {nom:'Contrôle thermographique',unite:'°C'},
+  {nom:'Serrage des connexions',unite:''}
+];
+const ETATS=['Machine remise en service','Remise en service avec réserves','Machine à l\'arrêt'];
+const ETAPES=['Intervention','Travaux','Mesures','Photos','Signature'];
+const CLES={bons:'ce-bons-v1',brouillon:'ce-brouillon-v1'};
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const iso=d=>{const z=new Date(d.getTime()-d.getTimezoneOffset()*6e4);return z.toISOString().slice(0,10);};
+const ilYa=n=>{const d=new Date();d.setDate(d.getDate()-n);return iso(d);};
+const dateFr=s=>s?new Date(s+'T12:00:00').toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'}):'';
+const clientDe=id=>CLIENTS.find(c=>c.id===id)||{nom:'',site:'',machines:[]};
+
+function lire(k,defaut){try{const v=localStorage.getItem(k);return v?JSON.parse(v):defaut;}catch(e){return defaut;}}
+function ecrire(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true;}catch(e){return false;}}
+function effacer(k){try{localStorage.removeItem(k);}catch(e){}}
+
+const EXEMPLES=[
+  {id:'ex2',numero:'BI-2026-0042',exemple:true,client:'c1',machine:'Convoyeur C-04',type:'Maintenance curative',tech:'Reubler Costa',date:ilYa(6),arrivee:'09:15',depart:'11:45',
+   constat:'Arrêt du convoyeur en cours de production. Disjoncteur moteur déclenché.',travaux:'Recherche de panne, remplacement du contacteur KM2, contrôle du moteur puis essais en charge.',
+   pieces:[{nom:'Contacteur 25 A',qte:'1'}],mesures:[{v:'52',s:'c'},{v:'',s:''},{v:'398',s:'c'},{v:'',s:''},{v:'',s:'c'}],etat:ETATS[0],photos:[],reserves:'',signataire:'Responsable maintenance (exemple)',signature:''},
+  {id:'ex1',numero:'BI-2026-0041',exemple:true,client:'c2',machine:'Injecteuse I-07',type:'Maintenance préventive',tech:'Technicien 2',date:ilYa(19),arrivee:'08:00',depart:'12:00',
+   constat:'Visite semestrielle prévue au contrat.',travaux:'Dépoussiérage de l\'armoire, resserrage des borniers, contrôle thermographique.',
+   pieces:[],mesures:[{v:'',s:''},{v:'',s:''},{v:'401',s:'c'},{v:'64',s:'n'},{v:'',s:'c'}],etat:ETATS[1],photos:[],reserves:'Échauffement sur le départ Q3, à reprendre à la prochaine visite.',signataire:'Chef d\'atelier (exemple)',signature:''}
+];
+
+let bons=lire(CLES.bons,[]);
+let d=null;              /* bon en cours de saisie */
+let vue={nom:'accueil'};
+let toastT;
+
+function tousLesBons(){return [...bons,...EXEMPLES];}
+function prochainNumero(){
+  const max=tousLesBons().reduce((m,b)=>Math.max(m,+b.numero.split('-')[2]||0),0);
+  return 'BI-'+new Date().getFullYear()+'-'+String(max+1).padStart(4,'0');
+}
+function nouveauBon(pre={}){
+  return {id:'b'+Date.now(),client:'',machine:'',type:'',tech:TECHS[0],date:iso(new Date()),arrivee:'',depart:'',constat:'',travaux:'',
+    pieces:[{nom:'',qte:'1'}],mesures:MESURES.map(()=>({v:'',s:''})),etat:'',photos:[],reserves:'',signataire:'',signature:'',...pre};
+}
+function sauverBrouillon(){
+  if(!d)return;
+  if(!ecrire(CLES.brouillon,d))ecrire(CLES.brouillon,{...d,photos:[]});
+}
+function duree(a,b){
+  if(!a||!b)return '';
+  const m=t=>{const[h,mn]=t.split(':').map(Number);return h*60+mn;};
+  let x=m(b)-m(a);if(x<0)x+=1440;
+  return Math.floor(x/60)+' h '+String(x%60).padStart(2,'0');
+}
+function toast(t){
+  document.querySelector('.toast')?.remove();
+  const e=document.createElement('div');e.className='toast no-print';e.setAttribute('role','status');e.textContent=t;
+  document.body.append(e);clearTimeout(toastT);toastT=setTimeout(()=>e.remove(),3200);
+}
+function logo(){return `<img class="logo" src="${LOGO}" alt="Costa Energies" onerror="this.outerHTML='<span class=&quot;logotxt&quot;>Costa <span>Energies</span></span>'">`;}
+function haut(t){return `<header class="top no-print">${logo()}<div class="top-t">${t}</div></header><div class="demo no-print">Prototype · données fictives</div>`;}
+function aller(v,garderDefilement){
+  vue=v;render();
+  if(!garderDefilement){window.scrollTo(0,0);$('#focus')?.focus({preventScroll:true});}
+}
+function statutClasse(e){return e===ETATS[0]?'p-ok':e===ETATS[1]?'p-warn':'p-ko';}
+function statutCourt(e){return e===ETATS[0]?'En service':e===ETATS[1]?'Réserves':'À l\'arrêt';}
+
+/* ---------- Accueil ---------- */
+function vueAccueil(){
+  const br=lire(CLES.brouillon,null);
+  return `${haut('Bons<br>d\'intervention')}
+  <main>
+    <h1 class="hello" id="focus" tabindex="-1">Bonjour Reubler</h1>
+    <p class="sub">${esc(new Date().toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'}))}</p>
+    <button class="btn btn-p btn-full" data-a="nouveau">+ Nouveau bon d'intervention</button>
+    ${br?`<div class="reprendre"><span>Brouillon${br.machine?' : '+esc(br.machine):''}</span><button data-a="reprendre">Reprendre</button></div>`:''}
+    <h2 class="titre-s">Aujourd'hui</h2>
+    ${PLANNING.map((p,i)=>`<button class="ligne" data-a="planifie" data-i="${i}">
+      <span class="heure">${esc(p.heure)}</span>
+      <span class="l-c"><span class="l-t">${esc(clientDe(p.client).nom)}</span><span class="l-s">${esc(p.machine)} · ${esc(p.type)}</span></span>
+      <span class="fleche" aria-hidden="true">›</span></button>`).join('')}
+    <h2 class="titre-s">Historique</h2>
+    <label class="leg" for="rech">Chercher un client, une machine ou un numéro</label>
+    <input id="rech" type="search" placeholder="Ex. : P-12" autocomplete="off">
+    <div id="hist" style="margin-top:10px">${listeHist('')}</div>
+    <div class="pied"><button class="lien" data-a="reset">Réinitialiser la démonstration</button></div>
+  </main>`;
+}
+function listeHist(q){
+  q=q.trim().toLowerCase();
+  const l=tousLesBons().filter(b=>!q||[clientDe(b.client).nom,b.machine,b.numero,b.type].join(' ').toLowerCase().includes(q));
+  if(!l.length)return '<p class="vide">Aucun bon trouvé.</p>';
+  return l.map(b=>`<button class="ligne" data-a="voir" data-id="${esc(b.id)}">
+    <span class="l-c"><span class="l-t">${esc(b.machine)}</span><span class="l-s">${esc(clientDe(b.client).nom)} · ${esc(dateFr(b.date))}</span><span class="l-s">${esc(b.numero)}</span></span>
+    <span class="pastille ${statutClasse(b.etat)}">${statutCourt(b.etat)}</span></button>`).join('');
+}
+
+/* ---------- Saisie ---------- */
+function opt(liste,val,vide){return `<option value="">${vide}</option>`+liste.map(o=>{const v=o.id||o,l=o.nom||o;return `<option value="${esc(v)}"${v===val?' selected':''}>${esc(l)}</option>`;}).join('');}
+function champ(id,label,html,req){return `<div class="champ"><label for="${id}">${label}${req?' <span class="req">*</span>':''}</label>${html}</div>`;}
+
+const etapes=[
+  ()=>{const c=clientDe(d.client);return `
+    ${champ('client','Client',`<select id="client" data-f="client">${opt(CLIENTS,d.client,'Choisir un client')}</select>`,1)}
+    ${c.site?`<p class="aide">Site : ${esc(c.site)}</p>`:''}
+    ${champ('machine','Machine ou équipement',`<input id="machine" data-f="machine" list="lm" value="${esc(d.machine)}" autocomplete="off" placeholder="Ex. : Presse P-12"><datalist id="lm">${c.machines.map(m=>`<option value="${esc(m)}">`).join('')}</datalist>`,1)}
+    ${champ('type','Type d\'intervention',`<select id="type" data-f="type">${opt(TYPES,d.type,'Choisir un type')}</select>`,1)}
+    ${champ('tech','Technicien',`<select id="tech" data-f="tech">${TECHS.map(t=>`<option${t===d.tech?' selected':''}>${esc(t)}</option>`).join('')}</select>`)}
+    ${champ('date','Date',`<input id="date" type="date" data-f="date" value="${esc(d.date)}">`,1)}
+    <div class="deux">
+      ${champ('arrivee','Arrivée',`<input id="arrivee" type="time" data-f="arrivee" value="${esc(d.arrivee)}">`,1)}
+      ${champ('depart','Départ',`<input id="depart" type="time" data-f="depart" value="${esc(d.depart)}">`,1)}
+    </div>
+    <div class="calc"><span>Temps sur site</span><b id="duree" aria-live="polite">${duree(d.arrivee,d.depart)||'—'}</b></div>`;},
+  ()=>`
+    ${champ('constat','Constat à l\'arrivée',`<textarea id="constat" data-f="constat" placeholder="Ce que vous avez trouvé sur place">${esc(d.constat)}</textarea>`)}
+    ${champ('travaux','Travaux réalisés',`<textarea id="travaux" data-f="travaux" placeholder="Ce qui a été fait">${esc(d.travaux)}</textarea>`,1)}
+    <div class="champ"><span class="leg">Pièces utilisées</span>
+      ${d.pieces.map((p,i)=>`<div class="piece">
+        <input aria-label="Désignation de la pièce ${i+1}" data-p="${i}" data-k="nom" value="${esc(p.nom)}" placeholder="Désignation">
+        <input aria-label="Quantité de la pièce ${i+1}" data-p="${i}" data-k="qte" value="${esc(p.qte)}" inputmode="numeric">
+        <button class="suppr" data-a="suppr-piece" data-i="${i}" aria-label="Supprimer la pièce ${i+1}">×</button></div>`).join('')}
+      <button class="lien" data-a="ajout-piece">+ Ajouter une pièce</button>
+    </div>`,
+  ()=>`
+    <p class="aide">Renseignez uniquement ce qui a été contrôlé.</p>
+    ${MESURES.map((m,i)=>{const r=d.mesures[i];return `<div class="mes">
+      <div class="mes-t" id="mt${i}">${esc(m.nom)}</div>
+      ${m.unite?`<div class="mes-v"><input aria-labelledby="mt${i}" data-m="${i}" value="${esc(r.v)}" inputmode="decimal" placeholder="Valeur"><span>${esc(m.unite)}</span></div>`:''}
+      <div class="seg" role="group" aria-labelledby="mt${i}">
+        ${[['c','Conforme'],['n','Non conforme'],['a','Non applicable']].map(([k,l])=>`<button class="${k}" data-a="mesure" data-i="${i}" data-s="${k}" aria-pressed="${r.s===k}">${l}</button>`).join('')}
+      </div></div>`;}).join('')}
+    <div class="champ"><span class="leg">État à la sortie <span class="req">*</span></span>
+      <div class="choix">${ETATS.map((e,i)=>`<button data-a="etat" data-i="${i}" aria-pressed="${d.etat===e}">${esc(e)}</button>`).join('')}</div>
+    </div>`,
+  ()=>`
+    <p class="aide">Facultatif. Les photos sont réduites avant d'être ajoutées au bon.</p>
+    <div class="ph-btn">
+      <button class="btn btn-s" data-a="photo" data-t="Avant">+ Photo avant</button>
+      <button class="btn btn-s" data-a="photo" data-t="Après">+ Photo après</button>
+    </div>
+    <input id="fichier" class="no-print" type="file" accept="image/*" hidden>
+    ${d.photos.length?`<div class="ph-grille">${d.photos.map((p,i)=>`<div class="ph"><img src="${esc(p.src)}" alt="Photo ${esc(p.t)} ${i+1}"><em>${esc(p.t)}</em><button data-a="suppr-photo" data-i="${i}" aria-label="Supprimer la photo ${i+1}">×</button></div>`).join('')}</div>`:'<p class="vide">Aucune photo pour le moment.</p>'}`,
+  ()=>`
+    <div class="resume">
+      <div><span>Client</span><b>${esc(clientDe(d.client).nom)}</b></div>
+      <div><span>Machine</span><b>${esc(d.machine)}</b></div>
+      <div><span>Temps sur site</span><b>${esc(duree(d.arrivee,d.depart))}</b></div>
+      <div><span>État</span><b>${esc(d.etat)}</b></div>
+    </div>
+    ${champ('reserves','Réserves du client',`<textarea id="reserves" data-f="reserves" placeholder="Facultatif">${esc(d.reserves)}</textarea>`)}
+    ${champ('signataire','Nom du signataire',`<input id="signataire" data-f="signataire" value="${esc(d.signataire)}" autocomplete="off">`,1)}
+    <div class="champ"><div class="sig-a"><span class="leg" id="sigl">Signature du client <span class="req">*</span></span><button class="lien" data-a="eff-sig">Effacer</button></div>
+      <canvas id="sig" role="img" aria-labelledby="sigl"></canvas></div>`
+];
+
+function vueEtape(n){
+  return `${haut('Nouveau bon')}
+  <div class="etapes no-print">
+    <div class="etapes-l"><span>Étape ${n+1} sur 5</span><span>Enregistrement automatique</span></div>
+    <div class="barre">${ETAPES.map((_,i)=>`<i class="${i<=n?'on':''}"></i>`).join('')}</div>
+  </div>
+  <main>
+    <h1 class="h-e" id="focus" tabindex="-1">${ETAPES[n]}</h1>
+    ${etapes[n]()}
+    <div class="err" id="err" role="alert"></div>
+  </main>
+  <div class="bas">
+    <button class="btn btn-s" data-a="retour">${n?'Retour':'Accueil'}</button>
+    <button class="btn btn-p" data-a="suite">${n<4?'Suivant':'Valider le bon'}</button>
+  </div>`;
+}
+function erreurEtape(n){
+  if(n===0){
+    if(!d.client)return ['client','Choisissez un client.'];
+    if(!d.machine.trim())return ['machine','Indiquez la machine ou l\'équipement.'];
+    if(!d.type)return ['type','Choisissez le type d\'intervention.'];
+    if(!d.date)return ['date','Indiquez la date.'];
+    if(!d.arrivee||!d.depart)return [d.arrivee?'depart':'arrivee','Indiquez les heures d\'arrivée et de départ.'];
+  }
+  if(n===1&&!d.travaux.trim())return ['travaux','Décrivez les travaux réalisés.'];
+  if(n===2&&!d.etat)return [null,'Indiquez l\'état de la machine à la sortie.'];
+  if(n===4){
+    if(!d.signataire.trim())return ['signataire','Indiquez le nom du signataire.'];
+    if(!d.signature)return [null,'La signature du client est requise.'];
+  }
+  return null;
+}
+function valider(){
+  const b={...d,numero:prochainNumero(),pieces:d.pieces.filter(p=>p.nom.trim()),signeLe:new Date().toISOString()};
+  bons=[b,...bons];
+  let ok=ecrire(CLES.bons,bons);
+  if(!ok){ok=ecrire(CLES.bons,bons.map(x=>({...x,photos:[]})));if(ok)toast('Bon enregistré sans ses photos : mémoire du navigateur pleine.');}
+  effacer(CLES.brouillon);d=null;
+  aller({nom:'bon',id:b.id,neuf:true});
+}
+
+/* Signature */
+function initSignature(){
+  const c=$('#sig');if(!c)return;
+  const r=c.getBoundingClientRect(),dpr=window.devicePixelRatio||1;
+  c.width=r.width*dpr;c.height=r.height*dpr;
+  const x=c.getContext('2d');x.scale(dpr,dpr);x.lineWidth=2.2;x.lineCap='round';x.lineJoin='round';x.strokeStyle='#111';
+  if(d.signature){const im=new Image();im.onload=()=>x.drawImage(im,0,0,r.width,r.height);im.src=d.signature;}
+  let actif=false;
+  const pos=e=>{const b=c.getBoundingClientRect();return [e.clientX-b.left,e.clientY-b.top];};
+  c.onpointerdown=e=>{e.preventDefault();c.setPointerCapture(e.pointerId);actif=true;x.beginPath();x.moveTo(...pos(e));x.lineTo(...pos(e));x.stroke();};
+  c.onpointermove=e=>{if(!actif)return;x.lineTo(...pos(e));x.stroke();};
+  c.onpointerup=c.onpointercancel=()=>{if(!actif)return;actif=false;d.signature=c.toDataURL('image/png');sauverBrouillon();};
+}
+/* Photos */
+function ajouterPhoto(fichier,t){
+  const url=URL.createObjectURL(fichier),im=new Image();
+  im.onload=()=>{
+    const k=Math.min(1,1000/Math.max(im.width,im.height)),c=document.createElement('canvas');
+    c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);
+    c.getContext('2d').drawImage(im,0,0,c.width,c.height);
+    URL.revokeObjectURL(url);
+    d.photos.push({t,src:c.toDataURL('image/jpeg',.72)});
+    sauverBrouillon();aller(vue,true);
+  };
+  im.onerror=()=>{URL.revokeObjectURL(url);toast('Cette image ne peut pas être lue.');};
+  im.src=url;
+}
+
+/* ---------- Bon final ---------- */
+function vueBon(id,neuf){
+  const b=tousLesBons().find(x=>x.id===id);
+  if(!b)return vueAccueil();
+  const c=clientDe(b.client);
+  const mes=MESURES.map((m,i)=>({...m,...b.mesures[i]})).filter(m=>m.v||m.s);
+  const lib={c:'Conforme',n:'Non conforme',a:'Non applicable','':'—'};
+  const sec=(t,h)=>h?`<section class="d-sec"><h2>${t}</h2>${h}</section>`:'';
+  return `<div class="no-print">${haut('Bon '+esc(b.numero))}</div>
+  <main>
+    <div class="no-print">
+      ${neuf?'<div class="ok-msg" role="status">Bon validé et ajouté à l\'historique.</div>':''}
+      <div class="doc-actions">
+        <button class="btn btn-p" data-a="pdf">Enregistrer en PDF</button>
+        <button class="btn btn-s" data-a="accueil">Retour à l'accueil</button>
+      </div>
+    </div>
+    <article class="doc" id="focus" tabindex="-1">
+      <div class="d-head">${logo()}<div class="d-num"><strong>Bon d'intervention</strong><span>${esc(b.numero)}</span></div></div>
+      <div class="d-body">
+        <section class="d-sec"><div class="d-info">
+          <div><span>Client</span><b>${esc(c.nom)}</b></div>
+          <div><span>Site</span><b>${esc(c.site)}</b></div>
+          <div><span>Machine</span><b>${esc(b.machine)}</b></div>
+          <div><span>Type</span><b>${esc(b.type)}</b></div>
+          <div><span>Date</span><b>${esc(dateFr(b.date))}</b></div>
+          <div><span>Horaires</span><b>${esc(b.arrivee)} – ${esc(b.depart)} (${esc(duree(b.arrivee,b.depart))})</b></div>
+          <div><span>Technicien</span><b>${esc(b.tech)}</b></div>
+          <div><span>État à la sortie</span><b>${esc(b.etat)}</b></div>
+        </div></section>
+        ${sec('Constat',b.constat?`<p class="d-txt">${esc(b.constat)}</p>`:'')}
+        ${sec('Travaux réalisés',`<p class="d-txt">${esc(b.travaux)}</p>`)}
+        ${sec('Pièces utilisées',b.pieces.length?`<table><tr><th>Désignation</th><th>Qté</th></tr>${b.pieces.map(p=>`<tr><td>${esc(p.nom)}</td><td>${esc(p.qte)}</td></tr>`).join('')}</table>`:'')}
+        ${sec('Mesures et contrôles',mes.length?`<table><tr><th>Contrôle</th><th>Valeur</th><th>Résultat</th></tr>${mes.map(m=>`<tr><td>${esc(m.nom)}</td><td>${m.v?esc(m.v)+' '+esc(m.unite):'—'}</td><td>${lib[m.s||'']}</td></tr>`).join('')}</table>`:'')}
+        ${sec('Photos',b.photos.length?`<div class="d-ph">${b.photos.map((p,i)=>`<figure><img src="${esc(p.src)}" alt="Photo ${esc(p.t)} ${i+1}"><figcaption>${esc(p.t)}</figcaption></figure>`).join('')}</div>`:'')}
+        ${sec('Réserves du client',b.reserves?`<p class="d-txt">${esc(b.reserves)}</p>`:'')}
+        <section class="d-sec"><h2>Signatures</h2><div class="d-sign">
+          <div><small>Pour ${esc(ENTREPRISE.nom)}</small><b>${esc(b.tech)}</b></div>
+          <div><small>Pour le client</small><b>${esc(b.signataire)}</b>
+            ${b.signature?`<img src="${esc(b.signature)}" alt="Signature de ${esc(b.signataire)}"><small>Signé le ${esc(new Date(b.signeLe).toLocaleString('fr-FR',{dateStyle:'short',timeStyle:'short'}))}</small>`:'<small>Exemple non signé</small>'}
+          </div>
+        </div></section>
+      </div>
+      <footer class="d-foot">
+        ${esc(ENTREPRISE.nom)} · ${esc(ENTREPRISE.forme)} · SIRET ${esc(ENTREPRISE.siret)}<br>${esc(ENTREPRISE.adresse)} · ${esc(ENTREPRISE.tel)}<br>
+        <span class="d-demo">Document de démonstration, sans valeur contractuelle</span>
+      </footer>
+    </article>
+  </main>`;
+}
+
+/* ---------- Rendu ---------- */
+function render(){
+  const a=$('#app');
+  a.classList.toggle('large',vue.nom==='bon');
+  if(vue.nom==='accueil')a.innerHTML=vueAccueil();
+  else if(vue.nom==='etape'){a.innerHTML=vueEtape(vue.n);if(vue.n===4)initSignature();}
+  else a.innerHTML=vueBon(vue.id,vue.neuf);
+}
+
+let photoType='Avant';
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-a]');if(!t)return;
+  const a=t.dataset.a,i=+t.dataset.i;
+  if(a==='nouveau'){d=nouveauBon();sauverBrouillon();aller({nom:'etape',n:0});}
+  else if(a==='planifie'){const p=PLANNING[i];d=nouveauBon({client:p.client,machine:p.machine,type:p.type});sauverBrouillon();aller({nom:'etape',n:0});}
+  else if(a==='reprendre'){d=lire(CLES.brouillon,null);if(d)aller({nom:'etape',n:0});}
+  else if(a==='voir')aller({nom:'bon',id:t.dataset.id});
+  else if(a==='accueil')aller({nom:'accueil'});
+  else if(a==='reset'){if(confirm('Effacer les bons et le brouillon de cette démonstration ?')){effacer(CLES.bons);effacer(CLES.brouillon);bons=[];d=null;aller({nom:'accueil'});}}
+  else if(a==='retour'){if(vue.n)aller({nom:'etape',n:vue.n-1});else aller({nom:'accueil'});}
+  else if(a==='suite'){
+    const err=erreurEtape(vue.n);
+    if(err){$('#err').textContent=err[1];if(err[0])$('#'+err[0])?.focus();else $('#err').scrollIntoView({block:'center'});return;}
+    if(vue.n<4)aller({nom:'etape',n:vue.n+1});else valider();
+  }
+  else if(a==='ajout-piece'){d.pieces.push({nom:'',qte:'1'});sauverBrouillon();aller(vue,true);}
+  else if(a==='suppr-piece'){d.pieces.splice(i,1);if(!d.pieces.length)d.pieces.push({nom:'',qte:'1'});sauverBrouillon();aller(vue,true);}
+  else if(a==='mesure'){const r=d.mesures[i];r.s=r.s===t.dataset.s?'':t.dataset.s;sauverBrouillon();aller(vue,true);}
+  else if(a==='etat'){d.etat=ETATS[i];sauverBrouillon();aller(vue,true);}
+  else if(a==='photo'){photoType=t.dataset.t;$('#fichier').click();}
+  else if(a==='suppr-photo'){d.photos.splice(i,1);sauverBrouillon();aller(vue,true);}
+  else if(a==='eff-sig'){d.signature='';const c=$('#sig');c.getContext('2d').clearRect(0,0,c.width,c.height);sauverBrouillon();}
+  else if(a==='pdf'){
+    const b=tousLesBons().find(x=>x.id===vue.id),titre=document.title;
+    document.title=b.numero+' - '+b.machine;
+    window.addEventListener('afterprint',()=>{document.title=titre;},{once:true});
+    window.print();
+  }
+});
+document.addEventListener('input',e=>{
+  const t=e.target;
+  if(t.id==='rech'){$('#hist').innerHTML=listeHist(t.value);return;}
+  if(!d)return;
+  if(t.dataset.f){
+    d[t.dataset.f]=t.value;
+    if(t.dataset.f==='client'){d.machine='';aller(vue,true);}
+    if(t.dataset.f==='arrivee'||t.dataset.f==='depart')$('#duree').textContent=duree(d.arrivee,d.depart)||'—';
+  }else if(t.dataset.p!==undefined)d.pieces[+t.dataset.p][t.dataset.k]=t.value;
+  else if(t.dataset.m!==undefined)d.mesures[+t.dataset.m].v=t.value;
+  sauverBrouillon();
+});
+document.addEventListener('change',e=>{
+  if(e.target.id==='fichier'&&e.target.files[0])ajouterPhoto(e.target.files[0],photoType);
+});
+
+render();
+</script>
+</body>
+</html>
