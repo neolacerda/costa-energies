@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#080808">
 <meta name="robots" content="noindex">
-<title>Bons d'intervention — Costa Energies (prototype)</title>
+<title>Ordens de serviço — Costa Energies (protótipo)</title>
 <link rel="icon" type="image/png" href="https://i.imgur.com/MYv4RIr.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -123,8 +123,30 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--o);box-s
 .resume div{display:flex;justify-content:space-between;gap:12px;padding:3px 0;}
 .resume span{color:var(--txt2);flex-shrink:0;}
 .resume b{text-align:right;overflow-wrap:anywhere;min-width:0;}
-#sig{display:block;width:100%;height:190px;background:var(--carte);border:1.5px dashed var(--txt2);border-radius:10px;touch-action:none;}
+.sig{display:block;width:100%;height:150px;background:var(--carte);border:1.5px dashed var(--txt2);border-radius:10px;touch-action:none;}
 .sig-a{display:flex;justify-content:space-between;align-items:center;}
+
+/* Équipe, pendências et profil */
+.perfil{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.perfil label{font-size:13.5px;font-weight:700;white-space:nowrap;}
+.perfil select{min-height:44px;padding:8px 12px;font-size:15px;}
+.eq-h{display:flex;justify-content:space-between;align-items:center;}
+.eq-h .mes-t{margin-bottom:6px;}
+.mes .champ{margin-top:9px;}
+.lien-ko{color:var(--ko);}
+.totais{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px;background:var(--oc);border-radius:10px;padding:10px 12px;color:var(--of);}
+.totais span{display:block;font-size:12.5px;}
+.totais b{font-family:'Sora',sans-serif;font-size:16px;}
+.compte{display:inline-block;background:var(--o);color:#111;font-size:12px;font-weight:700;padding:0 8px;border-radius:20px;margin-left:4px;}
+.pend{background:var(--carte);border:1px solid var(--trait);border-left:4px solid var(--o);border-radius:12px;padding:12px 14px;margin-bottom:8px;}
+.pend-t{font-size:14px;margin-top:6px;overflow-wrap:anywhere;}
+.pend-a{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:8px;flex-wrap:wrap;}
+.btn-mini{min-height:44px;padding:8px 14px;font-size:14px;}
+.ph-leg{margin-top:6px;min-height:44px;padding:8px 11px;font-size:15px;}
+.lang{grid-template-columns:1fr 1fr;margin-bottom:12px;}
+.lang button[aria-pressed="true"].c{background:var(--oc);border-color:var(--o);color:var(--of);}
+.t-tot td{font-weight:700;}
+.d-inst{font-size:12.5px;color:var(--txt2);margin-top:6px;overflow-wrap:anywhere;}
 
 /* Barre du bas */
 .bas{position:sticky;bottom:0;display:grid;grid-template-columns:auto 1fr;gap:10px;padding:12px 16px;padding-bottom:max(12px,env(safe-area-inset-bottom));background:var(--fond);border-top:1px solid var(--trait);}
@@ -195,71 +217,111 @@ th:last-child,td:last-child{padding-right:0;text-align:right;}
 const ENTREPRISE={nom:'Costa Energies',forme:'SARL',siret:'917 579 724 00027',adresse:'70 Rue Mathieu Dussurgey, 69190 Saint-Fons',tel:'+33 6 37 92 32 73'};
 const LOGO='https://i.imgur.com/MYv4RIr.png';
 
+/* Les fiches clients restent en français : elles sont imprimées telles quelles sur le bon. */
 const CLIENTS=[
   {id:'c1',nom:'Métallurgie Démo',site:'Atelier de presses',machines:['Presse hydraulique P-12','Armoire TGBT-01','Convoyeur C-04']},
   {id:'c2',nom:'Plasturgie Exemple',site:'Ligne d\'injection',machines:['Armoire de ligne L2','Injecteuse I-07','Compresseur K-02']},
   {id:'c3',nom:'Agro Fictive',site:'Unité de conditionnement',machines:['Ensacheuse E-03','Tableau divisionnaire TD-5']}
 ];
-const TYPES=['Maintenance préventive','Maintenance curative','Raccordement de machines','Câblage d\'armoire électrique','Transfert de machines','Schémas & études électriques','Distribution basse tension'];
-const TECHS=['Reubler Costa','Technicien 2'];
+const TYPES=[
+  {id:'prev',pt:'Manutenção preventiva',fr:'Maintenance préventive'},
+  {id:'cur',pt:'Manutenção corretiva',fr:'Maintenance curative'},
+  {id:'racc',pt:'Ligação de máquinas',fr:'Raccordement de machines'},
+  {id:'cabl',pt:'Montagem de quadro elétrico',fr:'Câblage d\'armoire électrique'},
+  {id:'transf',pt:'Transferência de máquinas',fr:'Transfert de machines'},
+  {id:'etud',pt:'Esquemas e estudos elétricos',fr:'Schémas et études électriques'},
+  {id:'dist',pt:'Distribuição em baixa tensão',fr:'Distribution basse tension'}
+];
+const TECHS=['Reubler Costa','Technicien Démo'];
+const INSTRUMENTOS=['Multimètre MX-200 · S/N 48213','Contrôleur d\'isolement IS-50 · S/N 10977','Caméra thermique TH-12 · S/N 30652'];
 const PLANNING=[
-  {heure:'08:30',client:'c1',machine:'Presse hydraulique P-12',type:'Maintenance préventive'},
-  {heure:'14:00',client:'c2',machine:'Armoire de ligne L2',type:'Maintenance curative'}
+  {heure:'08:30',client:'c1',machine:'Presse hydraulique P-12',type:'prev'},
+  {heure:'14:00',client:'c2',machine:'Armoire de ligne L2',type:'cur'}
 ];
 const MESURES=[
-  {nom:'Continuité de la terre',unite:'Ω'},
-  {nom:'Résistance d\'isolement',unite:'MΩ'},
-  {nom:'Tension d\'alimentation',unite:'V'},
-  {nom:'Contrôle thermographique',unite:'°C'},
-  {nom:'Serrage des connexions',unite:''}
+  {pt:'Continuidade do aterramento',fr:'Continuité de la terre',unite:'Ω'},
+  {pt:'Resistência de isolamento',fr:'Résistance d\'isolement',unite:'MΩ'},
+  {pt:'Tensão de alimentação',fr:'Tension d\'alimentation',unite:'V'},
+  {pt:'Termografia',fr:'Contrôle thermographique',unite:'°C'},
+  {pt:'Aperto das conexões',fr:'Serrage des connexions',unite:''}
 ];
-const ETATS=['Machine remise en service','Remise en service avec réserves','Machine à l\'arrêt'];
-const ETAPES=['Intervention','Travaux','Mesures','Photos','Signature'];
-const CLES={bons:'ce-bons-v1',brouillon:'ce-brouillon-v1'};
+const ETATS=[
+  {id:'ok',pt:'Máquina de volta em operação',fr:'Machine remise en service',court:'Em operação',classe:'p-ok'},
+  {id:'res',pt:'Em operação com ressalvas',fr:'Remise en service avec réserves',court:'Ressalvas',classe:'p-warn'},
+  {id:'arr',pt:'Máquina parada',fr:'Machine à l\'arrêt',court:'Parada',classe:'p-ko'}
+];
+const RESULTATS={c:{pt:'Conforme',fr:'Conforme'},n:{pt:'Não conforme',fr:'Non conforme'},a:{pt:'Não se aplica',fr:'Sans objet'}};
+const PHOTOS={av:{pt:'Antes',fr:'Avant'},ap:{pt:'Depois',fr:'Après'}};
+const ETAPES=['Atendimento','Serviços','Medições','Fotos','Assinatura'];
+const CLES={bons:'ce-bons-v3',brouillon:'ce-brouillon-v3',resolues:'ce-resolues-v3',usuario:'ce-usuario-v3'};
+const SIGNATURES={'sig-t':'sigTech','sig-c':'signature'};
+const DOC={
+  fr:{titre:'Bon d\'intervention',client:'Client',site:'Site',machine:'Machine',type:'Type',date:'Date',commande:'N° de commande',etat:'État à la sortie',suite:'Suite du bon',arret:'Arrêt machine',arretCours:'En cours depuis',
+    equipe:'Intervenants',tech:'Technicien',arrivee:'Arrivée',depart:'Départ',surSite:'Sur site',trajet:'Trajet',total:'Total',constat:'Constat',travaux:'Travaux réalisés',pieces:'Pièces utilisées',design:'Désignation',qte:'Qté',
+    mesures:'Mesures et contrôles',controle:'Contrôle',valeur:'Valeur',resultat:'Résultat',instrument:'Instrument utilisé',photos:'Photos',reserves:'Réserves du client',suivi:'Travaux à prévoir',signatures:'Signatures',pour:'Pour',pourClient:'Pour le client',signeLe:'Signé le',exemple:'Exemple non signé',demo:'Document de démonstration, sans valeur contractuelle',locale:'fr-FR'},
+  pt:{titre:'Ordem de serviço',client:'Cliente',site:'Local',machine:'Máquina',type:'Tipo',date:'Data',commande:'Nº do pedido',etat:'Estado na saída',suite:'Retorno da ordem',arret:'Máquina parada',arretCours:'Parada desde',
+    equipe:'Equipe',tech:'Técnico',arrivee:'Chegada',depart:'Saída',surSite:'No local',trajet:'Deslocamento',total:'Total',constat:'Situação na chegada',travaux:'Serviços realizados',pieces:'Peças usadas',design:'Descrição',qte:'Qtd.',
+    mesures:'Medições e verificações',controle:'Verificação',valeur:'Valor',resultat:'Resultado',instrument:'Instrumento usado',photos:'Fotos',reserves:'Ressalvas do cliente',suivi:'Serviços pendentes',signatures:'Assinaturas',pour:'Pela',pourClient:'Pelo cliente',signeLe:'Assinado em',exemple:'Exemplo sem assinatura',demo:'Documento de demonstração, sem valor contratual',locale:'pt-BR'}
+};
 
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const iso=d=>{const z=new Date(d.getTime()-d.getTimezoneOffset()*6e4);return z.toISOString().slice(0,10);};
 const ilYa=n=>{const d=new Date();d.setDate(d.getDate()-n);return iso(d);};
-const dateFr=s=>s?new Date(s+'T12:00:00').toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'}):'';
+const dateLoc=(s,loc)=>s?new Date(s+'T12:00:00').toLocaleDateString(loc,{day:'2-digit',month:'long',year:'numeric'}):'';
 const clientDe=id=>CLIENTS.find(c=>c.id===id)||{nom:'',site:'',machines:[]};
+const typeDe=id=>TYPES.find(t=>t.id===id)||{pt:'',fr:''};
+const etatDe=id=>ETATS.find(e=>e.id===id)||ETATS[0];
 
 function lire(k,defaut){try{const v=localStorage.getItem(k);return v?JSON.parse(v):defaut;}catch(e){return defaut;}}
 function ecrire(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true;}catch(e){return false;}}
 function effacer(k){try{localStorage.removeItem(k);}catch(e){}}
 
 const EXEMPLES=[
-  {id:'ex2',numero:'BI-2026-0042',exemple:true,client:'c1',machine:'Convoyeur C-04',type:'Maintenance curative',tech:'Reubler Costa',date:ilYa(6),arrivee:'09:15',depart:'11:45',
+  {id:'ex2',numero:'OS-2026-0042',exemple:true,client:'c1',machine:'Convoyeur C-04',type:'cur',pedido:'CMD-4471',date:ilYa(6),
+   equipe:[{tech:'Reubler Costa',arrivee:'09:15',depart:'11:45',trajet:'35'}],arretIni:'08:40',arretFim:'11:20',
    constat:'Arrêt du convoyeur en cours de production. Disjoncteur moteur déclenché.',travaux:'Recherche de panne, remplacement du contacteur KM2, contrôle du moteur puis essais en charge.',
-   pieces:[{nom:'Contacteur 25 A',qte:'1'}],mesures:[{v:'52',s:'c'},{v:'',s:''},{v:'398',s:'c'},{v:'',s:''},{v:'',s:'c'}],etat:ETATS[0],photos:[],reserves:'',signataire:'Responsable maintenance (exemple)',signature:''},
-  {id:'ex1',numero:'BI-2026-0041',exemple:true,client:'c2',machine:'Injecteuse I-07',type:'Maintenance préventive',tech:'Technicien 2',date:ilYa(19),arrivee:'08:00',depart:'12:00',
+   pieces:[{nom:'Contacteur 25 A',qte:'1'}],instrument:INSTRUMENTOS[0],mesures:[{v:'52',s:'c'},{v:'',s:''},{v:'398',s:'c'},{v:'',s:''},{v:'',s:'c'}],etat:'ok',pendencia:'',photos:[],reserves:'',signataire:'Responsable maintenance (exemple)',sigTech:'',signature:'',origem:''},
+  {id:'ex1',numero:'OS-2026-0041',exemple:true,client:'c2',machine:'Injecteuse I-07',type:'prev',pedido:'',date:ilYa(19),
+   equipe:[{tech:'Reubler Costa',arrivee:'08:00',depart:'12:00',trajet:'40'},{tech:'Technicien Démo',arrivee:'08:00',depart:'11:00',trajet:'40'}],arretIni:'',arretFim:'',
    constat:'Visite semestrielle prévue au contrat.',travaux:'Dépoussiérage de l\'armoire, resserrage des borniers, contrôle thermographique.',
-   pieces:[],mesures:[{v:'',s:''},{v:'',s:''},{v:'401',s:'c'},{v:'64',s:'n'},{v:'',s:'c'}],etat:ETATS[1],photos:[],reserves:'Échauffement sur le départ Q3, à reprendre à la prochaine visite.',signataire:'Chef d\'atelier (exemple)',signature:''}
+   pieces:[],instrument:INSTRUMENTOS[2],mesures:[{v:'',s:''},{v:'',s:''},{v:'401',s:'c'},{v:'64',s:'n'},{v:'',s:'c'}],etat:'res',pendencia:'Reprendre l\'échauffement sur le départ Q3.',photos:[],reserves:'À traiter avant la prochaine visite.',signataire:'Chef d\'atelier (exemple)',sigTech:'',signature:'',origem:''}
 ];
 
 let bons=lire(CLES.bons,[]);
+let resolues=lire(CLES.resolues,{});
+let usuario=lire(CLES.usuario,TECHS[0]);
 let d=null;              /* bon en cours de saisie */
 let vue={nom:'accueil'};
+let langueDoc='fr';
 let toastT;
 
 function tousLesBons(){return [...bons,...EXEMPLES];}
+function pendencias(){return tousLesBons().filter(b=>b.etat!=='ok'&&!resolues[b.id]);}
 function prochainNumero(){
   const max=tousLesBons().reduce((m,b)=>Math.max(m,+b.numero.split('-')[2]||0),0);
-  return 'BI-'+new Date().getFullYear()+'-'+String(max+1).padStart(4,'0');
+  return 'OS-'+new Date().getFullYear()+'-'+String(max+1).padStart(4,'0');
 }
+function ligneEquipe(tech){return {tech,arrivee:'',depart:'',trajet:''};}
 function nouveauBon(pre={}){
-  return {id:'b'+Date.now(),client:'',machine:'',type:'',tech:TECHS[0],date:iso(new Date()),arrivee:'',depart:'',constat:'',travaux:'',
-    pieces:[{nom:'',qte:'1'}],mesures:MESURES.map(()=>({v:'',s:''})),etat:'',photos:[],reserves:'',signataire:'',signature:'',...pre};
+  return {id:'b'+Date.now(),client:'',machine:'',type:'',pedido:'',date:iso(new Date()),equipe:[ligneEquipe(usuario)],arretIni:'',arretFim:'',constat:'',travaux:'',
+    pieces:[{nom:'',qte:'1'}],instrument:'',mesures:MESURES.map(()=>({v:'',s:''})),etat:'',pendencia:'',photos:[],reserves:'',signataire:'',sigTech:'',signature:'',origem:'',...pre};
 }
 function sauverBrouillon(){
   if(!d)return;
   if(!ecrire(CLES.brouillon,d))ecrire(CLES.brouillon,{...d,photos:[]});
 }
-function duree(a,b){
-  if(!a||!b)return '';
+function minutes(a,b){
+  if(!a||!b)return null;
   const m=t=>{const[h,mn]=t.split(':').map(Number);return h*60+mn;};
   let x=m(b)-m(a);if(x<0)x+=1440;
-  return Math.floor(x/60)+' h '+String(x%60).padStart(2,'0');
+  return x;
+}
+const heures=m=>m===null?'—':Math.floor(m/60)+'h'+String(m%60).padStart(2,'0');
+function totaux(eq){
+  const site=eq.reduce((s,e)=>s+(minutes(e.arrivee,e.depart)||0),0);
+  const trajet=eq.reduce((s,e)=>s+(parseInt(e.trajet,10)||0),0);
+  return {site,trajet,total:site+trajet};
 }
 function toast(t){
   document.querySelector('.toast')?.remove();
@@ -267,107 +329,146 @@ function toast(t){
   document.body.append(e);clearTimeout(toastT);toastT=setTimeout(()=>e.remove(),3200);
 }
 function logo(){return `<img class="logo" src="${LOGO}" alt="Costa Energies" onerror="this.outerHTML='<span class=&quot;logotxt&quot;>Costa <span>Energies</span></span>'">`;}
-function haut(t){return `<header class="top no-print">${logo()}<div class="top-t">${t}</div></header><div class="demo no-print">Prototype · données fictives</div>`;}
+function haut(t){return `<header class="top no-print">${logo()}<div class="top-t">${t}</div></header><div class="demo no-print">Protótipo · dados fictícios</div>`;}
 function aller(v,garderDefilement){
   vue=v;render();
   if(!garderDefilement){window.scrollTo(0,0);$('#focus')?.focus({preventScroll:true});}
 }
-function statutClasse(e){return e===ETATS[0]?'p-ok':e===ETATS[1]?'p-warn':'p-ko';}
-function statutCourt(e){return e===ETATS[0]?'En service':e===ETATS[1]?'Réserves':'À l\'arrêt';}
 
 /* ---------- Accueil ---------- */
 function vueAccueil(){
-  const br=lire(CLES.brouillon,null);
-  return `${haut('Bons<br>d\'intervention')}
+  const br=lire(CLES.brouillon,null),pend=pendencias();
+  return `${haut('Ordens<br>de serviço')}
   <main>
-    <h1 class="hello" id="focus" tabindex="-1">Bonjour Reubler</h1>
-    <p class="sub">${esc(new Date().toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'}))}</p>
-    <button class="btn btn-p btn-full" data-a="nouveau">+ Nouveau bon d'intervention</button>
-    ${br?`<div class="reprendre"><span>Brouillon${br.machine?' : '+esc(br.machine):''}</span><button data-a="reprendre">Reprendre</button></div>`:''}
-    <h2 class="titre-s">Aujourd'hui</h2>
+    <h1 class="hello" id="focus" tabindex="-1">Olá, ${esc(usuario.split(' ')[0])}</h1>
+    <p class="sub">${esc(new Date().toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'}))}</p>
+    <div class="perfil"><label for="usuario">Entrando como</label>
+      <select id="usuario">${TECHS.map(t=>`<option${t===usuario?' selected':''}>${esc(t)}</option>`).join('')}</select></div>
+    <button class="btn btn-p btn-full" data-a="nouveau">+ Nova ordem de serviço</button>
+    ${br?`<div class="reprendre"><span>Rascunho${br.machine?' : '+esc(br.machine):''}</span><button data-a="reprendre">Retomar</button></div>`:''}
+    <h2 class="titre-s">Hoje</h2>
     ${PLANNING.map((p,i)=>`<button class="ligne" data-a="planifie" data-i="${i}">
       <span class="heure">${esc(p.heure)}</span>
-      <span class="l-c"><span class="l-t">${esc(clientDe(p.client).nom)}</span><span class="l-s">${esc(p.machine)} · ${esc(p.type)}</span></span>
+      <span class="l-c"><span class="l-t">${esc(clientDe(p.client).nom)}</span><span class="l-s">${esc(p.machine)} · ${esc(typeDe(p.type).pt)}</span></span>
       <span class="fleche" aria-hidden="true">›</span></button>`).join('')}
-    <h2 class="titre-s">Historique</h2>
-    <label class="leg" for="rech">Chercher un client, une machine ou un numéro</label>
-    <input id="rech" type="search" placeholder="Ex. : P-12" autocomplete="off">
+    <h2 class="titre-s">Pendências${pend.length?` <span class="compte">${pend.length}</span>`:''}</h2>
+    ${pend.length?pend.map(b=>`<div class="pend">
+      <span class="l-t">${esc(b.machine)}</span>
+      <span class="l-s">${esc(clientDe(b.client).nom)} · ${esc(b.numero)}</span>
+      <p class="pend-t">${esc(b.pendencia)}</p>
+      <div class="pend-a"><button class="btn btn-s btn-mini" data-a="pend-retorno" data-id="${esc(b.id)}">Criar retorno</button>
+      <button class="lien" data-a="pend-resolver" data-id="${esc(b.id)}">Marcar como resolvida</button></div>
+    </div>`).join(''):'<p class="vide">Nenhuma pendência em aberto.</p>'}
+    <h2 class="titre-s">Histórico</h2>
+    <label class="leg" for="rech">Buscar cliente, máquina ou número</label>
+    <input id="rech" type="search" placeholder="Ex.: P-12" autocomplete="off">
     <div id="hist" style="margin-top:10px">${listeHist('')}</div>
-    <div class="pied"><button class="lien" data-a="reset">Réinitialiser la démonstration</button></div>
+    <div class="pied"><button class="lien" data-a="reset">Reiniciar a demonstração</button></div>
   </main>`;
 }
 function listeHist(q){
   q=q.trim().toLowerCase();
-  const l=tousLesBons().filter(b=>!q||[clientDe(b.client).nom,b.machine,b.numero,b.type].join(' ').toLowerCase().includes(q));
-  if(!l.length)return '<p class="vide">Aucun bon trouvé.</p>';
-  return l.map(b=>`<button class="ligne" data-a="voir" data-id="${esc(b.id)}">
-    <span class="l-c"><span class="l-t">${esc(b.machine)}</span><span class="l-s">${esc(clientDe(b.client).nom)} · ${esc(dateFr(b.date))}</span><span class="l-s">${esc(b.numero)}</span></span>
-    <span class="pastille ${statutClasse(b.etat)}">${statutCourt(b.etat)}</span></button>`).join('');
+  const l=tousLesBons().filter(b=>!q||[clientDe(b.client).nom,b.machine,b.numero,b.pedido,typeDe(b.type).pt,typeDe(b.type).fr].join(' ').toLowerCase().includes(q));
+  if(!l.length)return '<p class="vide">Nenhuma ordem encontrada.</p>';
+  return l.map(b=>{const e=etatDe(b.etat);return `<button class="ligne" data-a="voir" data-id="${esc(b.id)}">
+    <span class="l-c"><span class="l-t">${esc(b.machine)}</span><span class="l-s">${esc(clientDe(b.client).nom)} · ${esc(dateLoc(b.date,'pt-BR'))}</span><span class="l-s">${esc(b.numero)}</span></span>
+    <span class="pastille ${e.classe}">${e.court}</span></button>`;}).join('');
 }
 
 /* ---------- Saisie ---------- */
-function opt(liste,val,vide){return `<option value="">${vide}</option>`+liste.map(o=>{const v=o.id||o,l=o.nom||o;return `<option value="${esc(v)}"${v===val?' selected':''}>${esc(l)}</option>`;}).join('');}
 function champ(id,label,html,req){return `<div class="champ"><label for="${id}">${label}${req?' <span class="req">*</span>':''}</label>${html}</div>`;}
+function afficherTotaux(){
+  const t=totaux(d.equipe);
+  $('#t-site').textContent=heures(t.site);$('#t-trajet').textContent=heures(t.trajet);$('#t-total').textContent=heures(t.total);
+}
+function texteArret(){
+  if(!d.arretIni)return '—';
+  return d.arretFim?heures(minutes(d.arretIni,d.arretFim)):'Ainda parada';
+}
 
 const etapes=[
-  ()=>{const c=clientDe(d.client);return `
-    ${champ('client','Client',`<select id="client" data-f="client">${opt(CLIENTS,d.client,'Choisir un client')}</select>`,1)}
-    ${c.site?`<p class="aide">Site : ${esc(c.site)}</p>`:''}
-    ${champ('machine','Machine ou équipement',`<input id="machine" data-f="machine" list="lm" value="${esc(d.machine)}" autocomplete="off" placeholder="Ex. : Presse P-12"><datalist id="lm">${c.machines.map(m=>`<option value="${esc(m)}">`).join('')}</datalist>`,1)}
-    ${champ('type','Type d\'intervention',`<select id="type" data-f="type">${opt(TYPES,d.type,'Choisir un type')}</select>`,1)}
-    ${champ('tech','Technicien',`<select id="tech" data-f="tech">${TECHS.map(t=>`<option${t===d.tech?' selected':''}>${esc(t)}</option>`).join('')}</select>`)}
-    ${champ('date','Date',`<input id="date" type="date" data-f="date" value="${esc(d.date)}">`,1)}
-    <div class="deux">
-      ${champ('arrivee','Arrivée',`<input id="arrivee" type="time" data-f="arrivee" value="${esc(d.arrivee)}">`,1)}
-      ${champ('depart','Départ',`<input id="depart" type="time" data-f="depart" value="${esc(d.depart)}">`,1)}
-    </div>
-    <div class="calc"><span>Temps sur site</span><b id="duree" aria-live="polite">${duree(d.arrivee,d.depart)||'—'}</b></div>`;},
+  ()=>{const c=clientDe(d.client),t=totaux(d.equipe),orig=tousLesBons().find(b=>b.id===d.origem);return `
+    ${orig?`<div class="calc"><span>Retorno da ordem</span><b>${esc(orig.numero)}</b></div>`:''}
+    ${champ('client','Cliente',`<select id="client" data-f="client"><option value="">Escolha um cliente</option>${CLIENTS.map(o=>`<option value="${o.id}"${o.id===d.client?' selected':''}>${esc(o.nom)}</option>`).join('')}</select>`,1)}
+    ${c.site?`<p class="aide">Local: ${esc(c.site)}</p>`:''}
+    ${champ('machine','Máquina ou equipamento',`<input id="machine" data-f="machine" list="lm" value="${esc(d.machine)}" autocomplete="off" placeholder="Ex.: Presse P-12"><datalist id="lm">${c.machines.map(m=>`<option value="${esc(m)}">`).join('')}</datalist>`,1)}
+    ${champ('type','Tipo de serviço',`<select id="type" data-f="type"><option value="">Escolha um tipo</option>${TYPES.map(o=>`<option value="${o.id}"${o.id===d.type?' selected':''}>${esc(o.pt)}</option>`).join('')}</select>`,1)}
+    ${champ('pedido','Nº do pedido do cliente',`<input id="pedido" data-f="pedido" value="${esc(d.pedido)}" autocomplete="off" placeholder="Ex.: CMD-4471">`)}
+    ${champ('date','Data',`<input id="date" type="date" data-f="date" value="${esc(d.date)}">`,1)}
+    <div class="champ"><span class="leg">Equipe e horas <span class="req">*</span></span>
+    ${d.equipe.map((e,i)=>`<div class="mes">
+      <div class="eq-h"><label class="mes-t" for="tec${i}">Técnico ${i+1}</label>${d.equipe.length>1?`<button class="lien lien-ko" data-a="suppr-tech" data-i="${i}">Remover</button>`:''}</div>
+      <select id="tec${i}" data-e="${i}" data-k="tech">${TECHS.map(t=>`<option${t===e.tech?' selected':''}>${esc(t)}</option>`).join('')}</select>
+      <div class="deux">
+        ${champ('chegada'+i,'Chegada',`<input id="chegada${i}" type="time" data-e="${i}" data-k="arrivee" value="${esc(e.arrivee)}">`)}
+        ${champ('saida'+i,'Saída',`<input id="saida${i}" type="time" data-e="${i}" data-k="depart" value="${esc(e.depart)}">`)}
+      </div>
+      ${champ('traj'+i,'Deslocamento (minutos)',`<input id="traj${i}" data-e="${i}" data-k="trajet" inputmode="numeric" value="${esc(e.trajet)}" placeholder="Ex.: 35">`)}
+    </div>`).join('')}
+    <button class="lien" data-a="ajout-tech">+ Adicionar técnico</button></div>
+    <div class="totais">
+      <div><span>No local</span><b id="t-site">${heures(t.site)}</b></div>
+      <div><span>Deslocamento</span><b id="t-trajet">${heures(t.trajet)}</b></div>
+      <div><span>Total</span><b id="t-total">${heures(t.total)}</b></div>
+    </div>`;},
   ()=>`
-    ${champ('constat','Constat à l\'arrivée',`<textarea id="constat" data-f="constat" placeholder="Ce que vous avez trouvé sur place">${esc(d.constat)}</textarea>`)}
-    ${champ('travaux','Travaux réalisés',`<textarea id="travaux" data-f="travaux" placeholder="Ce qui a été fait">${esc(d.travaux)}</textarea>`,1)}
-    <div class="champ"><span class="leg">Pièces utilisées</span>
+    <p class="aide">Escreva em francês: o texto vai para o relatório exatamente como digitado.</p>
+    ${champ('constat','Situação na chegada',`<textarea id="constat" data-f="constat" placeholder="O que você encontrou no local">${esc(d.constat)}</textarea>`)}
+    ${champ('travaux','Serviços realizados',`<textarea id="travaux" data-f="travaux" placeholder="O que foi feito">${esc(d.travaux)}</textarea>`,1)}
+    <div class="champ"><span class="leg">Peças usadas</span>
       ${d.pieces.map((p,i)=>`<div class="piece">
-        <input aria-label="Désignation de la pièce ${i+1}" data-p="${i}" data-k="nom" value="${esc(p.nom)}" placeholder="Désignation">
-        <input aria-label="Quantité de la pièce ${i+1}" data-p="${i}" data-k="qte" value="${esc(p.qte)}" inputmode="numeric">
-        <button class="suppr" data-a="suppr-piece" data-i="${i}" aria-label="Supprimer la pièce ${i+1}">×</button></div>`).join('')}
-      <button class="lien" data-a="ajout-piece">+ Ajouter une pièce</button>
+        <input aria-label="Descrição da peça ${i+1}" data-p="${i}" data-k="nom" value="${esc(p.nom)}" placeholder="Descrição">
+        <input aria-label="Quantidade da peça ${i+1}" data-p="${i}" data-k="qte" value="${esc(p.qte)}" inputmode="numeric">
+        <button class="suppr" data-a="suppr-piece" data-i="${i}" aria-label="Remover a peça ${i+1}">×</button></div>`).join('')}
+      <button class="lien" data-a="ajout-piece">+ Adicionar peça</button>
     </div>`,
   ()=>`
-    <p class="aide">Renseignez uniquement ce qui a été contrôlé.</p>
+    ${champ('instrument','Instrumento usado',`<input id="instrument" data-f="instrument" list="li" value="${esc(d.instrument)}" autocomplete="off" placeholder="Modelo e número de série"><datalist id="li">${INSTRUMENTOS.map(m=>`<option value="${esc(m)}">`).join('')}</datalist>`)}
+    <p class="aide">Preencha somente o que foi verificado.</p>
     ${MESURES.map((m,i)=>{const r=d.mesures[i];return `<div class="mes">
-      <div class="mes-t" id="mt${i}">${esc(m.nom)}</div>
-      ${m.unite?`<div class="mes-v"><input aria-labelledby="mt${i}" data-m="${i}" value="${esc(r.v)}" inputmode="decimal" placeholder="Valeur"><span>${esc(m.unite)}</span></div>`:''}
+      <div class="mes-t" id="mt${i}">${esc(m.pt)}</div>
+      ${m.unite?`<div class="mes-v"><input aria-labelledby="mt${i}" data-m="${i}" value="${esc(r.v)}" inputmode="decimal" placeholder="Valor"><span>${esc(m.unite)}</span></div>`:''}
       <div class="seg" role="group" aria-labelledby="mt${i}">
-        ${[['c','Conforme'],['n','Non conforme'],['a','Non applicable']].map(([k,l])=>`<button class="${k}" data-a="mesure" data-i="${i}" data-s="${k}" aria-pressed="${r.s===k}">${l}</button>`).join('')}
+        ${Object.entries(RESULTATS).map(([k,l])=>`<button class="${k}" data-a="mesure" data-i="${i}" data-s="${k}" aria-pressed="${r.s===k}">${l.pt}</button>`).join('')}
       </div></div>`;}).join('')}
-    <div class="champ"><span class="leg">État à la sortie <span class="req">*</span></span>
-      <div class="choix">${ETATS.map((e,i)=>`<button data-a="etat" data-i="${i}" aria-pressed="${d.etat===e}">${esc(e)}</button>`).join('')}</div>
-    </div>`,
+    <div class="champ"><span class="leg">Estado na saída <span class="req">*</span></span>
+      <div class="choix">${ETATS.map((e,i)=>`<button data-a="etat" data-i="${i}" aria-pressed="${d.etat===e.id}">${esc(e.pt)}</button>`).join('')}</div>
+    </div>
+    ${d.etat&&d.etat!=='ok'?champ('pendencia','O que falta fazer',`<textarea id="pendencia" data-f="pendencia" placeholder="Vira uma pendência no início do app">${esc(d.pendencia)}</textarea>`,1):''}
+    <div class="deux">
+      ${champ('arretIni','Máquina parou às',`<input id="arretIni" type="time" data-f="arretIni" value="${esc(d.arretIni)}">`)}
+      ${champ('arretFim','Voltou às',`<input id="arretFim" type="time" data-f="arretFim" value="${esc(d.arretFim)}">`)}
+    </div>
+    <div class="calc"><span>Tempo de máquina parada</span><b id="t-arret">${texteArret()}</b></div>`,
   ()=>`
-    <p class="aide">Facultatif. Les photos sont réduites avant d'être ajoutées au bon.</p>
+    <p class="aide">Opcional. As fotos são reduzidas antes de entrar na ordem.</p>
     <div class="ph-btn">
-      <button class="btn btn-s" data-a="photo" data-t="Avant">+ Photo avant</button>
-      <button class="btn btn-s" data-a="photo" data-t="Après">+ Photo après</button>
+      <button class="btn btn-s" data-a="photo" data-t="av">+ Foto antes</button>
+      <button class="btn btn-s" data-a="photo" data-t="ap">+ Foto depois</button>
     </div>
     <input id="fichier" class="no-print" type="file" accept="image/*" hidden>
-    ${d.photos.length?`<div class="ph-grille">${d.photos.map((p,i)=>`<div class="ph"><img src="${esc(p.src)}" alt="Photo ${esc(p.t)} ${i+1}"><em>${esc(p.t)}</em><button data-a="suppr-photo" data-i="${i}" aria-label="Supprimer la photo ${i+1}">×</button></div>`).join('')}</div>`:'<p class="vide">Aucune photo pour le moment.</p>'}`,
+    ${d.photos.length?`<div class="ph-grille">${d.photos.map((p,i)=>`<div>
+      <div class="ph"><img src="${esc(p.src)}" alt="Foto ${esc(PHOTOS[p.t].pt)} ${i+1}"><em>${esc(PHOTOS[p.t].pt)}</em><button data-a="suppr-photo" data-i="${i}" aria-label="Remover a foto ${i+1}">×</button></div>
+      <input class="ph-leg" data-ph="${i}" value="${esc(p.leg)}" placeholder="Legenda" aria-label="Legenda da foto ${i+1}"></div>`).join('')}</div>`:'<p class="vide">Nenhuma foto por enquanto.</p>'}`,
   ()=>`
     <div class="resume">
-      <div><span>Client</span><b>${esc(clientDe(d.client).nom)}</b></div>
-      <div><span>Machine</span><b>${esc(d.machine)}</b></div>
-      <div><span>Temps sur site</span><b>${esc(duree(d.arrivee,d.depart))}</b></div>
-      <div><span>État</span><b>${esc(d.etat)}</b></div>
+      <div><span>Cliente</span><b>${esc(clientDe(d.client).nom)}</b></div>
+      <div><span>Máquina</span><b>${esc(d.machine)}</b></div>
+      <div><span>Total de horas</span><b>${heures(totaux(d.equipe).total)}</b></div>
+      <div><span>Estado</span><b>${esc(etatDe(d.etat).pt)}</b></div>
     </div>
-    ${champ('reserves','Réserves du client',`<textarea id="reserves" data-f="reserves" placeholder="Facultatif">${esc(d.reserves)}</textarea>`)}
-    ${champ('signataire','Nom du signataire',`<input id="signataire" data-f="signataire" value="${esc(d.signataire)}" autocomplete="off">`,1)}
-    <div class="champ"><div class="sig-a"><span class="leg" id="sigl">Signature du client <span class="req">*</span></span><button class="lien" data-a="eff-sig">Effacer</button></div>
-      <canvas id="sig" role="img" aria-labelledby="sigl"></canvas></div>`
+    ${champ('reserves','Ressalvas do cliente',`<textarea id="reserves" data-f="reserves" placeholder="Opcional">${esc(d.reserves)}</textarea>`)}
+    <div class="champ"><div class="sig-a"><span class="leg" id="sigt">Assinatura de ${esc(d.equipe[0].tech)} <span class="req">*</span></span><button class="lien" data-a="eff-sig" data-c="sig-t">Limpar</button></div>
+      <canvas id="sig-t" class="sig" role="img" aria-labelledby="sigt"></canvas></div>
+    ${champ('signataire','Nome de quem assina pelo cliente',`<input id="signataire" data-f="signataire" value="${esc(d.signataire)}" autocomplete="off">`,1)}
+    <div class="champ"><div class="sig-a"><span class="leg" id="sigc">Assinatura do cliente <span class="req">*</span></span><button class="lien" data-a="eff-sig" data-c="sig-c">Limpar</button></div>
+      <canvas id="sig-c" class="sig" role="img" aria-labelledby="sigc"></canvas></div>`
 ];
 
 function vueEtape(n){
-  return `${haut('Nouveau bon')}
+  return `${haut('Nova ordem')}
   <div class="etapes no-print">
-    <div class="etapes-l"><span>Étape ${n+1} sur 5</span><span>Enregistrement automatique</span></div>
+    <div class="etapes-l"><span>Etapa ${n+1} de 5</span><span>Salvamento automático</span></div>
     <div class="barre">${ETAPES.map((_,i)=>`<i class="${i<=n?'on':''}"></i>`).join('')}</div>
   </div>
   <main>
@@ -376,47 +477,54 @@ function vueEtape(n){
     <div class="err" id="err" role="alert"></div>
   </main>
   <div class="bas">
-    <button class="btn btn-s" data-a="retour">${n?'Retour':'Accueil'}</button>
-    <button class="btn btn-p" data-a="suite">${n<4?'Suivant':'Valider le bon'}</button>
+    <button class="btn btn-s" data-a="retour">${n?'Voltar':'Início'}</button>
+    <button class="btn btn-p" data-a="suite">${n<4?'Próximo':'Validar ordem'}</button>
   </div>`;
 }
 function erreurEtape(n){
   if(n===0){
-    if(!d.client)return ['client','Choisissez un client.'];
-    if(!d.machine.trim())return ['machine','Indiquez la machine ou l\'équipement.'];
-    if(!d.type)return ['type','Choisissez le type d\'intervention.'];
-    if(!d.date)return ['date','Indiquez la date.'];
-    if(!d.arrivee||!d.depart)return [d.arrivee?'depart':'arrivee','Indiquez les heures d\'arrivée et de départ.'];
+    if(!d.client)return ['client','Escolha um cliente.'];
+    if(!d.machine.trim())return ['machine','Informe a máquina ou o equipamento.'];
+    if(!d.type)return ['type','Escolha o tipo de serviço.'];
+    if(!d.date)return ['date','Informe a data.'];
+    const i=d.equipe.findIndex(e=>!e.arrivee||!e.depart);
+    if(i>=0)return [(d.equipe[i].arrivee?'saida':'chegada')+i,'Informe a chegada e a saída de cada técnico.'];
   }
-  if(n===1&&!d.travaux.trim())return ['travaux','Décrivez les travaux réalisés.'];
-  if(n===2&&!d.etat)return [null,'Indiquez l\'état de la machine à la sortie.'];
+  if(n===1&&!d.travaux.trim())return ['travaux','Descreva os serviços realizados.'];
+  if(n===2){
+    if(!d.etat)return [null,'Informe o estado da máquina na saída.'];
+    if(d.etat!=='ok'&&!d.pendencia.trim())return ['pendencia','Informe o que falta fazer.'];
+    if(d.arretFim&&!d.arretIni)return ['arretIni','Informe quando a máquina parou.'];
+  }
   if(n===4){
-    if(!d.signataire.trim())return ['signataire','Indiquez le nom du signataire.'];
-    if(!d.signature)return [null,'La signature du client est requise.'];
+    if(!d.sigTech)return [null,'A assinatura do técnico é obrigatória.'];
+    if(!d.signataire.trim())return ['signataire','Informe o nome de quem assina pelo cliente.'];
+    if(!d.signature)return [null,'A assinatura do cliente é obrigatória.'];
   }
   return null;
 }
 function valider(){
-  const b={...d,numero:prochainNumero(),pieces:d.pieces.filter(p=>p.nom.trim()),signeLe:new Date().toISOString()};
+  const b={...d,numero:prochainNumero(),pieces:d.pieces.filter(p=>p.nom.trim()),pendencia:d.etat==='ok'?'':d.pendencia,signeLe:new Date().toISOString()};
   bons=[b,...bons];
+  if(b.origem){resolues[b.origem]=b.numero;ecrire(CLES.resolues,resolues);}
   let ok=ecrire(CLES.bons,bons);
-  if(!ok){ok=ecrire(CLES.bons,bons.map(x=>({...x,photos:[]})));if(ok)toast('Bon enregistré sans ses photos : mémoire du navigateur pleine.');}
+  if(!ok){ok=ecrire(CLES.bons,bons.map(x=>({...x,photos:[]})));if(ok)toast('Ordem salva sem as fotos: memória do navegador cheia.');}
   effacer(CLES.brouillon);d=null;
   aller({nom:'bon',id:b.id,neuf:true});
 }
 
 /* Signature */
-function initSignature(){
-  const c=$('#sig');if(!c)return;
+function initSignature(id){
+  const c=$('#'+id),cle=SIGNATURES[id];if(!c)return;
   const r=c.getBoundingClientRect(),dpr=window.devicePixelRatio||1;
   c.width=r.width*dpr;c.height=r.height*dpr;
   const x=c.getContext('2d');x.scale(dpr,dpr);x.lineWidth=2.2;x.lineCap='round';x.lineJoin='round';x.strokeStyle='#111';
-  if(d.signature){const im=new Image();im.onload=()=>x.drawImage(im,0,0,r.width,r.height);im.src=d.signature;}
+  if(d[cle]){const im=new Image();im.onload=()=>x.drawImage(im,0,0,r.width,r.height);im.src=d[cle];}
   let actif=false;
   const pos=e=>{const b=c.getBoundingClientRect();return [e.clientX-b.left,e.clientY-b.top];};
   c.onpointerdown=e=>{e.preventDefault();c.setPointerCapture(e.pointerId);actif=true;x.beginPath();x.moveTo(...pos(e));x.lineTo(...pos(e));x.stroke();};
   c.onpointermove=e=>{if(!actif)return;x.lineTo(...pos(e));x.stroke();};
-  c.onpointerup=c.onpointercancel=()=>{if(!actif)return;actif=false;d.signature=c.toDataURL('image/png');sauverBrouillon();};
+  c.onpointerup=c.onpointercancel=()=>{if(!actif)return;actif=false;d[cle]=c.toDataURL('image/png');sauverBrouillon();};
 }
 /* Photos */
 function ajouterPhoto(fichier,t){
@@ -426,10 +534,10 @@ function ajouterPhoto(fichier,t){
     c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);
     c.getContext('2d').drawImage(im,0,0,c.width,c.height);
     URL.revokeObjectURL(url);
-    d.photos.push({t,src:c.toDataURL('image/jpeg',.72)});
+    d.photos.push({t,leg:'',src:c.toDataURL('image/jpeg',.72)});
     sauverBrouillon();aller(vue,true);
   };
-  im.onerror=()=>{URL.revokeObjectURL(url);toast('Cette image ne peut pas être lue.');};
+  im.onerror=()=>{URL.revokeObjectURL(url);toast('Não foi possível ler esta imagem.');};
   im.src=url;
 }
 
@@ -437,48 +545,53 @@ function ajouterPhoto(fichier,t){
 function vueBon(id,neuf){
   const b=tousLesBons().find(x=>x.id===id);
   if(!b)return vueAccueil();
-  const c=clientDe(b.client);
+  const L=DOC[langueDoc],c=clientDe(b.client),orig=tousLesBons().find(x=>x.id===b.origem),t=totaux(b.equipe);
   const mes=MESURES.map((m,i)=>({...m,...b.mesures[i]})).filter(m=>m.v||m.s);
-  const lib={c:'Conforme',n:'Non conforme',a:'Non applicable','':'—'};
-  const sec=(t,h)=>h?`<section class="d-sec"><h2>${t}</h2>${h}</section>`:'';
-  return `<div class="no-print">${haut('Bon '+esc(b.numero))}</div>
+  const sec=(titre,h)=>h?`<section class="d-sec"><h2>${titre}</h2>${h}</section>`:'';
+  const info=(l,v)=>v?`<div><span>${l}</span><b>${esc(v)}</b></div>`:'';
+  const arret=b.arretIni?(b.arretFim?`${b.arretIni} – ${b.arretFim} (${heures(minutes(b.arretIni,b.arretFim))})`:`${L.arretCours} ${b.arretIni}`):'';
+  return `<div class="no-print">${haut('OS '+esc(b.numero))}</div>
   <main>
     <div class="no-print">
-      ${neuf?'<div class="ok-msg" role="status">Bon validé et ajouté à l\'historique.</div>':''}
+      ${neuf?'<div class="ok-msg" role="status">Ordem validada e adicionada ao histórico.</div>':''}
       <div class="doc-actions">
-        <button class="btn btn-p" data-a="pdf">Enregistrer en PDF</button>
-        <button class="btn btn-s" data-a="accueil">Retour à l'accueil</button>
+        <button class="btn btn-p" data-a="pdf">Salvar em PDF</button>
+        <button class="btn btn-s" data-a="accueil">Voltar ao início</button>
+      </div>
+      <div class="seg lang" role="group" aria-label="Idioma do documento">
+        <button class="c" data-a="lang" data-l="fr" aria-pressed="${langueDoc==='fr'}">Français</button>
+        <button class="c" data-a="lang" data-l="pt" aria-pressed="${langueDoc==='pt'}">Português</button>
       </div>
     </div>
-    <article class="doc" id="focus" tabindex="-1">
-      <div class="d-head">${logo()}<div class="d-num"><strong>Bon d'intervention</strong><span>${esc(b.numero)}</span></div></div>
+    <article class="doc" id="focus" tabindex="-1" lang="${langueDoc==='fr'?'fr':'pt-BR'}">
+      <div class="d-head">${logo()}<div class="d-num"><strong>${L.titre}</strong><span>${esc(b.numero)}</span></div></div>
       <div class="d-body">
         <section class="d-sec"><div class="d-info">
-          <div><span>Client</span><b>${esc(c.nom)}</b></div>
-          <div><span>Site</span><b>${esc(c.site)}</b></div>
-          <div><span>Machine</span><b>${esc(b.machine)}</b></div>
-          <div><span>Type</span><b>${esc(b.type)}</b></div>
-          <div><span>Date</span><b>${esc(dateFr(b.date))}</b></div>
-          <div><span>Horaires</span><b>${esc(b.arrivee)} – ${esc(b.depart)} (${esc(duree(b.arrivee,b.depart))})</b></div>
-          <div><span>Technicien</span><b>${esc(b.tech)}</b></div>
-          <div><span>État à la sortie</span><b>${esc(b.etat)}</b></div>
+          ${info(L.client,c.nom)}${info(L.site,c.site)}${info(L.machine,b.machine)}${info(L.type,typeDe(b.type)[langueDoc])}
+          ${info(L.date,dateLoc(b.date,L.locale))}${info(L.etat,etatDe(b.etat)[langueDoc])}${info(L.commande,b.pedido)}${info(L.arret,arret)}${info(L.suite,orig&&orig.numero)}
         </div></section>
-        ${sec('Constat',b.constat?`<p class="d-txt">${esc(b.constat)}</p>`:'')}
-        ${sec('Travaux réalisés',`<p class="d-txt">${esc(b.travaux)}</p>`)}
-        ${sec('Pièces utilisées',b.pieces.length?`<table><tr><th>Désignation</th><th>Qté</th></tr>${b.pieces.map(p=>`<tr><td>${esc(p.nom)}</td><td>${esc(p.qte)}</td></tr>`).join('')}</table>`:'')}
-        ${sec('Mesures et contrôles',mes.length?`<table><tr><th>Contrôle</th><th>Valeur</th><th>Résultat</th></tr>${mes.map(m=>`<tr><td>${esc(m.nom)}</td><td>${m.v?esc(m.v)+' '+esc(m.unite):'—'}</td><td>${lib[m.s||'']}</td></tr>`).join('')}</table>`:'')}
-        ${sec('Photos',b.photos.length?`<div class="d-ph">${b.photos.map((p,i)=>`<figure><img src="${esc(p.src)}" alt="Photo ${esc(p.t)} ${i+1}"><figcaption>${esc(p.t)}</figcaption></figure>`).join('')}</div>`:'')}
-        ${sec('Réserves du client',b.reserves?`<p class="d-txt">${esc(b.reserves)}</p>`:'')}
-        <section class="d-sec"><h2>Signatures</h2><div class="d-sign">
-          <div><small>Pour ${esc(ENTREPRISE.nom)}</small><b>${esc(b.tech)}</b></div>
-          <div><small>Pour le client</small><b>${esc(b.signataire)}</b>
-            ${b.signature?`<img src="${esc(b.signature)}" alt="Signature de ${esc(b.signataire)}"><small>Signé le ${esc(new Date(b.signeLe).toLocaleString('fr-FR',{dateStyle:'short',timeStyle:'short'}))}</small>`:'<small>Exemple non signé</small>'}
+        ${sec(L.equipe,`<table class="t-eq"><tr><th>${L.tech}</th><th>${L.arrivee}</th><th>${L.depart}</th><th>${L.surSite}</th><th>${L.trajet}</th></tr>
+          ${b.equipe.map(e=>`<tr><td>${esc(e.tech)}</td><td>${esc(e.arrivee)}</td><td>${esc(e.depart)}</td><td>${heures(minutes(e.arrivee,e.depart))}</td><td>${heures(parseInt(e.trajet,10)||0)}</td></tr>`).join('')}
+          <tr class="t-tot"><td colspan="3">${L.total} : ${heures(t.total)}</td><td>${heures(t.site)}</td><td>${heures(t.trajet)}</td></tr></table>`)}
+        ${sec(L.constat,b.constat?`<p class="d-txt">${esc(b.constat)}</p>`:'')}
+        ${sec(L.travaux,`<p class="d-txt">${esc(b.travaux)}</p>`)}
+        ${sec(L.pieces,b.pieces.length?`<table><tr><th>${L.design}</th><th>${L.qte}</th></tr>${b.pieces.map(p=>`<tr><td>${esc(p.nom)}</td><td>${esc(p.qte)}</td></tr>`).join('')}</table>`:'')}
+        ${sec(L.mesures,mes.length?`<table><tr><th>${L.controle}</th><th>${L.valeur}</th><th>${L.resultat}</th></tr>${mes.map(m=>`<tr><td>${esc(m[langueDoc])}</td><td>${m.v?esc(m.v)+' '+esc(m.unite):'—'}</td><td>${m.s?RESULTATS[m.s][langueDoc]:'—'}</td></tr>`).join('')}</table>${b.instrument?`<p class="d-inst">${L.instrument} : ${esc(b.instrument)}</p>`:''}`:'')}
+        ${sec(L.photos,b.photos.length?`<div class="d-ph">${b.photos.map((p,i)=>`<figure><img src="${esc(p.src)}" alt="${esc(PHOTOS[p.t][langueDoc])} ${i+1}"><figcaption>${esc(PHOTOS[p.t][langueDoc])}${p.leg?' · '+esc(p.leg):''}</figcaption></figure>`).join('')}</div>`:'')}
+        ${sec(L.reserves,b.reserves?`<p class="d-txt">${esc(b.reserves)}</p>`:'')}
+        ${sec(L.suivi,b.pendencia?`<p class="d-txt">${esc(b.pendencia)}</p>`:'')}
+        <section class="d-sec"><h2>${L.signatures}</h2><div class="d-sign">
+          <div><small>${L.pour} ${esc(ENTREPRISE.nom)}</small><b>${esc(b.equipe[0].tech)}</b>
+            ${b.sigTech?`<img src="${esc(b.sigTech)}" alt="${L.signatures} ${esc(b.equipe[0].tech)}">`:`<small>${L.exemple}</small>`}
+          </div>
+          <div><small>${L.pourClient}</small><b>${esc(b.signataire)}</b>
+            ${b.signature?`<img src="${esc(b.signature)}" alt="${L.signatures} ${esc(b.signataire)}"><small>${L.signeLe} ${esc(new Date(b.signeLe).toLocaleString(L.locale,{dateStyle:'short',timeStyle:'short'}))}</small>`:`<small>${L.exemple}</small>`}
           </div>
         </div></section>
       </div>
       <footer class="d-foot">
         ${esc(ENTREPRISE.nom)} · ${esc(ENTREPRISE.forme)} · SIRET ${esc(ENTREPRISE.siret)}<br>${esc(ENTREPRISE.adresse)} · ${esc(ENTREPRISE.tel)}<br>
-        <span class="d-demo">Document de démonstration, sans valeur contractuelle</span>
+        <span class="d-demo">${L.demo}</span>
       </footer>
     </article>
   </main>`;
@@ -489,11 +602,11 @@ function render(){
   const a=$('#app');
   a.classList.toggle('large',vue.nom==='bon');
   if(vue.nom==='accueil')a.innerHTML=vueAccueil();
-  else if(vue.nom==='etape'){a.innerHTML=vueEtape(vue.n);if(vue.n===4)initSignature();}
+  else if(vue.nom==='etape'){a.innerHTML=vueEtape(vue.n);if(vue.n===4){initSignature('sig-t');initSignature('sig-c');}}
   else a.innerHTML=vueBon(vue.id,vue.neuf);
 }
 
-let photoType='Avant';
+let photoType='av';
 document.addEventListener('click',e=>{
   const t=e.target.closest('[data-a]');if(!t)return;
   const a=t.dataset.a,i=+t.dataset.i;
@@ -502,20 +615,25 @@ document.addEventListener('click',e=>{
   else if(a==='reprendre'){d=lire(CLES.brouillon,null);if(d)aller({nom:'etape',n:0});}
   else if(a==='voir')aller({nom:'bon',id:t.dataset.id});
   else if(a==='accueil')aller({nom:'accueil'});
-  else if(a==='reset'){if(confirm('Effacer les bons et le brouillon de cette démonstration ?')){effacer(CLES.bons);effacer(CLES.brouillon);bons=[];d=null;aller({nom:'accueil'});}}
+  else if(a==='pend-retorno'){const b=tousLesBons().find(x=>x.id===t.dataset.id);d=nouveauBon({client:b.client,machine:b.machine,type:'cur',origem:b.id});sauverBrouillon();aller({nom:'etape',n:0});}
+  else if(a==='pend-resolver'){resolues[t.dataset.id]='manuel';ecrire(CLES.resolues,resolues);aller(vue,true);toast('Pendência marcada como resolvida.');}
+  else if(a==='lang'){langueDoc=t.dataset.l;aller(vue,true);}
+  else if(a==='reset'){if(confirm('Apagar as ordens, as pendências resolvidas e o rascunho desta demonstração?')){effacer(CLES.bons);effacer(CLES.brouillon);effacer(CLES.resolues);bons=[];resolues={};d=null;aller({nom:'accueil'});}}
   else if(a==='retour'){if(vue.n)aller({nom:'etape',n:vue.n-1});else aller({nom:'accueil'});}
   else if(a==='suite'){
     const err=erreurEtape(vue.n);
     if(err){$('#err').textContent=err[1];if(err[0])$('#'+err[0])?.focus();else $('#err').scrollIntoView({block:'center'});return;}
     if(vue.n<4)aller({nom:'etape',n:vue.n+1});else valider();
   }
+  else if(a==='ajout-tech'){d.equipe.push(ligneEquipe(TECHS.find(x=>!d.equipe.some(e=>e.tech===x))||TECHS[0]));sauverBrouillon();aller(vue,true);}
+  else if(a==='suppr-tech'){d.equipe.splice(i,1);sauverBrouillon();aller(vue,true);}
   else if(a==='ajout-piece'){d.pieces.push({nom:'',qte:'1'});sauverBrouillon();aller(vue,true);}
   else if(a==='suppr-piece'){d.pieces.splice(i,1);if(!d.pieces.length)d.pieces.push({nom:'',qte:'1'});sauverBrouillon();aller(vue,true);}
   else if(a==='mesure'){const r=d.mesures[i];r.s=r.s===t.dataset.s?'':t.dataset.s;sauverBrouillon();aller(vue,true);}
-  else if(a==='etat'){d.etat=ETATS[i];sauverBrouillon();aller(vue,true);}
+  else if(a==='etat'){d.etat=ETATS[i].id;sauverBrouillon();aller(vue,true);}
   else if(a==='photo'){photoType=t.dataset.t;$('#fichier').click();}
   else if(a==='suppr-photo'){d.photos.splice(i,1);sauverBrouillon();aller(vue,true);}
-  else if(a==='eff-sig'){d.signature='';const c=$('#sig');c.getContext('2d').clearRect(0,0,c.width,c.height);sauverBrouillon();}
+  else if(a==='eff-sig'){d[SIGNATURES[t.dataset.c]]='';const c=$('#'+t.dataset.c);c.getContext('2d').clearRect(0,0,c.width,c.height);sauverBrouillon();}
   else if(a==='pdf'){
     const b=tousLesBons().find(x=>x.id===vue.id),titre=document.title;
     document.title=b.numero+' - '+b.machine;
@@ -526,13 +644,16 @@ document.addEventListener('click',e=>{
 document.addEventListener('input',e=>{
   const t=e.target;
   if(t.id==='rech'){$('#hist').innerHTML=listeHist(t.value);return;}
+  if(t.id==='usuario'){usuario=t.value;ecrire(CLES.usuario,usuario);aller(vue,true);return;}
   if(!d)return;
   if(t.dataset.f){
     d[t.dataset.f]=t.value;
     if(t.dataset.f==='client'){d.machine='';aller(vue,true);}
-    if(t.dataset.f==='arrivee'||t.dataset.f==='depart')$('#duree').textContent=duree(d.arrivee,d.depart)||'—';
-  }else if(t.dataset.p!==undefined)d.pieces[+t.dataset.p][t.dataset.k]=t.value;
+    if(t.dataset.f==='arretIni'||t.dataset.f==='arretFim')$('#t-arret').textContent=texteArret();
+  }else if(t.dataset.e!==undefined){d.equipe[+t.dataset.e][t.dataset.k]=t.value;afficherTotaux();}
+  else if(t.dataset.p!==undefined)d.pieces[+t.dataset.p][t.dataset.k]=t.value;
   else if(t.dataset.m!==undefined)d.mesures[+t.dataset.m].v=t.value;
+  else if(t.dataset.ph!==undefined)d.photos[+t.dataset.ph].leg=t.value;
   sauverBrouillon();
 });
 document.addEventListener('change',e=>{
