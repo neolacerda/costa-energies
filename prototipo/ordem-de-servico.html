@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <meta name="theme-color" content="#080808">
 <meta name="robots" content="noindex">
 <title>Ordens de serviço · Costa Energies</title>
@@ -19,10 +19,12 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{-webkit-text-size-adjust:100%;}
-body{font-family:'DM Sans',system-ui,sans-serif;color:var(--txt);background:var(--fond);line-height:1.5;-webkit-font-smoothing:antialiased;}
+body{font-family:'DM Sans',system-ui,sans-serif;color:var(--txt);background:var(--fond);line-height:1.5;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;}
 h1,h2,h3{font-family:'Sora',system-ui,sans-serif;line-height:1.2;letter-spacing:-.2px;}
 button,input,select,textarea{font:inherit;color:inherit;}
 button{cursor:pointer;background:none;border:0;}
+button,summary,select,input,textarea{touch-action:manipulation;}
+input,select,textarea,.err{scroll-margin:96px 0;}
 :focus-visible{outline:3px solid var(--o);outline-offset:2px;}
 [tabindex="-1"]:focus{outline:none;}
 
@@ -40,11 +42,11 @@ main{flex:1;padding:18px 16px 24px;}
 .logo{height:40px;width:auto;display:block;}
 .logotxt{font-family:'Sora',sans-serif;font-weight:700;font-size:17px;color:#fff;}
 .logotxt span{color:var(--o);}
-.top-t{margin-left:auto;font-size:12.5px;color:rgba(255,255,255,.65);text-align:right;line-height:1.3;}
-.langue{display:inline-flex;background:rgba(255,255,255,.08);border-radius:9px;padding:3px;flex-shrink:0;}
-.langue button{min-width:38px;min-height:36px;border-radius:7px;font-size:12.5px;font-weight:700;color:rgba(255,255,255,.65);}
+.top-t{display:none;font-size:12.5px;color:rgba(255,255,255,.65);text-align:right;line-height:1.3;}
+.langue{display:inline-flex;background:rgba(255,255,255,.08);border-radius:10px;padding:2px;flex-shrink:0;margin-left:auto;}
+.langue button{min-width:44px;min-height:44px;border-radius:8px;font-size:13px;font-weight:700;color:rgba(255,255,255,.7);}
 .langue button[aria-pressed="true"]{background:var(--o);color:#111;}
-.side .langue{align-self:flex-start;margin-top:auto;}
+.side .langue{align-self:flex-start;margin:auto 0 0;}
 .demo{background:var(--oc);color:var(--of);font-size:12.5px;font-weight:700;text-align:center;padding:6px 12px;}
 
 /* Menu lateral (computador) */
@@ -79,9 +81,9 @@ svg.ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;str
 .hero-i{max-width:1120px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;}
 .hero h1{font-size:26px;font-weight:800;}
 .hero p{color:rgba(255,255,255,.65);font-size:14.5px;margin-top:2px;}
-.perfil{display:flex;align-items:center;gap:9px;}
+.perfil{display:flex;align-items:center;gap:9px;width:100%;}
 .perfil label{font-size:13px;color:rgba(255,255,255,.65);white-space:nowrap;}
-.perfil select{min-height:44px;width:auto;padding:8px 12px;font-size:14.5px;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:#fff;}
+.perfil select{min-height:44px;flex:1;width:auto;min-width:0;padding:8px 34px 8px 12px;font-size:16px;background-color:rgba(255,255,255,.08);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");border-color:rgba(255,255,255,.18);color:#fff;}
 .perfil option{color:#111;}
 .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:-62px;}
 .kpi{background:var(--carte);border-radius:14px;padding:13px 14px;box-shadow:var(--ombre);}
@@ -100,7 +102,7 @@ svg.ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;str
 .l-t{display:block;font-weight:700;font-size:15px;overflow-wrap:anywhere;}
 .l-s{display:block;color:var(--txt2);font-size:13.5px;overflow-wrap:anywhere;}
 .fleche{color:var(--txt2);font-size:20px;flex-shrink:0;}
-.pastille{font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
+.pastille{font-size:12px;font-weight:700;padding:3px 9px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
 .p-ok{background:var(--okc);color:var(--ok);}
 .p-warn{background:var(--warnc);color:var(--warn);}
 .p-ko{background:var(--koc);color:var(--ko);}
@@ -117,24 +119,27 @@ svg.ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;str
 h1.h-p{font-size:24px;font-weight:800;margin-bottom:4px;}
 .sub{color:var(--txt2);font-size:14.5px;margin-bottom:14px;}
 .outils{display:grid;gap:10px;margin-bottom:12px;}
-.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;}
-.chips button{min-height:40px;padding:0 14px;border-radius:20px;background:var(--carte);border:1.5px solid var(--trait);font-weight:700;font-size:13.5px;color:var(--txt2);white-space:nowrap;}
+.chips{display:flex;flex-wrap:wrap;gap:6px;}
+.chips button{min-height:44px;padding:0 13px;border-radius:20px;background:var(--carte);border:1.5px solid var(--trait);font-weight:700;font-size:13.5px;color:var(--txt2);white-space:nowrap;}
 .chips button[aria-pressed="true"]{background:var(--noir);border-color:var(--noir);color:#fff;}
 .cartes{display:grid;gap:0 12px;}
 .groupe{font-size:13px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--txt2);margin:18px 0 8px;}
 
 /* Formulário */
 .bloc{background:var(--carte);border-radius:14px;padding:15px;margin-top:12px;box-shadow:var(--ombre);}
-.bloc>h2{font-size:15px;font-weight:700;margin-bottom:2px;}
+.bloc h2{font-size:15px;font-weight:700;margin-bottom:2px;}
 .champ{margin-top:13px;}
 .bloc>h2+.champ{margin-top:10px;}
 .champ>label,.leg{display:block;font-size:13.5px;font-weight:700;margin-bottom:5px;}
 .req{color:var(--of);}
 .aide{font-size:13px;color:var(--txt2);margin-top:5px;}
-input,select,textarea{width:100%;min-height:50px;padding:12px 13px;background:var(--carte);border:1.5px solid var(--trait);border-radius:10px;font-size:16px;}
+input,select,textarea{width:100%;min-width:0;min-height:50px;padding:12px 13px;background-color:var(--carte);border:1.5px solid var(--trait);border-radius:10px;font-size:16px;}
+select{-webkit-appearance:none;appearance:none;padding-right:36px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235C5C66' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 11px center;background-size:18px;}
+input[type=date],input[type=time]{-webkit-appearance:none;appearance:none;display:block;}
+input[type=date]::-webkit-date-and-time-value,input[type=time]::-webkit-date-and-time-value{text-align:left;}
 textarea{min-height:104px;resize:vertical;line-height:1.45;}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--o);box-shadow:0 0 0 3px rgba(249,115,22,.2);}
-.deux{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.deux{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;}
 .calc{margin-top:12px;background:var(--oc);border-radius:10px;padding:10px 13px;display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:14px;color:var(--of);}
 .calc b{font-family:'Sora',sans-serif;font-size:16px;}
 .totais{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:12px;background:var(--oc);border-radius:10px;padding:10px 12px;color:var(--of);}
@@ -144,21 +149,25 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--o);box-s
 .err:empty{display:none;}
 .stepper{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);max-width:640px;margin:0 auto;}
 .etapes{background:var(--noir);padding:14px 16px 12px;}
-.stepper li{display:flex;flex-direction:column;align-items:center;gap:5px;position:relative;font-size:11.5px;color:rgba(255,255,255,.5);}
+.stepper li{display:flex;flex-direction:column;align-items:center;gap:5px;position:relative;font-size:12px;color:rgba(255,255,255,.5);}
 .stepper li::before{content:'';position:absolute;top:13px;left:-50%;width:100%;height:2px;background:rgba(255,255,255,.16);}
 .stepper li:first-child::before{display:none;}
 .stepper li.fait::before,.stepper li.actif::before{background:var(--o);}
+.stepper em{font-style:normal;}
 .stepper span{position:relative;z-index:1;width:27px;height:27px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#2A2A2E;font-weight:700;font-size:12.5px;color:rgba(255,255,255,.7);}
 .stepper .fait span,.stepper .actif span{background:var(--o);color:#111;}
 .stepper .actif{color:#fff;font-weight:700;}
-.auto{display:flex;justify-content:space-between;align-items:baseline;gap:10px;}
-.auto small{color:var(--txt2);font-size:12.5px;white-space:nowrap;}
+.auto{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:2px 10px;}
+.auto small{color:var(--txt2);font-size:12.5px;}
 h1.h-e{font-size:21px;font-weight:800;}
 
 /* Ficha técnica */
 .fiche-in{background:var(--fond);border-radius:10px;margin-top:12px;}
 .fiche-in summary{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:50px;padding:8px 12px;font-weight:700;font-size:14.5px;cursor:pointer;list-style:none;}
 .fiche-in summary::-webkit-details-marker{display:none;}
+.fiche-in summary>span:first-child{flex:1;}
+.fiche-in summary::after{content:'';width:9px;height:9px;margin:0 4px 3px 2px;border-right:2px solid var(--txt2);border-bottom:2px solid var(--txt2);transform:rotate(45deg);transition:transform .18s;flex-shrink:0;}
+.fiche-in[open] summary::after{transform:rotate(225deg);margin-bottom:-3px;}
 .fiche-c{padding:0 12px 12px;}
 .fiche-g{display:grid;grid-template-columns:1fr 1fr;gap:0 10px;}
 .fiche-g .plein{grid-column:1/-1;}
@@ -166,7 +175,7 @@ h1.h-e{font-size:21px;font-weight:800;}
 .fiche-g input{min-height:46px;}
 .alerte-sim{background:var(--warnc);color:var(--warn);border-radius:12px;padding:11px 14px;font-size:14px;font-weight:500;margin-top:12px;}
 .anexo{display:flex;align-items:center;gap:10px;background:var(--fond);border-radius:10px;padding:8px 10px;margin-top:8px;}
-.anexo img,.anexo .doc-ic{width:46px;height:46px;border-radius:8px;object-fit:cover;background:var(--oc);color:var(--of);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.anexo img,.anexo .doc-ic{width:46px;height:46px;border-radius:8px;object-fit:cover;background:var(--oc);color:var(--of);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;}
 .anexo span{flex:1;min-width:0;font-size:14px;overflow-wrap:anywhere;}
 .lecture{max-width:420px;margin:60px auto;text-align:center;}
 .roue{width:44px;height:44px;border-radius:50%;border:4px solid var(--oc);border-top-color:var(--o);margin:0 auto 16px;animation:roue 1s linear infinite;}
@@ -197,13 +206,14 @@ h1.h-e{font-size:21px;font-weight:800;}
 .choix button[aria-pressed="true"]{border-color:var(--o);background:var(--oc);color:var(--of);}
 
 /* Fotos */
-.ph-btn{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
+.ph-btn{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;margin-top:12px;}
+.ph-btn .btn{padding:10px 8px;font-size:14.5px;line-height:1.2;}
 .ph-grille{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;}
 .ph{position:relative;border-radius:10px;overflow:hidden;background:#ddd;aspect-ratio:4/3;}
 .ph img{width:100%;height:100%;object-fit:cover;display:block;}
-.ph em{position:absolute;left:6px;top:6px;background:rgba(0,0,0,.72);color:#fff;font-style:normal;font-size:11.5px;font-weight:700;padding:2px 7px;border-radius:6px;}
-.ph button{position:absolute;right:4px;top:4px;width:36px;height:36px;border-radius:9px;background:rgba(0,0,0,.72);color:#fff;font-size:18px;}
-.ph-leg{margin-top:6px;min-height:44px;padding:8px 11px;font-size:15px;}
+.ph em{position:absolute;left:6px;top:6px;background:rgba(0,0,0,.72);color:#fff;font-style:normal;font-size:12px;font-weight:700;padding:2px 7px;border-radius:6px;}
+.ph button{position:absolute;right:2px;top:2px;width:44px;height:44px;border-radius:9px;background:rgba(0,0,0,.72);color:#fff;font-size:18px;}
+.ph-leg{margin-top:6px;min-height:44px;padding:8px 11px;font-size:16px;}
 
 /* Assinatura */
 .resume{font-size:14px;}
@@ -250,7 +260,7 @@ th:last-child,td:last-child{padding-right:0;text-align:right;}
 .d-sign{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
 .d-sign img{height:70px;max-width:100%;display:block;margin-top:4px;}
 .d-sign small{display:block;color:var(--txt2);font-size:12.5px;}
-.d-foot{background:var(--fond);padding:11px 20px;font-size:11.5px;color:var(--txt2);text-align:center;line-height:1.5;}
+.d-foot{background:var(--fond);padding:11px 20px;font-size:12px;color:var(--txt2);text-align:center;line-height:1.5;}
 .d-demo{color:var(--of);font-weight:700;}
 
 .toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--noir2);color:#fff;font-size:14px;padding:10px 16px;border-radius:10px;max-width:calc(100% - 32px);z-index:50;}
@@ -271,6 +281,33 @@ th:last-child,td:last-child{padding-right:0;text-align:right;}
   .colunas{grid-template-columns:1fr 1fr;}
   .cartes{grid-template-columns:1fr 1fr;}
   .toast{bottom:28px;}
+  .top-t{display:block;}
+  .perfil{width:auto;}
+  .perfil select{flex:none;}
+  .langue{margin-left:0;}
+}
+@media(max-width:959px){
+  .top,.hero,.etapes,main,.bas{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right));}
+  .com-tabs main{padding-bottom:calc(92px + env(safe-area-inset-bottom));}
+  .toast{bottom:calc(90px + env(safe-area-inset-bottom));}
+}
+@media(max-width:379px){
+  .stepper em{display:none;}
+  .stepper li{gap:0;}
+  .logo{height:36px;}
+}
+@media screen and (max-width:519px){
+  .d-head{padding:14px;}
+  .d-body{padding:4px 14px 12px;}
+  .d-foot{padding:11px 14px;}
+  .t-eq,.t-eq tbody{display:block;}
+  .t-eq tr:first-child{display:none;}
+  .t-eq tr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr) auto;gap:4px 10px;padding:8px 0;border-top:1px solid var(--trait);}
+  .t-eq tr:nth-child(2){border-top:0;}
+  .t-eq td{display:block;border:0;padding:0;text-align:left;}
+  .t-eq td:first-child{grid-column:1/-1;font-weight:700;}
+  .t-eq td[data-l]::before{content:attr(data-l);display:block;color:var(--txt2);font-size:12px;font-weight:500;white-space:nowrap;}
+  .t-tot td[colspan]{grid-column:1/3;align-self:end;}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;}.roue{animation:none;}}
 @media print{
@@ -283,14 +320,15 @@ th:last-child,td:last-child{padding-right:0;text-align:right;}
   .doc-l{max-width:none;}
   .doc{border-radius:0;box-shadow:none;font-size:10.5pt;overflow:visible;}
   .d-head,.d-foot{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-  .d-sec{break-inside:avoid;padding:9px 0;}
+  .d-sec{break-inside:avoid;padding:7px 0;}
+  .d-head{padding:10px 20px;}
   .d-body{padding:2px 20px 6px;}
   .d-ph{grid-template-columns:repeat(4,1fr);}
   .d-ph img{aspect-ratio:3/2;}
   .d-info{gap:5px 18px;}
   td{padding:3px 8px 3px 0;}
   .d-sign img{height:50px;}
-  .d-foot{break-inside:avoid;padding:7px 20px;}
+  .d-foot{break-inside:avoid;padding:5px 20px;line-height:1.35;}
 }
 </style>
 </head>
@@ -365,7 +403,7 @@ const DOC={
     equipe:'Equipe',tech:'Técnico',arrivee:'Chegada',depart:'Saída',surSite:'No local',trajet:'Deslocamento',total:'Total',constat:'Situação na chegada',travaux:'Serviços realizados',pieces:'Peças usadas',design:'Descrição',qte:'Qtd.',
     mesures:'Medições e verificações',controle:'Verificação',valeur:'Valor',resultat:'Resultado',instrument:'Instrumento usado',photos:'Fotos',reserves:'Ressalvas do cliente',suivi:'Serviços pendentes',signatures:'Assinaturas',pour:'Pela',pourClient:'Pelo cliente',signeLe:'Assinado em',exemple:'Exemplo sem assinatura',demo:'Documento de demonstração, sem valor contratual',locale:'pt-BR'}
 };
-const FR={"Início": "Accueil", "Ordens": "Bons", "Máquinas": "Machines", "+ Nova ordem": "+ Nouveau bon", "Protótipo · dados fictícios": "Prototype · données fictives", "Ordens<br>de serviço": "Bons<br>d'intervention", "Olá": "Bonjour", "Entrando como": "Connecté en tant que", "Visitas hoje": "Visites aujourd'hui", "Pendências": "En attente", "Ordens em 30 dias": "Bons sur 30 jours", "Horas em 30 dias": "Heures sur 30 jours", "+ Nova ordem de serviço": "+ Nouveau bon d'intervention", "Rascunho": "Brouillon", "Retomar": "Reprendre", "Agenda de hoje": "Agenda du jour", "Criar retorno": "Créer un retour", "Marcar como resolvida": "Marquer comme résolu", "Nenhuma pendência em aberto.": "Aucun point en attente.", "Últimas ordens": "Derniers bons", "Ver todas": "Tout voir", "Reiniciar a demonstração": "Réinitialiser la démonstration", "Nenhuma ordem encontrada.": "Aucun bon trouvé.", "Ordens de serviço": "Bons d'intervention", "protótipo": "prototype", "Todo o histórico, por cliente, máquina ou número.": "Tout l'historique, par client, machine ou numéro.", "Buscar ordens": "Rechercher un bon", "Buscar cliente, máquina ou número": "Client, machine ou numéro", "Filtrar por estado": "Filtrer par état", "Todas": "Tous", "Sem dados de fabricante": "Sans données fabricant", "Completa": "Complète", " de ": " sur ", "Nenhuma máquina encontrada.": "Aucune machine trouvée.", "Cada ficha preenchida fica aqui e reaparece nas próximas ordens.": "Chaque fiche remplie reste ici et revient dans les prochains bons.", "Buscar máquinas": "Rechercher une machine", "Buscar máquina, cliente ou fabricante": "Machine, client ou fabricant", "Enviar ficha técnica": "Envoyer une fiche technique", "Confira a ficha": "Vérifiez la fiche", "Leitura simulada.": "Lecture simulée.", "Neste protótipo os valores abaixo são de exemplo. Na versão real, eles virão do arquivo enviado. Corrija o que precisar antes de salvar.": "Dans ce prototype, les valeurs ci-dessous sont des exemples. Dans la version réelle, elles viendront du fichier envoyé. Corrigez ce qu'il faut avant d'enregistrer.", "Salvo automaticamente": "Enregistré automatiquement", "Enviar ficha": "Envoyer une fiche", "Máquina": "Machine", "Cliente": "Client", "Escolha um cliente": "Choisir un client", "Nome da máquina": "Nom de la machine", "Ficha técnica": "Fiche technique", "campos": "champs", "Arquivos da ficha": "Fichiers de la fiche", "Histórico da máquina": "Historique de la machine", "Conferir ficha": "Vérifier la fiche", "Cancelar": "Annuler", "Confirmar e salvar": "Confirmer et enregistrer", "Lendo a ficha": "Lecture de la fiche", "Remover": "Retirer", "Não foi possível ler esta imagem.": "Impossible de lire cette image.", "Envie uma foto ou um PDF.": "Envoyez une photo ou un PDF.", "Informe o cliente e o nome da máquina.": "Indiquez le client et le nom de la machine.", "Ficha salva na máquina.": "Fiche enregistrée sur la machine.", "Ainda parada": "Toujours à l'arrêt", "Máquina nova": "Nouvelle machine", "O que você preencher aqui entra sozinho na ficha da máquina ao validar a ordem.": "Ce que vous remplissez ici rejoint automatiquement la fiche machine à la validation du bon.", "Retorno da ordem": "Suite du bon", "Cliente e máquina": "Client et machine", "Local": "Site", "Máquina ou equipamento": "Machine ou équipement", "Ex.: Prensa P-12": "Ex. : Presse P-12", "Serviço": "Intervention", "Tipo de serviço": "Type d'intervention", "Escolha um tipo": "Choisir un type", "Nº do pedido": "N° de commande", "Ex.: CMD-4471": "Ex. : CMD-4471", "Data": "Date", "Equipe e horas": "Équipe et heures", "Técnico": "Technicien", "Chegada": "Arrivée", "Saída": "Départ", "Deslocamento (minutos)": "Trajet (minutes)", "Ex.: 35": "Ex. : 35", "+ Adicionar técnico": "+ Ajouter un technicien", "No local": "Sur site", "Deslocamento": "Trajet", "Total": "Total", "O que foi feito": "Travaux effectués", "O texto vai para o relatório exatamente como digitado.": "Le texte apparaît sur le bon exactement comme il est saisi.", "Situação na chegada": "Constat à l'arrivée", "O que você encontrou no local": "Ce que vous avez trouvé sur place", "Serviços realizados": "Travaux réalisés", "Peças usadas": "Pièces utilisées", "Descrição da peça": "Désignation de la pièce", "Descrição": "Désignation", "Quantidade da peça": "Quantité de la pièce", "Remover a peça": "Retirer la pièce", "+ Adicionar peça": "+ Ajouter une pièce", "Medições": "Mesures", "Preencha somente o que foi verificado.": "Renseignez uniquement ce qui a été contrôlé.", "Instrumento usado": "Instrument utilisé", "Modelo e número de série": "Modèle et numéro de série", "Valor": "Valeur", "Estado na saída": "État à la sortie", "O que falta fazer": "Reste à faire", "Vira uma pendência no início do app": "Apparaît en attente sur l'accueil", "Tempo de máquina parada": "Temps d'arrêt machine", "Parou às": "Arrêtée à", "Voltou às": "Reprise à", "Tempo parada": "Temps d'arrêt", "Fotos do serviço": "Photos de l'intervention", "Opcional. As fotos são reduzidas antes de entrar na ordem.": "Facultatif. Les photos sont réduites avant d'être ajoutées au bon.", "+ Foto antes": "+ Photo avant", "+ Foto depois": "+ Photo après", "Foto": "Photo", "Remover a foto": "Retirer la photo", "Legenda": "Légende", "Legenda da foto": "Légende de la photo", "Nenhuma foto por enquanto.": "Aucune photo pour le moment.", "Total de horas": "Total des heures", "Estado": "État", "Assinaturas": "Signatures", "Ressalvas do cliente": "Réserves du client", "Opcional": "Facultatif", "Assinatura de": "Signature de", "Limpar": "Effacer", "Nome de quem assina pelo cliente": "Nom du signataire client", "Assinatura do cliente": "Signature du client", "Nova ordem": "Nouveau bon", "Salvamento automático": "Enregistrement automatique", "Voltar": "Retour", "Próximo": "Suivant", "Validar ordem": "Valider le bon", "Escolha um cliente.": "Choisissez un client.", "Informe a máquina ou o equipamento.": "Indiquez la machine ou l'équipement.", "Escolha o tipo de serviço.": "Choisissez le type d'intervention.", "Informe a data.": "Indiquez la date.", "Informe a chegada e a saída de cada técnico.": "Indiquez l'arrivée et le départ de chaque technicien.", "Descreva os serviços realizados.": "Décrivez les travaux réalisés.", "Informe o estado da máquina na saída.": "Indiquez l'état de la machine à la sortie.", "Informe o que falta fazer.": "Indiquez ce qui reste à faire.", "Informe quando a máquina parou.": "Indiquez l'heure d'arrêt de la machine.", "A assinatura do técnico é obrigatória.": "La signature du technicien est requise.", "Informe o nome de quem assina pelo cliente.": "Indiquez le nom du signataire client.", "A assinatura do cliente é obrigatória.": "La signature du client est requise.", "Ordem salva sem as fotos: memória do navegador cheia.": "Bon enregistré sans ses photos : mémoire du navigateur pleine.", "Memória do navegador cheia: os anexos não foram salvos.": "Mémoire du navigateur pleine : les fichiers n'ont pas été enregistrés.", "Ordem validada. A ficha da máquina foi atualizada.": "Bon validé. La fiche machine a été mise à jour.", "Salvar em PDF": "Enregistrer en PDF", "Voltar ao início": "Retour à l'accueil", "Idioma do documento": "Langue du document", "Pendência marcada como resolvida.": "Point marqué comme résolu.", "Apagar as ordens, as fichas alteradas e o rascunho desta demonstração?": "Effacer les bons, les fiches modifiées et le brouillon de cette démonstration ?", "Idioma": "Langue"};
+const FR={"Início": "Accueil", "Ordens": "Bons", "Máquinas": "Machines", "+ Nova ordem": "+ Nouveau bon", "Protótipo · dados fictícios": "Prototype · données fictives", "Ordens<br>de serviço": "Bons<br>d'intervention", "Olá": "Bonjour", "Entrando como": "Connecté en tant que", "Visitas hoje": "Visites aujourd'hui", "Pendências": "En attente", "Ordens em 30 dias": "Bons sur 30 jours", "Horas em 30 dias": "Heures sur 30 jours", "+ Nova ordem de serviço": "+ Nouveau bon d'intervention", "Rascunho": "Brouillon", "Retomar": "Reprendre", "Agenda de hoje": "Agenda du jour", "Criar retorno": "Créer un retour", "Marcar como resolvida": "Marquer comme résolu", "Nenhuma pendência em aberto.": "Aucun point en attente.", "Últimas ordens": "Derniers bons", "Ver todas": "Tout voir", "Reiniciar a demonstração": "Réinitialiser la démonstration", "Nenhuma ordem encontrada.": "Aucun bon trouvé.", "Ordens de serviço": "Bons d'intervention", "protótipo": "prototype", "Todo o histórico, por cliente, máquina ou número.": "Tout l'historique, par client, machine ou numéro.", "Buscar ordens": "Rechercher un bon", "Buscar cliente, máquina ou número": "Client, machine ou numéro", "Filtrar por estado": "Filtrer par état", "Todas": "Tous", "Sem dados de fabricante": "Sans données fabricant", "Completa": "Complète", " de ": " sur ", "Nenhuma máquina encontrada.": "Aucune machine trouvée.", "Cada ficha preenchida fica aqui e reaparece nas próximas ordens.": "Chaque fiche remplie reste ici et revient dans les prochains bons.", "Buscar máquinas": "Rechercher une machine", "Buscar máquina, cliente ou fabricante": "Machine, client ou fabricant", "Enviar ficha técnica": "Envoyer une fiche technique", "Confira a ficha": "Vérifiez la fiche", "Leitura simulada.": "Lecture simulée.", "Neste protótipo os valores abaixo são de exemplo. Na versão real, eles virão do arquivo enviado. Corrija o que precisar antes de salvar.": "Dans ce prototype, les valeurs ci-dessous sont des exemples. Dans la version réelle, elles viendront du fichier envoyé. Corrigez ce qu'il faut avant d'enregistrer.", "Salvo automaticamente": "Enregistré automatiquement", "Enviar ficha": "Envoyer une fiche", "Máquina": "Machine", "Cliente": "Client", "Escolha um cliente": "Choisir un client", "Nome da máquina": "Nom de la machine", "Ficha técnica": "Fiche technique", "campos": "champs", "Arquivos da ficha": "Fichiers de la fiche", "Histórico da máquina": "Historique de la machine", "Conferir ficha": "Vérifier la fiche", "Cancelar": "Annuler", "Confirmar e salvar": "Confirmer et enregistrer", "Lendo a ficha": "Lecture de la fiche", "Remover": "Retirer", "Não foi possível ler esta imagem.": "Impossible de lire cette image.", "Envie uma foto ou um PDF.": "Envoyez une photo ou un PDF.", "Informe o cliente e o nome da máquina.": "Indiquez le client et le nom de la machine.", "Ficha salva na máquina.": "Fiche enregistrée sur la machine.", "Ainda parada": "Toujours à l'arrêt", "Máquina nova": "Nouvelle machine", "O que você preencher aqui entra sozinho na ficha da máquina ao validar a ordem.": "Ce que vous remplissez ici rejoint automatiquement la fiche machine à la validation du bon.", "Retorno da ordem": "Suite du bon", "Cliente e máquina": "Client et machine", "Local": "Site", "Máquina ou equipamento": "Machine ou équipement", "Ex.: Prensa P-12": "Ex. : Presse P-12", "Serviço": "Intervention", "Tipo de serviço": "Type d'intervention", "Escolha um tipo": "Choisir un type", "Nº do pedido": "N° de commande", "Ex.: CMD-4471": "Ex. : CMD-4471", "Data": "Date", "Equipe e horas": "Équipe et heures", "Técnico": "Technicien", "Chegada": "Arrivée", "Saída": "Départ", "Deslocamento (minutos)": "Trajet (minutes)", "Ex.: 35": "Ex. : 35", "+ Adicionar técnico": "+ Ajouter un technicien", "No local": "Sur site", "Deslocamento": "Trajet", "Total": "Total", "O que foi feito": "Travaux effectués", "O texto vai para o relatório exatamente como digitado.": "Le texte apparaît sur le bon exactement comme il est saisi.", "Situação na chegada": "Constat à l'arrivée", "O que você encontrou no local": "Ce que vous avez trouvé sur place", "Serviços realizados": "Travaux réalisés", "Peças usadas": "Pièces utilisées", "Descrição da peça": "Désignation de la pièce", "Descrição": "Désignation", "Quantidade da peça": "Quantité de la pièce", "Remover a peça": "Retirer la pièce", "+ Adicionar peça": "+ Ajouter une pièce", "Medições": "Mesures", "Verificações": "Contrôles", "Confirmação": "Validation", "Preencha somente o que foi verificado.": "Renseignez uniquement ce qui a été contrôlé.", "Instrumento usado": "Instrument utilisé", "Modelo e número de série": "Modèle et numéro de série", "Valor": "Valeur", "Estado na saída": "État à la sortie", "O que falta fazer": "Reste à faire", "Vira uma pendência no início do app": "Apparaît en attente sur l'accueil", "Tempo de máquina parada": "Temps d'arrêt machine", "Parou às": "Arrêtée à", "Voltou às": "Reprise à", "Tempo parada": "Temps d'arrêt", "Fotos do serviço": "Photos de l'intervention", "Opcional. As fotos são reduzidas antes de entrar na ordem.": "Facultatif. Les photos sont réduites avant d'être ajoutées au bon.", "+ Foto antes": "+ Photo avant", "+ Foto depois": "+ Photo après", "Foto": "Photo", "Remover a foto": "Retirer la photo", "Legenda": "Légende", "Legenda da foto": "Légende de la photo", "Nenhuma foto por enquanto.": "Aucune photo pour le moment.", "Total de horas": "Total des heures", "Estado": "État", "Assinaturas": "Signatures", "Ressalvas do cliente": "Réserves du client", "Opcional": "Facultatif", "Assinatura de": "Signature de", "Limpar": "Effacer", "Nome de quem assina pelo cliente": "Nom du signataire client", "Assinatura do cliente": "Signature du client", "Nova ordem": "Nouveau bon", "Salvamento automático": "Enregistrement automatique", "Voltar": "Retour", "Próximo": "Suivant", "Validar ordem": "Valider le bon", "Escolha um cliente.": "Choisissez un client.", "Informe a máquina ou o equipamento.": "Indiquez la machine ou l'équipement.", "Escolha o tipo de serviço.": "Choisissez le type d'intervention.", "Informe a data.": "Indiquez la date.", "Informe a chegada e a saída de cada técnico.": "Indiquez l'arrivée et le départ de chaque technicien.", "Descreva os serviços realizados.": "Décrivez les travaux réalisés.", "Informe o estado da máquina na saída.": "Indiquez l'état de la machine à la sortie.", "Informe o que falta fazer.": "Indiquez ce qui reste à faire.", "Informe quando a máquina parou.": "Indiquez l'heure d'arrêt de la machine.", "A assinatura do técnico é obrigatória.": "La signature du technicien est requise.", "Informe o nome de quem assina pelo cliente.": "Indiquez le nom du signataire client.", "A assinatura do cliente é obrigatória.": "La signature du client est requise.", "Ordem salva sem as fotos: memória do navegador cheia.": "Bon enregistré sans ses photos : mémoire du navigateur pleine.", "Memória do navegador cheia: os anexos não foram salvos.": "Mémoire du navigateur pleine : les fichiers n'ont pas été enregistrés.", "Ordem validada. A ficha da máquina foi atualizada.": "Bon validé. La fiche machine a été mise à jour.", "Salvar em PDF": "Enregistrer en PDF", "Voltar ao início": "Retour à l'accueil", "Idioma do documento": "Langue du document", "Pendência marcada como resolvida.": "Point marqué comme résolu.", "Apagar as ordens, as fichas alteradas e o rascunho desta demonstração?": "Effacer les bons, les fiches modifiées et le brouillon de cette démonstration ?", "Idioma": "Langue"};
 const DADOS_FR={"Metalúrgica Demo": "Métallurgie Démo", "Galpão de prensas": "Atelier de presses", "Plásticos Exemplo": "Plasturgie Exemple", "Linha de injeção": "Ligne d'injection", "Agro Fictícia": "Agro Fictive", "Unidade de embalagem": "Unité de conditionnement", "Prensa hidráulica P-12": "Presse hydraulique P-12", "Quadro TGBT-01": "Armoire TGBT-01", "Esteira C-04": "Convoyeur C-04", "Quadro da linha L2": "Armoire de ligne L2", "Injetora I-07": "Injecteuse I-07", "Compressor K-02": "Compresseur K-02", "Ensacadeira E-03": "Ensacheuse E-03", "Quadro de distribuição TD-5": "Tableau divisionnaire TD-5", "Marca Demo": "Marque Démo", "Marca Exemplo": "Marque Exemple", "Marca Lida": "Marque Lue", "Disjuntor 50 A": "Disjoncteur 50 A", "Disjuntor 32 A": "Disjoncteur 32 A", "Contator 25 A": "Contacteur 25 A", "Técnico Demo": "Technicien Démo", "Multímetro MX-200 · Série 48213": "Multimètre MX-200 · S/N 48213", "Medidor de isolamento IS-50 · Série 10977": "Contrôleur d'isolement IS-50 · S/N 10977", "Câmera térmica TH-12 · Série 30652": "Caméra thermique TH-12 · S/N 30652", "Esteira parada durante a produção. Disjuntor-motor desarmado.": "Arrêt du convoyeur en cours de production. Disjoncteur moteur déclenché.", "Busca do defeito, troca do contator KM2, verificação do motor e testes com carga.": "Recherche de panne, remplacement du contacteur KM2, contrôle du moteur puis essais en charge.", "Visita semestral prevista em contrato.": "Visite semestrielle prévue au contrat.", "Limpeza do quadro, reaperto dos bornes e termografia.": "Dépoussiérage de l'armoire, resserrage des borniers, contrôle thermographique.", "Refazer o aquecimento na saída Q3.": "Reprendre l'échauffement sur le départ Q3.", "Resolver antes da próxima visita.": "À traiter avant la prochaine visite.", "Responsável pela manutenção (exemplo)": "Responsable maintenance (exemple)", "Chefe de oficina (exemplo)": "Chef d'atelier (exemple)"};
 const ic=p=>`<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${p}</svg>`;
 const ICONES={
@@ -526,7 +564,7 @@ function vueAccueil(){
 function cartesOrdem(l){
   if(!l.length)return `<p class="vide">${t('Nenhuma ordem encontrada.')}</p>`;
   return l.map(b=>{const e=etatDe(b.etat);return `<button class="ligne" data-a="voir" data-id="${esc(b.id)}">
-    <span class="l-c"><span class="l-t">${esc(dado(b.machine))}</span><span class="l-s">${esc(dado(clientDe(b.client).nom))} · ${esc(dateLoc(b.date,loc()))}</span><span class="l-s">${esc(b.numero)}</span></span>
+    <span class="l-c"><span class="l-t">${esc(dado(b.machine))}</span><span class="l-s">${esc(dado(clientDe(b.client).nom))} · ${esc(new Date(b.date+'T12:00:00').toLocaleDateString(loc()))}</span><span class="l-s">${esc(b.numero)}</span></span>
     <span class="pastille ${e.classe}">${court(e)}</span></button>`;}).join('');
 }
 
@@ -709,7 +747,7 @@ const etapes=[
       <button class="lien" data-a="ajout-piece">${t('+ Adicionar peça')}</button>
     </div></section>`,
   ()=>`
-    <section class="bloc"><h2>${t('Medições')}</h2>
+    <section class="bloc"><h2>${t('Verificações')}</h2>
     <p class="aide">${t('Preencha somente o que foi verificado.')}</p>
     ${champ('instrument',t('Instrumento usado'),`<input id="instrument" data-f="instrument" list="li" value="${esc(d.instrument)}" autocomplete="off" placeholder="${t('Modelo e número de série')}"><datalist id="li">${INSTRUMENTOS.map(m=>`<option value="${esc(m)}">`).join('')}</datalist>`)}
     ${MESURES.map((m,i)=>{const r=d.mesures[i];return `<div class="mes">
@@ -749,7 +787,7 @@ const etapes=[
       <div><span>${t('Total de horas')}</span><b>${heures(totaux(d.equipe).total)}</b></div>
       <div><span>${t('Estado')}</span><b>${esc(etatDe(d.etat)[langue])}</b></div>
     </section>
-    <section class="bloc"><h2>${t('Assinaturas')}</h2>
+    <section class="bloc"><h2>${t('Confirmação')}</h2>
     ${champ('reserves',t('Ressalvas do cliente'),`<textarea id="reserves" data-f="reserves" placeholder="${t('Opcional')}">${esc(d.reserves)}</textarea>`)}
     <div class="champ"><div class="sig-a"><span class="leg" id="sigt">${t('Assinatura de')} ${esc(d.equipe[0].tech)} <span class="req">*</span></span><button class="lien" data-a="eff-sig" data-c="sig-t">${t('Limpar')}</button></div>
       <canvas id="sig-t" class="sig" role="img" aria-labelledby="sigt"></canvas></div>
@@ -761,7 +799,7 @@ const etapes=[
 
 function vueEtape(n){
   return coque(t('Nova ordem'),`<div class="etapes no-print">
-    <ol class="stepper">${ETAPES[langue].map((e,i)=>`<li class="${i<n?'fait':i===n?'actif':''}"${i===n?' aria-current="step"':''}><span>${i<n?'✓':i+1}</span>${e}</li>`).join('')}</ol>
+    <ol class="stepper">${ETAPES[langue].map((e,i)=>`<li class="${i<n?'fait':i===n?'actif':''}"${i===n?' aria-current="step"':''}><span>${i<n?'✓':i+1}</span><em>${e}</em></li>`).join('')}</ol>
   </div>
   <main><div class="form-largura">
     <div class="auto"><h1 class="h-e" id="focus" tabindex="-1">${ETAPES[langue][n]}</h1><small>${t('Salvamento automático')}</small></div>
@@ -865,9 +903,9 @@ function vueBon(id,neuf){
           ${info(L.client,tx(c.nom))}${info(L.site,tx(c.site))}${info(L.machine,tx(b.machine))}${info(L.equipement,[tx(f.marque),f.modele].filter(Boolean).join(' '))}${info(L.serie,f.serie)}${info(L.carac,carac)}${info(L.type,typeDe(b.type)[langueDoc])}
           ${info(L.date,dateLoc(b.date,L.locale))}${info(L.etat,etatDe(b.etat)[langueDoc])}${info(L.commande,b.pedido)}${info(L.arret,arret)}${info(L.suite,orig&&orig.numero)}
         </div></section>
-        ${sec(L.equipe,`<table><tr><th>${L.tech}</th><th>${L.arrivee}</th><th>${L.depart}</th><th>${L.surSite}</th><th>${L.trajet}</th></tr>
-          ${b.equipe.map(e=>`<tr><td>${esc(tx(e.tech))}</td><td>${esc(e.arrivee)}</td><td>${esc(e.depart)}</td><td>${heures(minutes(e.arrivee,e.depart))}</td><td>${heures(parseInt(e.trajet,10)||0)}</td></tr>`).join('')}
-          <tr class="t-tot"><td colspan="3">${L.total}${langueDoc==='fr'?' : ':': '}${heures(tot.total)}</td><td>${heures(tot.site)}</td><td>${heures(tot.trajet)}</td></tr></table>`)}
+        ${sec(L.equipe,`<table class="t-eq"><tr><th>${L.tech}</th><th>${L.arrivee}</th><th>${L.depart}</th><th>${L.surSite}</th><th>${L.trajet}</th></tr>
+          ${b.equipe.map(e=>`<tr><td>${esc(tx(e.tech))}</td><td data-l="${L.arrivee}">${esc(e.arrivee)}</td><td data-l="${L.depart}">${esc(e.depart)}</td><td data-l="${L.surSite}">${heures(minutes(e.arrivee,e.depart))}</td><td data-l="${L.trajet}">${heures(parseInt(e.trajet,10)||0)}</td></tr>`).join('')}
+          <tr class="t-tot"><td colspan="3">${L.total}${langueDoc==='fr'?' : ':': '}${heures(tot.total)}</td><td data-l="${L.surSite}">${heures(tot.site)}</td><td data-l="${L.trajet}">${heures(tot.trajet)}</td></tr></table>`)}
         ${sec(L.constat,b.constat?`<p class="d-txt">${esc(tx(b.constat))}</p>`:'')}
         ${sec(L.travaux,`<p class="d-txt">${esc(tx(b.travaux))}</p>`)}
         ${sec(L.pieces,b.pieces.length?`<table><tr><th>${L.design}</th><th>${L.qte}</th></tr>${b.pieces.map(p=>`<tr><td>${esc(tx(p.nom))}</td><td>${esc(p.qte)}</td></tr>`).join('')}</table>`:'')}
