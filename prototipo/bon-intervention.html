@@ -5,39 +5,63 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#080808">
 <meta name="robots" content="noindex">
-<title>Ordens de serviço — Costa Energies (protótipo)</title>
-<link rel="icon" type="image/png" href="https://i.imgur.com/MYv4RIr.png">
+<title>Ordens de serviço · Costa Energies</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%22-36 -24 236 236%22 role=%22img%22 aria-label=%22Costa Energies%22%3E%3Ctitle%3ECosta Energies%3C/title%3E%3Crect x=%22-36%22 y=%22-24%22 width=%22236%22 height=%22236%22 rx=%2246%22 fill=%22%230B0B0C%22/%3E%3Cg fill=%22none%22 stroke=%22%23F97316%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%0A%3Ccircle cx=%2266%22 cy=%2272%22 r=%2217%22 stroke-width=%2213%22/%3E%0A%3Cpath stroke-width=%2213%22 d=%22M66 95V104%22/%3E%0A%3Cpath stroke-width=%2213%22 d=%22M36 118L96 108M36 138L96 128M36 158L96 148%22/%3E%0A%3Cpath stroke-width=%2213%22 d=%22M16 186V176H116V186%22/%3E%0A%3Cpath stroke-width=%2211%22 d=%22M66 40L56 22L74 18L64 -2%22/%3E%0A%3Cpath stroke-width=%2211%22 d=%22M28 42L12 34L22 22L4 12%22/%3E%0A%3Cpath stroke-width=%2211%22 d=%22M104 42L120 34L110 22L128 12%22/%3E%0A%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --o:#F97316;--oh:#EA6A0A;--oc:#FFF0E6;--of:#B8470A;
-  --noir:#080808;--noir2:#141414;--fond:#F6F5F2;--carte:#FFFFFF;
-  --txt:#1B1B1F;--txt2:#5C5C66;--trait:#E2E0DB;
+  --noir:#0B0B0C;--noir2:#17171A;--fond:#F4F3EF;--carte:#FFFFFF;
+  --txt:#1B1B1F;--txt2:#5C5C66;--trait:#E4E2DC;
   --ok:#0F7A4B;--okc:#E6F5EE;--ko:#B91C1C;--koc:#FDECEC;--warn:#8A5A00;--warnc:#FFF4DC;
+  --ombre:0 1px 2px rgba(20,20,20,.05),0 6px 20px rgba(20,20,20,.05);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{-webkit-text-size-adjust:100%;}
-body{font-family:'DM Sans',system-ui,sans-serif;color:var(--txt);background:var(--noir);line-height:1.5;-webkit-font-smoothing:antialiased;}
+body{font-family:'DM Sans',system-ui,sans-serif;color:var(--txt);background:var(--fond);line-height:1.5;-webkit-font-smoothing:antialiased;}
 h1,h2,h3{font-family:'Sora',system-ui,sans-serif;line-height:1.2;letter-spacing:-.2px;}
 button,input,select,textarea{font:inherit;color:inherit;}
 button{cursor:pointer;background:none;border:0;}
 :focus-visible{outline:3px solid var(--o);outline-offset:2px;}
 [tabindex="-1"]:focus{outline:none;}
 
-#app{max-width:480px;min-height:100dvh;margin:0 auto;background:var(--fond);display:flex;flex-direction:column;}
-#app.large{max-width:820px;}
+/* Estrutura */
+#app{min-height:100dvh;}
+.col{min-width:0;display:flex;flex-direction:column;min-height:100dvh;}
+.side{display:none;}
 main{flex:1;padding:18px 16px 24px;}
+.conteudo{width:100%;max-width:1120px;margin:0 auto;}
+.com-tabs main{padding-bottom:92px;}
+.form-largura{width:100%;max-width:640px;margin:0 auto;}
 
-/* En-tête */
-.top{background:var(--noir);color:#fff;padding:12px 16px;display:flex;align-items:center;gap:12px;padding-top:max(12px,env(safe-area-inset-top));}
-.logo{height:44px;width:auto;display:block;}
+/* Cabeçalho do celular */
+.top{background:var(--noir);color:#fff;padding:10px 16px;display:flex;align-items:center;gap:12px;padding-top:max(10px,env(safe-area-inset-top));}
+.logo{height:40px;width:auto;display:block;}
 .logotxt{font-family:'Sora',sans-serif;font-weight:700;font-size:17px;color:#fff;}
 .logotxt span{color:var(--o);}
-.top-t{margin-left:auto;font-size:12px;color:rgba(255,255,255,.6);text-align:right;line-height:1.3;}
-.demo{background:var(--oc);color:var(--of);font-size:12.5px;font-weight:700;text-align:center;padding:7px 12px;}
+.top-t{margin-left:auto;font-size:12.5px;color:rgba(255,255,255,.65);text-align:right;line-height:1.3;}
+.langue{display:inline-flex;background:rgba(255,255,255,.08);border-radius:9px;padding:3px;flex-shrink:0;}
+.langue button{min-width:38px;min-height:36px;border-radius:7px;font-size:12.5px;font-weight:700;color:rgba(255,255,255,.65);}
+.langue button[aria-pressed="true"]{background:var(--o);color:#111;}
+.side .langue{align-self:flex-start;margin-top:auto;}
+.demo{background:var(--oc);color:var(--of);font-size:12.5px;font-weight:700;text-align:center;padding:6px 12px;}
 
-/* Boutons */
+/* Menu lateral (computador) */
+.side .logo{height:auto;width:100%;margin-bottom:28px;}
+.nav-l{display:flex;flex-direction:column;gap:4px;margin-bottom:22px;}
+.nav-l button{display:flex;align-items:center;gap:12px;width:100%;min-height:46px;padding:0 14px;border-radius:10px;color:rgba(255,255,255,.68);font-weight:500;font-size:15px;text-align:left;transition:background .18s,color .18s;}
+.nav-l button:hover{background:rgba(255,255,255,.06);color:#fff;}
+.nav-l button[aria-current="page"]{background:rgba(249,115,22,.16);color:#fff;font-weight:700;}
+.nav-l button[aria-current="page"] svg{stroke:var(--o);}
+svg.ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+
+/* Abas do celular */
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:repeat(3,1fr);background:var(--carte);border-top:1px solid var(--trait);padding-bottom:env(safe-area-inset-bottom);}
+.tabs button{min-height:62px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--txt2);font-size:12px;font-weight:700;}
+.tabs button[aria-current="page"]{color:var(--of);}
+
+/* Botões */
 .btn{min-height:50px;padding:12px 20px;border-radius:10px;font-weight:700;font-size:15.5px;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:background .18s,border-color .18s,transform .18s;}
 .btn:active{transform:scale(.98);}
 .btn-p{background:var(--o);color:#111;}
@@ -45,64 +69,126 @@ main{flex:1;padding:18px 16px 24px;}
 .btn-s{background:var(--carte);color:var(--txt);border:1.5px solid var(--trait);}
 .btn-s:hover{border-color:var(--txt2);}
 .btn-full{width:100%;}
+.btn-mini{min-height:44px;padding:8px 14px;font-size:14px;}
 .lien{color:var(--of);font-weight:700;font-size:14px;min-height:44px;padding:8px 2px;}
 .lien:hover{color:var(--o);}
+.lien-ko{color:var(--ko);}
 
-/* Accueil */
-.hello{font-size:22px;font-weight:800;margin-bottom:2px;}
-.sub{color:var(--txt2);font-size:14.5px;margin-bottom:16px;}
-.titre-s{font-size:15px;font-weight:700;margin:26px 0 10px;}
-.carte{background:var(--carte);border:1px solid var(--trait);border-radius:12px;}
-.ligne{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:13px 14px;background:var(--carte);border:1px solid var(--trait);border-radius:12px;margin-bottom:8px;min-height:64px;transition:border-color .18s;}
+/* Início */
+.hero{background:radial-gradient(90% 140% at 100% 0%,rgba(249,115,22,.2),transparent 62%),var(--noir);color:#fff;padding:22px 16px 62px;}
+.hero-i{max-width:1120px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;}
+.hero h1{font-size:26px;font-weight:800;}
+.hero p{color:rgba(255,255,255,.65);font-size:14.5px;margin-top:2px;}
+.perfil{display:flex;align-items:center;gap:9px;}
+.perfil label{font-size:13px;color:rgba(255,255,255,.65);white-space:nowrap;}
+.perfil select{min-height:44px;width:auto;padding:8px 12px;font-size:14.5px;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:#fff;}
+.perfil option{color:#111;}
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:-62px;}
+.kpi{background:var(--carte);border-radius:14px;padding:13px 14px;box-shadow:var(--ombre);}
+.kpi b{display:block;font-family:'Sora',sans-serif;font-size:24px;font-weight:800;line-height:1.15;}
+.kpi span{display:block;color:var(--txt2);font-size:13px;}
+.kpi.alerte b{color:var(--of);}
+.cta-m{margin-top:14px;}
+.colunas{display:grid;gap:0 22px;}
+.sec-h{display:flex;justify-content:space-between;align-items:center;margin:24px 0 8px;min-height:30px;}
+.sec-h h2,.titre-s{font-size:16px;font-weight:700;}
+.compte{display:inline-block;background:var(--o);color:#111;font-size:12px;font-weight:700;padding:0 8px;border-radius:20px;margin-left:4px;}
+.ligne{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:13px 14px;background:var(--carte);border:1px solid transparent;border-radius:14px;margin-bottom:8px;min-height:64px;box-shadow:var(--ombre);transition:border-color .18s,transform .18s;}
 .ligne:hover{border-color:var(--o);}
-.heure{font-family:'Sora',sans-serif;font-weight:700;font-size:15px;min-width:50px;color:var(--of);}
+.heure{font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:var(--of);background:var(--oc);border-radius:9px;padding:7px 9px;flex-shrink:0;}
 .l-c{flex:1;min-width:0;}
 .l-t{display:block;font-weight:700;font-size:15px;overflow-wrap:anywhere;}
 .l-s{display:block;color:var(--txt2);font-size:13.5px;overflow-wrap:anywhere;}
 .fleche{color:var(--txt2);font-size:20px;flex-shrink:0;}
-.pastille{font-size:11.5px;font-weight:700;padding:3px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
+.pastille{font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
 .p-ok{background:var(--okc);color:var(--ok);}
 .p-warn{background:var(--warnc);color:var(--warn);}
 .p-ko{background:var(--koc);color:var(--ko);}
-.reprendre{display:flex;align-items:center;gap:10px;background:var(--warnc);border-radius:12px;padding:10px 14px;margin-top:10px;font-size:14px;color:var(--warn);}
+.p-n{background:#ECEBE6;color:var(--txt2);}
+.pend{background:var(--carte);border-left:4px solid var(--o);border-radius:14px;padding:12px 14px;margin-bottom:8px;box-shadow:var(--ombre);}
+.pend-t{font-size:14px;margin-top:6px;overflow-wrap:anywhere;}
+.pend-a{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:8px;flex-wrap:wrap;}
+.reprendre{display:flex;align-items:center;gap:10px;background:var(--warnc);border-radius:12px;padding:6px 14px;margin-top:12px;font-size:14px;color:var(--warn);}
 .reprendre button{margin-left:auto;font-weight:700;color:var(--warn);text-decoration:underline;min-height:44px;padding:0 4px;}
-.vide{color:var(--txt2);font-size:14px;padding:12px 2px;}
-.pied{margin-top:22px;text-align:center;}
+.vide{color:var(--txt2);font-size:14px;padding:10px 2px;}
+.pied{margin-top:20px;text-align:center;}
 
-/* Formulaire */
-.etapes{background:var(--noir);color:#fff;padding:0 16px 14px;}
-.etapes-l{display:flex;justify-content:space-between;font-size:12.5px;color:rgba(255,255,255,.65);margin-bottom:7px;}
-.barre{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;}
-.barre i{height:4px;border-radius:4px;background:rgba(255,255,255,.18);}
-.barre i.on{background:var(--o);}
-h1.h-e{font-size:21px;font-weight:800;margin-bottom:4px;}
-.champ{margin-top:15px;}
+/* Listas */
+h1.h-p{font-size:24px;font-weight:800;margin-bottom:4px;}
+.sub{color:var(--txt2);font-size:14.5px;margin-bottom:14px;}
+.outils{display:grid;gap:10px;margin-bottom:12px;}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;}
+.chips button{min-height:40px;padding:0 14px;border-radius:20px;background:var(--carte);border:1.5px solid var(--trait);font-weight:700;font-size:13.5px;color:var(--txt2);white-space:nowrap;}
+.chips button[aria-pressed="true"]{background:var(--noir);border-color:var(--noir);color:#fff;}
+.cartes{display:grid;gap:0 12px;}
+.groupe{font-size:13px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--txt2);margin:18px 0 8px;}
+
+/* Formulário */
+.bloc{background:var(--carte);border-radius:14px;padding:15px;margin-top:12px;box-shadow:var(--ombre);}
+.bloc>h2{font-size:15px;font-weight:700;margin-bottom:2px;}
+.champ{margin-top:13px;}
+.bloc>h2+.champ{margin-top:10px;}
 .champ>label,.leg{display:block;font-size:13.5px;font-weight:700;margin-bottom:5px;}
 .req{color:var(--of);}
-.aide{font-size:13px;color:var(--txt2);margin-top:4px;}
+.aide{font-size:13px;color:var(--txt2);margin-top:5px;}
 input,select,textarea{width:100%;min-height:50px;padding:12px 13px;background:var(--carte);border:1.5px solid var(--trait);border-radius:10px;font-size:16px;}
 textarea{min-height:104px;resize:vertical;line-height:1.45;}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--o);box-shadow:0 0 0 3px rgba(249,115,22,.2);}
 .deux{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.calc{margin-top:12px;background:var(--oc);border-radius:10px;padding:10px 13px;display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--of);}
+.calc{margin-top:12px;background:var(--oc);border-radius:10px;padding:10px 13px;display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:14px;color:var(--of);}
 .calc b{font-family:'Sora',sans-serif;font-size:16px;}
+.totais{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:12px;background:var(--oc);border-radius:10px;padding:10px 12px;color:var(--of);}
+.totais span{display:block;font-size:12.5px;}
+.totais b{font-family:'Sora',sans-serif;font-size:16px;}
 .err{margin-top:14px;background:var(--koc);color:var(--ko);border-radius:10px;padding:10px 13px;font-size:14px;font-weight:700;}
 .err:empty{display:none;}
+.stepper{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);max-width:640px;margin:0 auto;}
+.etapes{background:var(--noir);padding:14px 16px 12px;}
+.stepper li{display:flex;flex-direction:column;align-items:center;gap:5px;position:relative;font-size:11.5px;color:rgba(255,255,255,.5);}
+.stepper li::before{content:'';position:absolute;top:13px;left:-50%;width:100%;height:2px;background:rgba(255,255,255,.16);}
+.stepper li:first-child::before{display:none;}
+.stepper li.fait::before,.stepper li.actif::before{background:var(--o);}
+.stepper span{position:relative;z-index:1;width:27px;height:27px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#2A2A2E;font-weight:700;font-size:12.5px;color:rgba(255,255,255,.7);}
+.stepper .fait span,.stepper .actif span{background:var(--o);color:#111;}
+.stepper .actif{color:#fff;font-weight:700;}
+.auto{display:flex;justify-content:space-between;align-items:baseline;gap:10px;}
+.auto small{color:var(--txt2);font-size:12.5px;white-space:nowrap;}
+h1.h-e{font-size:21px;font-weight:800;}
 
-/* Pièces */
+/* Ficha técnica */
+.fiche-in{background:var(--fond);border-radius:10px;margin-top:12px;}
+.fiche-in summary{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:50px;padding:8px 12px;font-weight:700;font-size:14.5px;cursor:pointer;list-style:none;}
+.fiche-in summary::-webkit-details-marker{display:none;}
+.fiche-c{padding:0 12px 12px;}
+.fiche-g{display:grid;grid-template-columns:1fr 1fr;gap:0 10px;}
+.fiche-g .plein{grid-column:1/-1;}
+.fiche-g .champ{margin-top:11px;min-width:0;}
+.fiche-g input{min-height:46px;}
+.alerte-sim{background:var(--warnc);color:var(--warn);border-radius:12px;padding:11px 14px;font-size:14px;font-weight:500;margin-top:12px;}
+.anexo{display:flex;align-items:center;gap:10px;background:var(--fond);border-radius:10px;padding:8px 10px;margin-top:8px;}
+.anexo img,.anexo .doc-ic{width:46px;height:46px;border-radius:8px;object-fit:cover;background:var(--oc);color:var(--of);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.anexo span{flex:1;min-width:0;font-size:14px;overflow-wrap:anywhere;}
+.lecture{max-width:420px;margin:60px auto;text-align:center;}
+.roue{width:44px;height:44px;border-radius:50%;border:4px solid var(--oc);border-top-color:var(--o);margin:0 auto 16px;animation:roue 1s linear infinite;}
+@keyframes roue{to{transform:rotate(360deg);}}
+
+/* Peças */
 .piece{display:grid;grid-template-columns:1fr 66px 44px;gap:6px;margin-bottom:6px;}
 .piece input{min-width:0;}
 .suppr{min-height:50px;border-radius:10px;color:var(--ko);font-size:22px;line-height:1;}
 .suppr:hover{background:var(--koc);}
 
-/* Mesures */
-.mes{background:var(--carte);border:1px solid var(--trait);border-radius:12px;padding:12px;margin-top:10px;}
-.mes-t{font-weight:700;font-size:14.5px;margin-bottom:8px;}
+/* Medições */
+.mes{background:var(--fond);border-radius:12px;padding:12px;margin-top:10px;}
+.mes .champ{margin-top:9px;}
+.mes-t{display:block;font-weight:700;font-size:14.5px;margin-bottom:8px;}
+.eq-h{display:flex;justify-content:space-between;align-items:center;}
+.eq-h .mes-t{margin-bottom:6px;}
 .mes-v{position:relative;margin-bottom:8px;}
 .mes-v input{padding-right:48px;}
 .mes-v span{position:absolute;right:13px;top:50%;transform:translateY(-50%);color:var(--txt2);font-size:14px;pointer-events:none;}
 .seg{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;}
-.seg button{min-height:44px;border:1.5px solid var(--trait);border-radius:9px;background:var(--fond);font-size:13.5px;font-weight:700;color:var(--txt2);padding:4px;}
+.seg button{min-height:44px;border:1.5px solid var(--trait);border-radius:9px;background:var(--carte);font-size:13.5px;font-weight:700;color:var(--txt2);padding:4px;}
 .seg button[aria-pressed="true"].c{background:var(--okc);border-color:var(--ok);color:var(--ok);}
 .seg button[aria-pressed="true"].n{background:var(--koc);border-color:var(--ko);color:var(--ko);}
 .seg button[aria-pressed="true"].a{background:#E9E8E4;border-color:var(--txt2);color:var(--txt);}
@@ -110,52 +196,34 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--o);box-s
 .choix button{min-height:52px;text-align:left;padding:10px 14px;border:1.5px solid var(--trait);border-radius:10px;background:var(--carte);font-weight:700;font-size:15px;}
 .choix button[aria-pressed="true"]{border-color:var(--o);background:var(--oc);color:var(--of);}
 
-/* Photos */
-.ph-btn{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;}
+/* Fotos */
+.ph-btn{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
 .ph-grille{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;}
 .ph{position:relative;border-radius:10px;overflow:hidden;background:#ddd;aspect-ratio:4/3;}
 .ph img{width:100%;height:100%;object-fit:cover;display:block;}
 .ph em{position:absolute;left:6px;top:6px;background:rgba(0,0,0,.72);color:#fff;font-style:normal;font-size:11.5px;font-weight:700;padding:2px 7px;border-radius:6px;}
 .ph button{position:absolute;right:4px;top:4px;width:36px;height:36px;border-radius:9px;background:rgba(0,0,0,.72);color:#fff;font-size:18px;}
+.ph-leg{margin-top:6px;min-height:44px;padding:8px 11px;font-size:15px;}
 
-/* Signature */
-.resume{background:var(--carte);border:1px solid var(--trait);border-radius:12px;padding:12px 14px;margin-top:14px;font-size:14px;}
+/* Assinatura */
+.resume{font-size:14px;}
 .resume div{display:flex;justify-content:space-between;gap:12px;padding:3px 0;}
 .resume span{color:var(--txt2);flex-shrink:0;}
 .resume b{text-align:right;overflow-wrap:anywhere;min-width:0;}
-.sig{display:block;width:100%;height:150px;background:var(--carte);border:1.5px dashed var(--txt2);border-radius:10px;touch-action:none;}
+.sig{display:block;width:100%;height:150px;background:var(--fond);border:1.5px dashed var(--txt2);border-radius:10px;touch-action:none;}
 .sig-a{display:flex;justify-content:space-between;align-items:center;}
 
-/* Équipe, pendências et profil */
-.perfil{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
-.perfil label{font-size:13.5px;font-weight:700;white-space:nowrap;}
-.perfil select{min-height:44px;padding:8px 12px;font-size:15px;}
-.eq-h{display:flex;justify-content:space-between;align-items:center;}
-.eq-h .mes-t{margin-bottom:6px;}
-.mes .champ{margin-top:9px;}
-.lien-ko{color:var(--ko);}
-.totais{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px;background:var(--oc);border-radius:10px;padding:10px 12px;color:var(--of);}
-.totais span{display:block;font-size:12.5px;}
-.totais b{font-family:'Sora',sans-serif;font-size:16px;}
-.compte{display:inline-block;background:var(--o);color:#111;font-size:12px;font-weight:700;padding:0 8px;border-radius:20px;margin-left:4px;}
-.pend{background:var(--carte);border:1px solid var(--trait);border-left:4px solid var(--o);border-radius:12px;padding:12px 14px;margin-bottom:8px;}
-.pend-t{font-size:14px;margin-top:6px;overflow-wrap:anywhere;}
-.pend-a{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:8px;flex-wrap:wrap;}
-.btn-mini{min-height:44px;padding:8px 14px;font-size:14px;}
-.ph-leg{margin-top:6px;min-height:44px;padding:8px 11px;font-size:15px;}
+/* Barra inferior */
+.bas{position:sticky;bottom:0;z-index:20;background:var(--fond);border-top:1px solid var(--trait);padding:12px 16px;padding-bottom:max(12px,env(safe-area-inset-bottom));}
+.bas-i{display:grid;grid-template-columns:auto 1fr;gap:10px;max-width:640px;margin:0 auto;}
+
+/* Documento */
+.doc-l{max-width:820px;margin:0 auto;}
+.doc-actions{display:grid;gap:8px;margin-bottom:12px;}
+.ok-msg{background:var(--okc);color:var(--ok);border-radius:10px;padding:11px 14px;font-weight:700;font-size:14.5px;margin-bottom:12px;}
 .lang{grid-template-columns:1fr 1fr;margin-bottom:12px;}
 .lang button[aria-pressed="true"].c{background:var(--oc);border-color:var(--o);color:var(--of);}
-.t-tot td{font-weight:700;}
-.d-inst{font-size:12.5px;color:var(--txt2);margin-top:6px;overflow-wrap:anywhere;}
-
-/* Barre du bas */
-.bas{position:sticky;bottom:0;display:grid;grid-template-columns:auto 1fr;gap:10px;padding:12px 16px;padding-bottom:max(12px,env(safe-area-inset-bottom));background:var(--fond);border-top:1px solid var(--trait);}
-.bas.un{grid-template-columns:1fr;}
-
-/* Bon (document) */
-.doc-actions{display:grid;gap:8px;margin-bottom:16px;}
-.ok-msg{background:var(--okc);color:var(--ok);border-radius:10px;padding:11px 14px;font-weight:700;font-size:14.5px;margin-bottom:12px;}
-.doc{background:#fff;border:1px solid var(--trait);border-radius:12px;overflow:hidden;font-size:14px;}
+.doc{background:#fff;border-radius:14px;overflow:hidden;font-size:14px;box-shadow:var(--ombre);}
 .d-head{background:var(--noir);color:#fff;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
 .d-head .logo{height:36px;}
 .d-num{text-align:right;}
@@ -169,10 +237,12 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--o);box-s
 .d-info span{display:block;color:var(--txt2);font-size:12.5px;}
 .d-info b{overflow-wrap:anywhere;}
 .d-txt{white-space:pre-wrap;overflow-wrap:anywhere;}
+.d-inst{font-size:12.5px;color:var(--txt2);margin-top:6px;overflow-wrap:anywhere;}
 table{width:100%;border-collapse:collapse;}
 th{text-align:left;font-size:12.5px;color:var(--txt2);font-weight:500;padding:0 8px 5px 0;}
 td{padding:6px 8px 6px 0;border-top:1px solid var(--trait);vertical-align:top;overflow-wrap:anywhere;}
 th:last-child,td:last-child{padding-right:0;text-align:right;}
+.t-tot td{font-weight:700;}
 .d-ph{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
 .d-ph figure{break-inside:avoid;}
 .d-ph img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px;display:block;}
@@ -186,17 +256,32 @@ th:last-child,td:last-child{padding-right:0;text-align:right;}
 .toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--noir2);color:#fff;font-size:14px;padding:10px 16px;border-radius:10px;max-width:calc(100% - 32px);z-index:50;}
 
 @media(min-width:560px){
-  #app{box-shadow:0 0 0 1px rgba(255,255,255,.08);}
+  .kpis{grid-template-columns:repeat(4,1fr);}
   .doc-actions{grid-template-columns:1fr 1fr;}
+  .outils{grid-template-columns:1fr auto;align-items:center;}
 }
-@media(prefers-reduced-motion:reduce){*{transition:none!important;}}
+@media(min-width:960px){
+  #app{display:grid;grid-template-columns:240px minmax(0,1fr);}
+  .side{display:flex;flex-direction:column;position:sticky;top:0;height:100dvh;background:var(--noir);padding:22px 16px;}
+  .top,.tabs,.cta-m{display:none;}
+  main{padding:26px 32px 32px;}
+  .com-tabs main{padding-bottom:32px;}
+  .hero{padding:30px 32px 74px;}
+  .kpis{margin-top:-72px;}
+  .colunas{grid-template-columns:1fr 1fr;}
+  .cartes{grid-template-columns:1fr 1fr;}
+  .toast{bottom:28px;}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;}.roue{animation:none;}}
 @media print{
   @page{size:A4;margin:11mm;}
   html,body{background:#fff;}
   .no-print{display:none!important;}
-  #app,#app.large{max-width:none;min-height:0;background:#fff;box-shadow:none;display:block;}
+  #app{display:block;min-height:0;}
+  .col{display:block;min-height:0;}
   main{padding:0;}
-  .doc{border:0;border-radius:0;font-size:10.5pt;overflow:visible;}
+  .doc-l{max-width:none;}
+  .doc{border-radius:0;box-shadow:none;font-size:10.5pt;overflow:visible;}
   .d-head,.d-foot{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
   .d-sec{break-inside:avoid;padding:9px 0;}
   .d-body{padding:2px 20px 6px;}
@@ -215,14 +300,32 @@ th:last-child,td:last-child{padding-right:0;text-align:right;}
 <script>
 /* Prototype : toutes les données sont fictives et restent dans ce navigateur. */
 const ENTREPRISE={nom:'Costa Energies',forme:'SARL',siret:'917 579 724 00027',adresse:'70 Rue Mathieu Dussurgey, 69190 Saint-Fons',tel:'+33 6 37 92 32 73'};
-const LOGO='https://i.imgur.com/MYv4RIr.png';
+const LOGO="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%22-12 -14 766 214%22 role=%22img%22 aria-label=%22Costa Energies%22%3E%3Ctitle%3ECosta Energies%3C/title%3E%3Cg fill=%22none%22 stroke=%22%23F97316%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%0A%3Ccircle cx=%2266%22 cy=%2272%22 r=%2217%22 stroke-width=%2213%22/%3E%0A%3Cpath stroke-width=%2213%22 d=%22M66 95V104%22/%3E%0A%3Cpath stroke-width=%2213%22 d=%22M36 118L96 108M36 138L96 128M36 158L96 148%22/%3E%0A%3Cpath stroke-width=%2213%22 d=%22M16 186V176H116V186%22/%3E%0A%3Cpath stroke-width=%2211%22 d=%22M66 40L56 22L74 18L64 -2%22/%3E%0A%3Cpath stroke-width=%2211%22 d=%22M28 42L12 34L22 22L4 12%22/%3E%0A%3Cpath stroke-width=%2211%22 d=%22M104 42L120 34L110 22L128 12%22/%3E%0A%3C/g%3E%3Cg fill=%22none%22 stroke=%22%23FFFFFF%22 stroke-width=%2217%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath transform=%22translate(176 0)%22 d=%22M78.98 18.58A44.72 52 0 1 0 78.98 85.42%22/%3E%3Cpath transform=%22translate(299.82 0)%22 d=%22M0 52A48.88 52 0 1 1 97.76 52A48.88 52 0 1 1 0 52%22/%3E%3Cpath transform=%22translate(431.96 0)%22 d=%22M68.43 17.68C58.24 -3.12 5.82 -4.16 3.64 26C2.18 54.08 70.62 47.84 69.89 76.96C68.43 108.16 13.1 107.12 3.64 86.32%22/%3E%3Cpath transform=%22translate(539.14 0)%22 d=%22M0 0H76.96M38.48 0V104%22/%3E%3Cpath transform=%22translate(650.48 0)%22 d=%22M0 104L45.76 0L91.52 104M18.3 68.64H73.22%22/%3E%3C/g%3E%3Cg fill=%22none%22 stroke=%22%23F97316%22 stroke-width=%2210.5%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath transform=%22translate(176 132)%22 d=%22M30.24 0H0V54H30.24M0 27H25.4%22/%3E%3Cpath transform=%22translate(250.53 132)%22 d=%22M0 54V0L38.88 54V0%22/%3E%3Cpath transform=%22translate(333.7 132)%22 d=%22M30.24 0H0V54H30.24M0 27H25.4%22/%3E%3Cpath transform=%22translate(408.23 132)%22 d=%22M0 54V0H24.3A14.58 14.58 0 0 1 24.3 29.16H0M20.9 29.16L38.88 54%22/%3E%3Cpath transform=%22translate(491.41 132)%22 d=%22M43.87 9.64A24.84 27 0 1 0 49.68 27H27.82%22/%3E%3Cpath transform=%22translate(585.38 132)%22 d=%22M0 0V54%22/%3E%3Cpath transform=%22translate(629.67 132)%22 d=%22M30.24 0H0V54H30.24M0 27H25.4%22/%3E%3Cpath transform=%22translate(704.2 132)%22 d=%22M35.53 9.18C30.24 -1.62 3.02 -2.16 1.89 13.5C1.13 28.08 36.67 24.84 36.29 39.96C35.53 56.16 6.8 55.62 1.89 44.82%22/%3E%3C/g%3E%3C/svg%3E";
 
 /* Les fiches clients restent en français : elles sont imprimées telles quelles sur le bon. */
 const CLIENTS=[
-  {id:'c1',nom:'Métallurgie Démo',site:'Atelier de presses',machines:['Presse hydraulique P-12','Armoire TGBT-01','Convoyeur C-04']},
-  {id:'c2',nom:'Plasturgie Exemple',site:'Ligne d\'injection',machines:['Armoire de ligne L2','Injecteuse I-07','Compresseur K-02']},
-  {id:'c3',nom:'Agro Fictive',site:'Unité de conditionnement',machines:['Ensacheuse E-03','Tableau divisionnaire TD-5']}
+  {id:'c1',nom:'Métallurgie Démo',site:'Atelier de presses'},
+  {id:'c2',nom:'Plasturgie Exemple',site:'Ligne d\'injection'},
+  {id:'c3',nom:'Agro Fictive',site:'Unité de conditionnement'}
 ];
+const CHAMPS_FICHE=[
+  {k:'marque',pt:'Fabricante',fr:'Fabricant'},{k:'modele',pt:'Modelo',fr:'Modèle'},{k:'serie',pt:'Nº de série',fr:'N° de série'},{k:'annee',pt:'Ano',fr:'Année'},
+  {k:'tension',pt:'Tensão (V)',fr:'Tension (V)'},{k:'puissance',pt:'Potência (kW)',fr:'Puissance (kW)'},{k:'courant',pt:'Corrente (A)',fr:'Intensité (A)'},{k:'protection',pt:'Proteção',fr:'Protection'},
+  {k:'armoire',pt:'Quadro de origem',fr:'Armoire d\'origine',plein:true},{k:'notes',pt:'Observações',fr:'Observations',plein:true}
+];
+const NB_FICHE=CHAMPS_FICHE.length-1;
+const MACHINES_BASE=[
+  {id:'m1',client:'c1',nom:'Presse hydraulique P-12',fiche:{marque:'Marque Démo',modele:'PH-250',serie:'PH250-1187',annee:'2016',tension:'400',puissance:'22',courant:'45',protection:'Disjoncteur 50 A',armoire:'Armoire TGBT-01'},anexos:[]},
+  {id:'m2',client:'c1',nom:'Armoire TGBT-01',fiche:{tension:'400',courant:'250'},anexos:[]},
+  {id:'m3',client:'c1',nom:'Convoyeur C-04',fiche:{marque:'Marque Démo',modele:'CV-90',serie:'CV90-3321',tension:'400',puissance:'4'},anexos:[]},
+  {id:'m4',client:'c2',nom:'Armoire de ligne L2',fiche:{},anexos:[]},
+  {id:'m5',client:'c2',nom:'Injecteuse I-07',fiche:{marque:'Marque Exemple',modele:'IJ-180',serie:'IJ180-0442',annee:'2019',tension:'400',puissance:'37'},anexos:[]},
+  {id:'m6',client:'c2',nom:'Compresseur K-02',fiche:{},anexos:[]},
+  {id:'m7',client:'c3',nom:'Ensacheuse E-03',fiche:{},anexos:[]},
+  {id:'m8',client:'c3',nom:'Tableau divisionnaire TD-5',fiche:{},anexos:[]}
+];
+/* Valeurs d'exemple : la lecture automatique du fichier n'existe qu'avec un serveur. */
+const LECTURE_SIMULEE={marque:'Marque Lue',modele:'ML-400',serie:'ML400-7731',annee:'2021',tension:'400',puissance:'15',courant:'30',protection:'Disjoncteur 32 A'};
 const TYPES=[
   {id:'prev',pt:'Manutenção preventiva',fr:'Maintenance préventive'},
   {id:'cur',pt:'Manutenção corretiva',fr:'Maintenance curative'},
@@ -246,22 +349,30 @@ const MESURES=[
   {pt:'Aperto das conexões',fr:'Serrage des connexions',unite:''}
 ];
 const ETATS=[
-  {id:'ok',pt:'Máquina de volta em operação',fr:'Machine remise en service',court:'Em operação',classe:'p-ok'},
-  {id:'res',pt:'Em operação com ressalvas',fr:'Remise en service avec réserves',court:'Ressalvas',classe:'p-warn'},
-  {id:'arr',pt:'Máquina parada',fr:'Machine à l\'arrêt',court:'Parada',classe:'p-ko'}
+  {id:'ok',pt:'Máquina de volta em operação',fr:'Machine remise en service',court:'Em operação',courtFr:'En service',classe:'p-ok'},
+  {id:'res',pt:'Em operação com ressalvas',fr:'Remise en service avec réserves',court:'Ressalvas',courtFr:'Réserves',classe:'p-warn'},
+  {id:'arr',pt:'Máquina parada',fr:'Machine à l\'arrêt',court:'Parada',courtFr:'À l\'arrêt',classe:'p-ko'}
 ];
 const RESULTATS={c:{pt:'Conforme',fr:'Conforme'},n:{pt:'Não conforme',fr:'Non conforme'},a:{pt:'Não se aplica',fr:'Sans objet'}};
 const PHOTOS={av:{pt:'Antes',fr:'Avant'},ap:{pt:'Depois',fr:'Après'}};
-const ETAPES=['Atendimento','Serviços','Medições','Fotos','Assinatura'];
-const CLES={bons:'ce-bons-v3',brouillon:'ce-brouillon-v3',resolues:'ce-resolues-v3',usuario:'ce-usuario-v3'};
+const ETAPES={pt:['Atendimento','Serviços','Medições','Fotos','Assinatura'],fr:['Intervention','Travaux','Mesures','Photos','Signature']};
+const CLES={bons:'ce-bons-v4',brouillon:'ce-brouillon-v4',resolues:'ce-resolues-v4',usuario:'ce-usuario-v4',machines:'ce-machines-v4',langue:'ce-langue-v4'};
 const SIGNATURES={'sig-t':'sigTech','sig-c':'signature'};
 const DOC={
-  fr:{titre:'Bon d\'intervention',client:'Client',site:'Site',machine:'Machine',type:'Type',date:'Date',commande:'N° de commande',etat:'État à la sortie',suite:'Suite du bon',arret:'Arrêt machine',arretCours:'En cours depuis',
+  fr:{titre:'Bon d\'intervention',client:'Client',site:'Site',machine:'Machine',equipement:'Marque / modèle',serie:'N° de série',carac:'Caractéristiques',type:'Type',date:'Date',commande:'N° de commande',etat:'État à la sortie',suite:'Suite du bon',arret:'Arrêt machine',arretCours:'En cours depuis',
     equipe:'Intervenants',tech:'Technicien',arrivee:'Arrivée',depart:'Départ',surSite:'Sur site',trajet:'Trajet',total:'Total',constat:'Constat',travaux:'Travaux réalisés',pieces:'Pièces utilisées',design:'Désignation',qte:'Qté',
     mesures:'Mesures et contrôles',controle:'Contrôle',valeur:'Valeur',resultat:'Résultat',instrument:'Instrument utilisé',photos:'Photos',reserves:'Réserves du client',suivi:'Travaux à prévoir',signatures:'Signatures',pour:'Pour',pourClient:'Pour le client',signeLe:'Signé le',exemple:'Exemple non signé',demo:'Document de démonstration, sans valeur contractuelle',locale:'fr-FR'},
-  pt:{titre:'Ordem de serviço',client:'Cliente',site:'Local',machine:'Máquina',type:'Tipo',date:'Data',commande:'Nº do pedido',etat:'Estado na saída',suite:'Retorno da ordem',arret:'Máquina parada',arretCours:'Parada desde',
+  pt:{titre:'Ordem de serviço',client:'Cliente',site:'Local',machine:'Máquina',equipement:'Fabricante / modelo',serie:'Nº de série',carac:'Características',type:'Tipo',date:'Data',commande:'Nº do pedido',etat:'Estado na saída',suite:'Retorno da ordem',arret:'Máquina parada',arretCours:'Parada desde',
     equipe:'Equipe',tech:'Técnico',arrivee:'Chegada',depart:'Saída',surSite:'No local',trajet:'Deslocamento',total:'Total',constat:'Situação na chegada',travaux:'Serviços realizados',pieces:'Peças usadas',design:'Descrição',qte:'Qtd.',
     mesures:'Medições e verificações',controle:'Verificação',valeur:'Valor',resultat:'Resultado',instrument:'Instrumento usado',photos:'Fotos',reserves:'Ressalvas do cliente',suivi:'Serviços pendentes',signatures:'Assinaturas',pour:'Pela',pourClient:'Pelo cliente',signeLe:'Assinado em',exemple:'Exemplo sem assinatura',demo:'Documento de demonstração, sem valor contratual',locale:'pt-BR'}
+};
+const FR={"Início": "Accueil", "Ordens": "Bons", "Máquinas": "Machines", "+ Nova ordem": "+ Nouveau bon", "Protótipo · dados fictícios": "Prototype · données fictives", "Ordens<br>de serviço": "Bons<br>d'intervention", "Olá": "Bonjour", "Entrando como": "Connecté en tant que", "Visitas hoje": "Visites aujourd'hui", "Pendências": "En attente", "Ordens em 30 dias": "Bons sur 30 jours", "Horas em 30 dias": "Heures sur 30 jours", "+ Nova ordem de serviço": "+ Nouveau bon d'intervention", "Rascunho": "Brouillon", "Retomar": "Reprendre", "Agenda de hoje": "Agenda du jour", "Criar retorno": "Créer un retour", "Marcar como resolvida": "Marquer comme résolu", "Nenhuma pendência em aberto.": "Aucun point en attente.", "Últimas ordens": "Derniers bons", "Ver todas": "Tout voir", "Reiniciar a demonstração": "Réinitialiser la démonstration", "Nenhuma ordem encontrada.": "Aucun bon trouvé.", "Ordens de serviço": "Bons d'intervention", "protótipo": "prototype", "Todo o histórico, por cliente, máquina ou número.": "Tout l'historique, par client, machine ou numéro.", "Buscar ordens": "Rechercher un bon", "Buscar cliente, máquina ou número": "Client, machine ou numéro", "Filtrar por estado": "Filtrer par état", "Todas": "Tous", "Sem dados de fabricante": "Sans données fabricant", "Completa": "Complète", " de ": " sur ", "Nenhuma máquina encontrada.": "Aucune machine trouvée.", "Cada ficha preenchida fica aqui e reaparece nas próximas ordens.": "Chaque fiche remplie reste ici et revient dans les prochains bons.", "Buscar máquinas": "Rechercher une machine", "Buscar máquina, cliente ou fabricante": "Machine, client ou fabricant", "Enviar ficha técnica": "Envoyer une fiche technique", "Confira a ficha": "Vérifiez la fiche", "Leitura simulada.": "Lecture simulée.", "Neste protótipo os valores abaixo são de exemplo. Na versão real, eles virão do arquivo enviado. Corrija o que precisar antes de salvar.": "Dans ce prototype, les valeurs ci-dessous sont des exemples. Dans la version réelle, elles viendront du fichier envoyé. Corrigez ce qu'il faut avant d'enregistrer.", "Salvo automaticamente": "Enregistré automatiquement", "Enviar ficha": "Envoyer une fiche", "Máquina": "Machine", "Cliente": "Client", "Escolha um cliente": "Choisir un client", "Nome da máquina": "Nom de la machine", "Ficha técnica": "Fiche technique", "campos": "champs", "Arquivos da ficha": "Fichiers de la fiche", "Histórico da máquina": "Historique de la machine", "Conferir ficha": "Vérifier la fiche", "Cancelar": "Annuler", "Confirmar e salvar": "Confirmer et enregistrer", "Lendo a ficha": "Lecture de la fiche", "Remover": "Retirer", "Não foi possível ler esta imagem.": "Impossible de lire cette image.", "Envie uma foto ou um PDF.": "Envoyez une photo ou un PDF.", "Informe o cliente e o nome da máquina.": "Indiquez le client et le nom de la machine.", "Ficha salva na máquina.": "Fiche enregistrée sur la machine.", "Ainda parada": "Toujours à l'arrêt", "Máquina nova": "Nouvelle machine", "O que você preencher aqui entra sozinho na ficha da máquina ao validar a ordem.": "Ce que vous remplissez ici rejoint automatiquement la fiche machine à la validation du bon.", "Retorno da ordem": "Suite du bon", "Cliente e máquina": "Client et machine", "Local": "Site", "Máquina ou equipamento": "Machine ou équipement", "Ex.: Presse P-12": "Ex. : Presse P-12", "Serviço": "Intervention", "Tipo de serviço": "Type d'intervention", "Escolha um tipo": "Choisir un type", "Nº do pedido": "N° de commande", "Ex.: CMD-4471": "Ex. : CMD-4471", "Data": "Date", "Equipe e horas": "Équipe et heures", "Técnico": "Technicien", "Chegada": "Arrivée", "Saída": "Départ", "Deslocamento (minutos)": "Trajet (minutes)", "Ex.: 35": "Ex. : 35", "+ Adicionar técnico": "+ Ajouter un technicien", "No local": "Sur site", "Deslocamento": "Trajet", "Total": "Total", "O que foi feito": "Travaux effectués", "Escreva em francês: o texto vai para o relatório exatamente como digitado.": "Le texte apparaît sur le bon exactement comme il est saisi.", "Situação na chegada": "Constat à l'arrivée", "O que você encontrou no local": "Ce que vous avez trouvé sur place", "Serviços realizados": "Travaux réalisés", "Peças usadas": "Pièces utilisées", "Descrição da peça": "Désignation de la pièce", "Descrição": "Désignation", "Quantidade da peça": "Quantité de la pièce", "Remover a peça": "Retirer la pièce", "+ Adicionar peça": "+ Ajouter une pièce", "Medições": "Mesures", "Preencha somente o que foi verificado.": "Renseignez uniquement ce qui a été contrôlé.", "Instrumento usado": "Instrument utilisé", "Modelo e número de série": "Modèle et numéro de série", "Valor": "Valeur", "Estado na saída": "État à la sortie", "O que falta fazer": "Reste à faire", "Vira uma pendência no início do app": "Apparaît en attente sur l'accueil", "Tempo de máquina parada": "Temps d'arrêt machine", "Parou às": "Arrêtée à", "Voltou às": "Reprise à", "Tempo parada": "Temps d'arrêt", "Fotos do serviço": "Photos de l'intervention", "Opcional. As fotos são reduzidas antes de entrar na ordem.": "Facultatif. Les photos sont réduites avant d'être ajoutées au bon.", "+ Foto antes": "+ Photo avant", "+ Foto depois": "+ Photo après", "Foto": "Photo", "Remover a foto": "Retirer la photo", "Legenda": "Légende", "Legenda da foto": "Légende de la photo", "Nenhuma foto por enquanto.": "Aucune photo pour le moment.", "Total de horas": "Total des heures", "Estado": "État", "Assinaturas": "Signatures", "Ressalvas do cliente": "Réserves du client", "Opcional": "Facultatif", "Assinatura de": "Signature de", "Limpar": "Effacer", "Nome de quem assina pelo cliente": "Nom du signataire client", "Assinatura do cliente": "Signature du client", "Nova ordem": "Nouveau bon", "Salvamento automático": "Enregistrement automatique", "Voltar": "Retour", "Próximo": "Suivant", "Validar ordem": "Valider le bon", "Escolha um cliente.": "Choisissez un client.", "Informe a máquina ou o equipamento.": "Indiquez la machine ou l'équipement.", "Escolha o tipo de serviço.": "Choisissez le type d'intervention.", "Informe a data.": "Indiquez la date.", "Informe a chegada e a saída de cada técnico.": "Indiquez l'arrivée et le départ de chaque technicien.", "Descreva os serviços realizados.": "Décrivez les travaux réalisés.", "Informe o estado da máquina na saída.": "Indiquez l'état de la machine à la sortie.", "Informe o que falta fazer.": "Indiquez ce qui reste à faire.", "Informe quando a máquina parou.": "Indiquez l'heure d'arrêt de la machine.", "A assinatura do técnico é obrigatória.": "La signature du technicien est requise.", "Informe o nome de quem assina pelo cliente.": "Indiquez le nom du signataire client.", "A assinatura do cliente é obrigatória.": "La signature du client est requise.", "Ordem salva sem as fotos: memória do navegador cheia.": "Bon enregistré sans ses photos : mémoire du navigateur pleine.", "Memória do navegador cheia: os anexos não foram salvos.": "Mémoire du navigateur pleine : les fichiers n'ont pas été enregistrés.", "Ordem validada. A ficha da máquina foi atualizada.": "Bon validé. La fiche machine a été mise à jour.", "Salvar em PDF": "Enregistrer en PDF", "Voltar ao início": "Retour à l'accueil", "Idioma do documento": "Langue du document", "Pendência marcada como resolvida.": "Point marqué comme résolu.", "Apagar as ordens, as fichas alteradas e o rascunho desta demonstração?": "Effacer les bons, les fiches modifiées et le brouillon de cette démonstration ?", "Idioma": "Langue"};
+const ic=p=>`<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${p}</svg>`;
+const ICONES={
+  accueil:ic('<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>'),
+  ordens:ic('<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/>'),
+  machines:ic('<path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.8-3.8a6 6 0 01-7.9 7.9l-6.9 6.9a2.1 2.1 0 01-3-3l6.9-6.9a6 6 0 017.9-7.9z"/>'),
+  envoi:ic('<path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v4h16v-4"/>')
 };
 
 const $=s=>document.querySelector(s);
@@ -269,20 +380,22 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const iso=d=>{const z=new Date(d.getTime()-d.getTimezoneOffset()*6e4);return z.toISOString().slice(0,10);};
 const ilYa=n=>{const d=new Date();d.setDate(d.getDate()-n);return iso(d);};
 const dateLoc=(s,loc)=>s?new Date(s+'T12:00:00').toLocaleDateString(loc,{day:'2-digit',month:'long',year:'numeric'}):'';
-const clientDe=id=>CLIENTS.find(c=>c.id===id)||{nom:'',site:'',machines:[]};
+const clientDe=id=>CLIENTS.find(c=>c.id===id)||{nom:'',site:''};
 const typeDe=id=>TYPES.find(t=>t.id===id)||{pt:'',fr:''};
 const etatDe=id=>ETATS.find(e=>e.id===id)||ETATS[0];
+const norme=s=>String(s||'').trim().toLowerCase();
 
 function lire(k,defaut){try{const v=localStorage.getItem(k);return v?JSON.parse(v):defaut;}catch(e){return defaut;}}
 function ecrire(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true;}catch(e){return false;}}
 function effacer(k){try{localStorage.removeItem(k);}catch(e){}}
+const copieBase=()=>JSON.parse(JSON.stringify(MACHINES_BASE));
 
 const EXEMPLES=[
-  {id:'ex2',numero:'OS-2026-0042',exemple:true,client:'c1',machine:'Convoyeur C-04',type:'cur',pedido:'CMD-4471',date:ilYa(6),
+  {id:'ex2',numero:'OS-2026-0042',exemple:true,client:'c1',machine:'Convoyeur C-04',fiche:MACHINES_BASE[2].fiche,type:'cur',pedido:'CMD-4471',date:ilYa(6),
    equipe:[{tech:'Reubler Costa',arrivee:'09:15',depart:'11:45',trajet:'35'}],arretIni:'08:40',arretFim:'11:20',
    constat:'Arrêt du convoyeur en cours de production. Disjoncteur moteur déclenché.',travaux:'Recherche de panne, remplacement du contacteur KM2, contrôle du moteur puis essais en charge.',
    pieces:[{nom:'Contacteur 25 A',qte:'1'}],instrument:INSTRUMENTOS[0],mesures:[{v:'52',s:'c'},{v:'',s:''},{v:'398',s:'c'},{v:'',s:''},{v:'',s:'c'}],etat:'ok',pendencia:'',photos:[],reserves:'',signataire:'Responsable maintenance (exemple)',sigTech:'',signature:'',origem:''},
-  {id:'ex1',numero:'OS-2026-0041',exemple:true,client:'c2',machine:'Injecteuse I-07',type:'prev',pedido:'',date:ilYa(19),
+  {id:'ex1',numero:'OS-2026-0041',exemple:true,client:'c2',machine:'Injecteuse I-07',fiche:MACHINES_BASE[4].fiche,type:'prev',pedido:'',date:ilYa(19),
    equipe:[{tech:'Reubler Costa',arrivee:'08:00',depart:'12:00',trajet:'40'},{tech:'Technicien Démo',arrivee:'08:00',depart:'11:00',trajet:'40'}],arretIni:'',arretFim:'',
    constat:'Visite semestrielle prévue au contrat.',travaux:'Dépoussiérage de l\'armoire, resserrage des borniers, contrôle thermographique.',
    pieces:[],instrument:INSTRUMENTOS[2],mesures:[{v:'',s:''},{v:'',s:''},{v:'401',s:'c'},{v:'64',s:'n'},{v:'',s:'c'}],etat:'res',pendencia:'Reprendre l\'échauffement sur le départ Q3.',photos:[],reserves:'À traiter avant la prochaine visite.',signataire:'Chef d\'atelier (exemple)',sigTech:'',signature:'',origem:''}
@@ -291,20 +404,34 @@ const EXEMPLES=[
 let bons=lire(CLES.bons,[]);
 let resolues=lire(CLES.resolues,{});
 let usuario=lire(CLES.usuario,TECHS[0]);
+let machines=lire(CLES.machines,null)||copieBase();
 let d=null;              /* bon en cours de saisie */
+let revue=null;          /* fiche importée en attente de confirmation */
 let vue={nom:'accueil'};
 let langueDoc='fr';
+let langue=lire(CLES.langue,'pt');
+const tr=s=>langue==='fr'?(FR[s]??s):s;
+const t=tr;
+const loc=()=>langue==='fr'?'fr-FR':'pt-BR';
+const court=e=>langue==='fr'?e.courtFr:e.court;
+let filtre='';
+let importCible=null;
 let toastT;
 
 function tousLesBons(){return [...bons,...EXEMPLES];}
 function pendencias(){return tousLesBons().filter(b=>b.etat!=='ok'&&!resolues[b.id]);}
+function machineDe(client,nom){return machines.find(m=>m.client===client&&norme(m.nom)===norme(nom));}
+function bonsDe(m){return tousLesBons().filter(b=>b.client===m.client&&norme(b.machine)===norme(m.nom));}
+function nbRemplis(f){return CHAMPS_FICHE.filter(c=>c.k!=='notes'&&String(f[c.k]||'').trim()).length;}
+function sauverMachines(){if(!ecrire(CLES.machines,machines))toast(t('Memória do navegador cheia: os anexos não foram salvos.'));}
 function prochainNumero(){
   const max=tousLesBons().reduce((m,b)=>Math.max(m,+b.numero.split('-')[2]||0),0);
   return 'OS-'+new Date().getFullYear()+'-'+String(max+1).padStart(4,'0');
 }
 function ligneEquipe(tech){return {tech,arrivee:'',depart:'',trajet:''};}
+function ficheDe(client,nom){const m=machineDe(client,nom);return m?{...m.fiche}:{};}
 function nouveauBon(pre={}){
-  return {id:'b'+Date.now(),client:'',machine:'',type:'',pedido:'',date:iso(new Date()),equipe:[ligneEquipe(usuario)],arretIni:'',arretFim:'',constat:'',travaux:'',
+  return {id:'b'+Date.now(),client:'',machine:'',fiche:ficheDe(pre.client,pre.machine),ficheOuverte:false,type:'',pedido:'',date:iso(new Date()),equipe:[ligneEquipe(usuario)],arretIni:'',arretFim:'',constat:'',travaux:'',
     pieces:[{nom:'',qte:'1'}],instrument:'',mesures:MESURES.map(()=>({v:'',s:''})),etat:'',pendencia:'',photos:[],reserves:'',signataire:'',sigTech:'',signature:'',origem:'',...pre};
 }
 function sauverBrouillon(){
@@ -328,51 +455,193 @@ function toast(t){
   const e=document.createElement('div');e.className='toast no-print';e.setAttribute('role','status');e.textContent=t;
   document.body.append(e);clearTimeout(toastT);toastT=setTimeout(()=>e.remove(),3200);
 }
-function logo(){return `<img class="logo" src="${LOGO}" alt="Costa Energies" onerror="this.outerHTML='<span class=&quot;logotxt&quot;>Costa <span>Energies</span></span>'">`;}
-function haut(t){return `<header class="top no-print">${logo()}<div class="top-t">${t}</div></header><div class="demo no-print">Protótipo · dados fictícios</div>`;}
+function logo(){return `<img class="logo" src="${LOGO}" alt="Costa Energies" >`;}
 function aller(v,garderDefilement){
   vue=v;render();
   if(!garderDefilement){window.scrollTo(0,0);$('#focus')?.focus({preventScroll:true});}
 }
 
-/* ---------- Accueil ---------- */
-function vueAccueil(){
-  const br=lire(CLES.brouillon,null),pend=pendencias();
-  return `${haut('Ordens<br>de serviço')}
-  <main>
-    <h1 class="hello" id="focus" tabindex="-1">Olá, ${esc(usuario.split(' ')[0])}</h1>
-    <p class="sub">${esc(new Date().toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'}))}</p>
-    <div class="perfil"><label for="usuario">Entrando como</label>
-      <select id="usuario">${TECHS.map(t=>`<option${t===usuario?' selected':''}>${esc(t)}</option>`).join('')}</select></div>
-    <button class="btn btn-p btn-full" data-a="nouveau">+ Nova ordem de serviço</button>
-    ${br?`<div class="reprendre"><span>Rascunho${br.machine?' : '+esc(br.machine):''}</span><button data-a="reprendre">Retomar</button></div>`:''}
-    <h2 class="titre-s">Hoje</h2>
-    ${PLANNING.map((p,i)=>`<button class="ligne" data-a="planifie" data-i="${i}">
-      <span class="heure">${esc(p.heure)}</span>
-      <span class="l-c"><span class="l-t">${esc(clientDe(p.client).nom)}</span><span class="l-s">${esc(p.machine)} · ${esc(typeDe(p.type).pt)}</span></span>
-      <span class="fleche" aria-hidden="true">›</span></button>`).join('')}
-    <h2 class="titre-s">Pendências${pend.length?` <span class="compte">${pend.length}</span>`:''}</h2>
-    ${pend.length?pend.map(b=>`<div class="pend">
-      <span class="l-t">${esc(b.machine)}</span>
-      <span class="l-s">${esc(clientDe(b.client).nom)} · ${esc(b.numero)}</span>
-      <p class="pend-t">${esc(b.pendencia)}</p>
-      <div class="pend-a"><button class="btn btn-s btn-mini" data-a="pend-retorno" data-id="${esc(b.id)}">Criar retorno</button>
-      <button class="lien" data-a="pend-resolver" data-id="${esc(b.id)}">Marcar como resolvida</button></div>
-    </div>`).join(''):'<p class="vide">Nenhuma pendência em aberto.</p>'}
-    <h2 class="titre-s">Histórico</h2>
-    <label class="leg" for="rech">Buscar cliente, máquina ou número</label>
-    <input id="rech" type="search" placeholder="Ex.: P-12" autocomplete="off">
-    <div id="hist" style="margin-top:10px">${listeHist('')}</div>
-    <div class="pied"><button class="lien" data-a="reset">Reiniciar a demonstração</button></div>
-  </main>`;
+/* ---------- Estrutura ---------- */
+const NAV=[['accueil','Início'],['ordens','Ordens'],['machines','Máquinas']];
+function ongletActif(){return {fiche:'machines',lecture:'machines',bon:'ordens'}[vue.nom]||vue.nom;}
+function choixLangue(){
+  return `<div class="langue" role="group" aria-label="${t('Idioma')}">${['pt','fr'].map(l=>`<button data-a="langue" data-l="${l}" aria-pressed="${langue===l}" aria-label="${l==='pt'?'Português':'Français'}">${l.toUpperCase()}</button>`).join('')}</div>`;
 }
-function listeHist(q){
-  q=q.trim().toLowerCase();
-  const l=tousLesBons().filter(b=>!q||[clientDe(b.client).nom,b.machine,b.numero,b.pedido,typeDe(b.type).pt,typeDe(b.type).fr].join(' ').toLowerCase().includes(q));
-  if(!l.length)return '<p class="vide">Nenhuma ordem encontrada.</p>';
+function coque(titre,contenu,tabs){
+  const a=ongletActif();
+  const boutons=NAV.map(([v,l])=>`<button data-a="nav" data-v="${v}"${a===v?' aria-current="page"':''}>${ICONES[v]}${t(l)}</button>`).join('');
+  return `<aside class="side no-print">${logo()}<nav class="nav-l" aria-label="Menu">${boutons}</nav><button class="btn btn-p btn-full" data-a="nouveau">${t('+ Nova ordem')}</button>${choixLangue()}</aside>
+  <div class="col${tabs?' com-tabs':''}">
+    <header class="top no-print">${logo()}<div class="top-t">${titre}</div>${choixLangue()}</header>
+    <div class="demo no-print">${t('Protótipo · dados fictícios')}</div>
+    ${contenu}
+  </div>
+  ${tabs?`<nav class="tabs no-print" aria-label="Menu">${boutons}</nav>`:''}
+  <input id="fichier-f" class="no-print" type="file" accept="image/*,application/pdf" hidden>`;
+}
+
+/* ---------- Início ---------- */
+function indicateurs(){
+  const limite=ilYa(30),rec=tousLesBons().filter(b=>b.date>=limite);
+  return {hoje:PLANNING.length,pend:pendencias().length,ordens:rec.length,horas:rec.reduce((s,b)=>s+totaux(b.equipe).total,0)};
+}
+function vueAccueil(){
+  const br=lire(CLES.brouillon,null),pend=pendencias(),k=indicateurs();
+  return coque(t('Ordens<br>de serviço'),`<section class="hero"><div class="hero-i">
+      <div><h1 id="focus" tabindex="-1">${t('Olá')}, ${esc(usuario.split(' ')[0])}</h1>
+      <p>${esc(new Date().toLocaleDateString(loc(),{weekday:'long',day:'numeric',month:'long'}))}</p></div>
+      <div class="perfil"><label for="usuario">${t('Entrando como')}</label>
+      <select id="usuario">${TECHS.map(t=>`<option${t===usuario?' selected':''}>${esc(t)}</option>`).join('')}</select></div>
+    </div></section>
+  <main><div class="conteudo">
+    <div class="kpis">
+      <div class="kpi"><b>${k.hoje}</b><span>${t('Visitas hoje')}</span></div>
+      <div class="kpi${k.pend?' alerte':''}"><b>${k.pend}</b><span>${t('Pendências')}</span></div>
+      <div class="kpi"><b>${k.ordens}</b><span>${t('Ordens em 30 dias')}</span></div>
+      <div class="kpi"><b>${heures(k.horas)}</b><span>${t('Horas em 30 dias')}</span></div>
+    </div>
+    <div class="cta-m"><button class="btn btn-p btn-full" data-a="nouveau">${t('+ Nova ordem de serviço')}</button></div>
+    ${br?`<div class="reprendre"><span>${t('Rascunho')}${br.machine?': '+esc(br.machine):''}</span><button data-a="reprendre">${t('Retomar')}</button></div>`:''}
+    <div class="colunas">
+      <section><div class="sec-h"><h2>${t('Agenda de hoje')}</h2></div>
+      ${PLANNING.map((p,i)=>`<button class="ligne" data-a="planifie" data-i="${i}">
+        <span class="heure">${esc(p.heure)}</span>
+        <span class="l-c"><span class="l-t">${esc(clientDe(p.client).nom)}</span><span class="l-s">${esc(p.machine)} · ${esc(typeDe(p.type)[langue])}</span></span>
+        <span class="fleche" aria-hidden="true">›</span></button>`).join('')}</section>
+      <section><div class="sec-h"><h2>${t('Pendências')}${pend.length?` <span class="compte">${pend.length}</span>`:''}</h2></div>
+      ${pend.length?pend.map(b=>`<div class="pend">
+        <span class="l-t">${esc(b.machine)}</span>
+        <span class="l-s">${esc(clientDe(b.client).nom)} · ${esc(b.numero)}</span>
+        <p class="pend-t">${esc(b.pendencia)}</p>
+        <div class="pend-a"><button class="btn btn-s btn-mini" data-a="pend-retorno" data-id="${esc(b.id)}">${t('Criar retorno')}</button>
+        <button class="lien" data-a="pend-resolver" data-id="${esc(b.id)}">${t('Marcar como resolvida')}</button></div>
+      </div>`).join(''):`<p class="vide">${t('Nenhuma pendência em aberto.')}</p>`}</section>
+    </div>
+    <div class="sec-h"><h2>${t('Últimas ordens')}</h2><button class="lien" data-a="nav" data-v="ordens">${t('Ver todas')}</button></div>
+    <div class="cartes">${cartesOrdem(tousLesBons().slice(0,4))}</div>
+    <div class="pied"><button class="lien" data-a="reset">${t('Reiniciar a demonstração')}</button></div>
+  </div></main>`,true);
+}
+function cartesOrdem(l){
+  if(!l.length)return `<p class="vide">${t('Nenhuma ordem encontrada.')}</p>`;
   return l.map(b=>{const e=etatDe(b.etat);return `<button class="ligne" data-a="voir" data-id="${esc(b.id)}">
-    <span class="l-c"><span class="l-t">${esc(b.machine)}</span><span class="l-s">${esc(clientDe(b.client).nom)} · ${esc(dateLoc(b.date,'pt-BR'))}</span><span class="l-s">${esc(b.numero)}</span></span>
-    <span class="pastille ${e.classe}">${e.court}</span></button>`;}).join('');
+    <span class="l-c"><span class="l-t">${esc(b.machine)}</span><span class="l-s">${esc(clientDe(b.client).nom)} · ${esc(dateLoc(b.date,loc()))}</span><span class="l-s">${esc(b.numero)}</span></span>
+    <span class="pastille ${e.classe}">${court(e)}</span></button>`;}).join('');
+}
+
+/* ---------- Ordens ---------- */
+function ordensFiltrees(){
+  const q=norme($('#rech')?.value);
+  return tousLesBons().filter(b=>(!filtre||b.etat===filtre)&&(!q||norme([clientDe(b.client).nom,b.machine,b.numero,b.pedido,typeDe(b.type).pt,typeDe(b.type).fr].join(' ')).includes(q)));
+}
+function vueOrdens(){
+  return coque(t('Ordens'),`<main><div class="conteudo">
+    <h1 class="h-p" id="focus" tabindex="-1">${t('Ordens de serviço')}</h1>
+    <p class="sub">${t('Todo o histórico, por cliente, máquina ou número.')}</p>
+    <div class="outils">
+      <input id="rech" type="search" aria-label="${t('Buscar ordens')}" placeholder="${t('Buscar cliente, máquina ou número')}" autocomplete="off">
+      <div class="chips" role="group" aria-label="${t('Filtrar por estado')}">
+        <button data-a="filtre" data-v="" aria-pressed="${filtre===''}">${t('Todas')}</button>
+        ${ETATS.map(e=>`<button data-a="filtre" data-v="${e.id}" aria-pressed="${filtre===e.id}">${court(e)}</button>`).join('')}
+      </div>
+    </div>
+    <div class="cartes" id="hist">${cartesOrdem(tousLesBons().filter(b=>!filtre||b.etat===filtre))}</div>
+  </div></main>`,true);
+}
+
+/* ---------- Máquinas e ficha técnica ---------- */
+function listeMachines(q){
+  q=norme(q);
+  const groupes=CLIENTS.map(c=>{
+    const l=machines.filter(m=>m.client===c.id&&(!q||norme(m.nom+' '+c.nom+' '+Object.values(m.fiche).join(' ')).includes(q)));
+    if(!l.length)return '';
+    return `<h2 class="groupe">${esc(c.nom)}</h2><div class="cartes">${l.map(m=>{
+      const n=nbRemplis(m.fiche);
+      return `<button class="ligne" data-a="fiche" data-id="${esc(m.id)}">
+        <span class="l-c"><span class="l-t">${esc(m.nom)}</span><span class="l-s">${esc([m.fiche.marque,m.fiche.modele].filter(Boolean).join(' ')||t('Sem dados de fabricante'))}</span></span>
+        <span class="pastille ${n===NB_FICHE?'p-ok':n?'p-warn':'p-n'}">${n===NB_FICHE?t('Completa'):n+t(' de ')+NB_FICHE}</span></button>`;}).join('')}</div>`;
+  }).join('');
+  return groupes||`<p class="vide">${t('Nenhuma máquina encontrada.')}</p>`;
+}
+function vueMachines(){
+  return coque(t('Máquinas'),`<main><div class="conteudo">
+    <h1 class="h-p" id="focus" tabindex="-1">${t('Máquinas')}</h1>
+    <p class="sub">${t('Cada ficha preenchida fica aqui e reaparece nas próximas ordens.')}</p>
+    <div class="outils">
+      <input id="rech-m" type="search" aria-label="${t('Buscar máquinas')}" placeholder="${t('Buscar máquina, cliente ou fabricante')}" autocomplete="off">
+      <button class="btn btn-p" data-a="importer">${ICONES.envoi}${t('Enviar ficha técnica')}</button>
+    </div>
+    <div id="mlist">${listeMachines('')}</div>
+  </div></main>`,true);
+}
+function grilleFiche(f,attr){
+  return `<div class="fiche-g">${CHAMPS_FICHE.map(c=>`<div class="champ${c.plein?' plein':''}"><label for="${attr}-${c.k}">${c[langue]}</label><input id="${attr}-${c.k}" data-${attr}="${c.k}" value="${esc(f[c.k])}" autocomplete="off"></div>`).join('')}</div>`;
+}
+function cibleFiche(){return revue?revue.m:machines.find(m=>m.id===vue.id);}
+function vueFiche(){
+  const m=cibleFiche();if(!m)return vueMachines();
+  const c=clientDe(m.client),n=nbRemplis(m.fiche),hist=revue?[]:bonsDe(m);
+  const anexos=m.anexos.map((a,i)=>`<div class="anexo">${a.src?`<img src="${esc(a.src)}" alt="">`:'<div class="doc-ic">PDF</div>'}<span>${esc(a.nom)}</span>${revue?'':`<button class="lien lien-ko" data-a="suppr-anexo" data-i="${i}">${t('Remover')}</button>`}</div>`).join('');
+  const tete=revue
+    ?`<h1 class="h-p" id="focus" tabindex="-1">${t('Confira a ficha')}</h1>
+      <div class="alerte-sim"><b>${t('Leitura simulada.')}</b> ${t('Neste protótipo os valores abaixo são de exemplo. Na versão real, eles virão do arquivo enviado. Corrija o que precisar antes de salvar.')}</div>`
+    :`<div class="auto"><h1 class="h-p" id="focus" tabindex="-1">${esc(m.nom)}</h1><small>${t('Salvo automaticamente')}</small></div>
+      <p class="sub">${esc(c.nom)} · ${esc(c.site)}</p>
+      <div class="ph-btn"><button class="btn btn-p" data-a="ordem-machine">${t('+ Nova ordem')}</button><button class="btn btn-s" data-a="importer" data-id="${esc(m.id)}">${ICONES.envoi}${t('Enviar ficha')}</button></div>`;
+  const principal=`${revue&&revue.nouveau?`<section class="bloc"><h2>${t('Máquina')}</h2>
+      <div class="champ"><label for="rv-client">${t('Cliente')} <span class="req">*</span></label><select id="rv-client" data-rv="client"><option value="">${t('Escolha um cliente')}</option>${CLIENTS.map(o=>`<option value="${o.id}"${o.id===m.client?' selected':''}>${esc(o.nom)}</option>`).join('')}</select></div>
+      <div class="champ"><label for="rv-nom">${t('Nome da máquina')} <span class="req">*</span></label><input id="rv-nom" data-rv="nom" value="${esc(m.nom)}" autocomplete="off"></div>
+    </section>`:''}
+    <section class="bloc"><div class="auto"><h2>${t('Ficha técnica')}</h2><small>${n}${t(' de ')}${NB_FICHE} ${t('campos')}</small></div>${grilleFiche(m.fiche,'fi')}</section>
+    ${anexos?`<section class="bloc"><h2>${t('Arquivos da ficha')}</h2>${anexos}</section>`:''}
+    <div class="err" id="err" role="alert"></div>
+    ${revue?'':`<div class="sec-h"><h2>${t('Histórico da máquina')}</h2></div>${cartesOrdem(hist)}`}`;
+  return coque(t(revue?'Conferir ficha':'Ficha técnica'),`<main><div class="form-largura">${tete}${principal}</div></main>
+    ${revue?`<div class="bas"><div class="bas-i"><button class="btn btn-s" data-a="fiche-annule">${t('Cancelar')}</button><button class="btn btn-p" data-a="fiche-ok">${t('Confirmar e salvar')}</button></div></div>`
+      :''}`,!revue);
+}
+function vueLecture(){
+  return coque(t('Ficha técnica'),`<main><div class="lecture" role="status"><div class="roue"></div><h1 class="h-p" id="focus" tabindex="-1">${t('Lendo a ficha')}</h1><p class="sub">${esc(vue.fichier)}</p></div></main>`,false);
+}
+function reduireImage(fichier){
+  return new Promise((ok,ko)=>{
+    const url=URL.createObjectURL(fichier),im=new Image();
+    im.onload=()=>{
+      const k=Math.min(1,1000/Math.max(im.width,im.height)),c=document.createElement('canvas');
+      c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);
+      c.getContext('2d').drawImage(im,0,0,c.width,c.height);
+      URL.revokeObjectURL(url);ok(c.toDataURL('image/jpeg',.72));
+    };
+    im.onerror=()=>{URL.revokeObjectURL(url);ko();};
+    im.src=url;
+  });
+}
+async function importerFiche(fichier){
+  const cible=machines.find(m=>m.id===importCible);
+  let src='';
+  if(fichier.type.startsWith('image/')){
+    try{src=await reduireImage(fichier);}catch(e){toast(t('Não foi possível ler esta imagem.'));return;}
+  }else if(fichier.type!=='application/pdf'){toast(t('Envie uma foto ou um PDF.'));return;}
+  aller({nom:'lecture',fichier:fichier.name});
+  setTimeout(()=>{
+    const anexo={nom:fichier.name,src};
+    const fiche={...LECTURE_SIMULEE,...(cible?Object.fromEntries(Object.entries(cible.fiche).filter(([,v])=>String(v).trim())):{})};
+    revue=cible?{nouveau:false,id:cible.id,m:{...cible,fiche,anexos:[...cible.anexos,anexo]}}
+      :{nouveau:true,m:{id:'m'+Date.now(),client:'',nom:'',fiche,anexos:[anexo]}};
+    aller({nom:'fiche'});
+  },1200);
+}
+function confirmerFiche(){
+  const m=revue.m;
+  if(revue.nouveau){
+    if(!m.client||!m.nom.trim()){$('#err').textContent=t('Informe o cliente e o nome da máquina.');$(m.client?'#rv-nom':'#rv-client').focus();return;}
+    const existe=machineDe(m.client,m.nom);
+    if(existe){existe.fiche={...existe.fiche,...m.fiche};existe.anexos.push(...m.anexos);m.id=existe.id;}
+    else machines.push(m);
+  }else machines[machines.findIndex(x=>x.id===revue.id)]=m;
+  sauverMachines();revue=null;
+  aller({nom:'fiche',id:m.id});
+  toast(t('Ficha salva na máquina.'));
 }
 
 /* ---------- Saisie ---------- */
@@ -383,132 +652,162 @@ function afficherTotaux(){
 }
 function texteArret(){
   if(!d.arretIni)return '—';
-  return d.arretFim?heures(minutes(d.arretIni,d.arretFim)):'Ainda parada';
+  return d.arretFim?heures(minutes(d.arretIni,d.arretFim)):t('Ainda parada');
+}
+function blocFiche(){
+  if(!d.client||!d.machine.trim())return '';
+  const m=machineDe(d.client,d.machine),n=nbRemplis(d.fiche);
+  return `<details class="fiche-in" id="fiche-in"${d.ficheOuverte?' open':''}>
+    <summary><span>${t('Ficha técnica')}</span><span class="pastille ${m?(n===NB_FICHE?'p-ok':'p-warn'):'p-n'}">${m?n+t(' de ')+NB_FICHE:t('Máquina nova')}</span></summary>
+    <div class="fiche-c"><p class="aide">${t('O que você preencher aqui entra sozinho na ficha da máquina ao validar a ordem.')}</p>${grilleFiche(d.fiche,'bf')}</div>
+  </details>`;
 }
 
 const etapes=[
-  ()=>{const c=clientDe(d.client),t=totaux(d.equipe),orig=tousLesBons().find(b=>b.id===d.origem);return `
-    ${orig?`<div class="calc"><span>Retorno da ordem</span><b>${esc(orig.numero)}</b></div>`:''}
-    ${champ('client','Cliente',`<select id="client" data-f="client"><option value="">Escolha um cliente</option>${CLIENTS.map(o=>`<option value="${o.id}"${o.id===d.client?' selected':''}>${esc(o.nom)}</option>`).join('')}</select>`,1)}
-    ${c.site?`<p class="aide">Local: ${esc(c.site)}</p>`:''}
-    ${champ('machine','Máquina ou equipamento',`<input id="machine" data-f="machine" list="lm" value="${esc(d.machine)}" autocomplete="off" placeholder="Ex.: Presse P-12"><datalist id="lm">${c.machines.map(m=>`<option value="${esc(m)}">`).join('')}</datalist>`,1)}
-    ${champ('type','Tipo de serviço',`<select id="type" data-f="type"><option value="">Escolha um tipo</option>${TYPES.map(o=>`<option value="${o.id}"${o.id===d.type?' selected':''}>${esc(o.pt)}</option>`).join('')}</select>`,1)}
-    ${champ('pedido','Nº do pedido do cliente',`<input id="pedido" data-f="pedido" value="${esc(d.pedido)}" autocomplete="off" placeholder="Ex.: CMD-4471">`)}
-    ${champ('date','Data',`<input id="date" type="date" data-f="date" value="${esc(d.date)}">`,1)}
-    <div class="champ"><span class="leg">Equipe e horas <span class="req">*</span></span>
+  ()=>{const c=clientDe(d.client),tot=totaux(d.equipe),orig=tousLesBons().find(b=>b.id===d.origem);return `
+    ${orig?`<div class="calc"><span>${t('Retorno da ordem')}</span><b>${esc(orig.numero)}</b></div>`:''}
+    <section class="bloc"><h2>${t('Cliente e máquina')}</h2>
+    ${champ('client',t('Cliente'),`<select id="client" data-f="client"><option value="">${t('Escolha um cliente')}</option>${CLIENTS.map(o=>`<option value="${o.id}"${o.id===d.client?' selected':''}>${esc(o.nom)}</option>`).join('')}</select>`,1)}
+    ${c.site?`<p class="aide">${t('Local')}: ${esc(c.site)}</p>`:''}
+    ${champ('machine',t('Máquina ou equipamento'),`<input id="machine" data-f="machine" list="lm" value="${esc(d.machine)}" autocomplete="off" placeholder="${t('Ex.: Presse P-12')}"><datalist id="lm">${machines.filter(m=>m.client===d.client).map(m=>`<option value="${esc(m.nom)}">`).join('')}</datalist>`,1)}
+    <div id="fiche-bloc">${blocFiche()}</div>
+    </section>
+    <section class="bloc"><h2>${t('Serviço')}</h2>
+    ${champ('type',t('Tipo de serviço'),`<select id="type" data-f="type"><option value="">${t('Escolha um tipo')}</option>${TYPES.map(o=>`<option value="${o.id}"${o.id===d.type?' selected':''}>${esc(o[langue])}</option>`).join('')}</select>`,1)}
+    <div class="deux">
+      ${champ('pedido',t('Nº do pedido'),`<input id="pedido" data-f="pedido" value="${esc(d.pedido)}" autocomplete="off" placeholder="${t('Ex.: CMD-4471')}">`)}
+      ${champ('date',t('Data'),`<input id="date" type="date" data-f="date" value="${esc(d.date)}">`,1)}
+    </div></section>
+    <section class="bloc"><h2>${t('Equipe e horas')} <span class="req">*</span></h2>
     ${d.equipe.map((e,i)=>`<div class="mes">
-      <div class="eq-h"><label class="mes-t" for="tec${i}">Técnico ${i+1}</label>${d.equipe.length>1?`<button class="lien lien-ko" data-a="suppr-tech" data-i="${i}">Remover</button>`:''}</div>
+      <div class="eq-h"><label class="mes-t" for="tec${i}">${t('Técnico')} ${i+1}</label>${d.equipe.length>1?`<button class="lien lien-ko" data-a="suppr-tech" data-i="${i}">${t('Remover')}</button>`:''}</div>
       <select id="tec${i}" data-e="${i}" data-k="tech">${TECHS.map(t=>`<option${t===e.tech?' selected':''}>${esc(t)}</option>`).join('')}</select>
       <div class="deux">
-        ${champ('chegada'+i,'Chegada',`<input id="chegada${i}" type="time" data-e="${i}" data-k="arrivee" value="${esc(e.arrivee)}">`)}
-        ${champ('saida'+i,'Saída',`<input id="saida${i}" type="time" data-e="${i}" data-k="depart" value="${esc(e.depart)}">`)}
+        ${champ('chegada'+i,t('Chegada'),`<input id="chegada${i}" type="time" data-e="${i}" data-k="arrivee" value="${esc(e.arrivee)}">`)}
+        ${champ('saida'+i,t('Saída'),`<input id="saida${i}" type="time" data-e="${i}" data-k="depart" value="${esc(e.depart)}">`)}
       </div>
-      ${champ('traj'+i,'Deslocamento (minutos)',`<input id="traj${i}" data-e="${i}" data-k="trajet" inputmode="numeric" value="${esc(e.trajet)}" placeholder="Ex.: 35">`)}
+      ${champ('traj'+i,t('Deslocamento (minutos)'),`<input id="traj${i}" data-e="${i}" data-k="trajet" inputmode="numeric" value="${esc(e.trajet)}" placeholder="${t('Ex.: 35')}">`)}
     </div>`).join('')}
-    <button class="lien" data-a="ajout-tech">+ Adicionar técnico</button></div>
+    <button class="lien" data-a="ajout-tech">${t('+ Adicionar técnico')}</button>
     <div class="totais">
-      <div><span>No local</span><b id="t-site">${heures(t.site)}</b></div>
-      <div><span>Deslocamento</span><b id="t-trajet">${heures(t.trajet)}</b></div>
-      <div><span>Total</span><b id="t-total">${heures(t.total)}</b></div>
-    </div>`;},
+      <div><span>${t('No local')}</span><b id="t-site">${heures(tot.site)}</b></div>
+      <div><span>${t('Deslocamento')}</span><b id="t-trajet">${heures(tot.trajet)}</b></div>
+      <div><span>${t('Total')}</span><b id="t-total">${heures(tot.total)}</b></div>
+    </div></section>`;},
   ()=>`
-    <p class="aide">Escreva em francês: o texto vai para o relatório exatamente como digitado.</p>
-    ${champ('constat','Situação na chegada',`<textarea id="constat" data-f="constat" placeholder="O que você encontrou no local">${esc(d.constat)}</textarea>`)}
-    ${champ('travaux','Serviços realizados',`<textarea id="travaux" data-f="travaux" placeholder="O que foi feito">${esc(d.travaux)}</textarea>`,1)}
-    <div class="champ"><span class="leg">Peças usadas</span>
+    <section class="bloc"><h2>${t('O que foi feito')}</h2>
+    <p class="aide">${t('Escreva em francês: o texto vai para o relatório exatamente como digitado.')}</p>
+    ${champ('constat',t('Situação na chegada'),`<textarea id="constat" data-f="constat" placeholder="${t('O que você encontrou no local')}">${esc(d.constat)}</textarea>`)}
+    ${champ('travaux',t('Serviços realizados'),`<textarea id="travaux" data-f="travaux" placeholder="${t('O que foi feito')}">${esc(d.travaux)}</textarea>`,1)}
+    </section>
+    <section class="bloc"><h2>${t('Peças usadas')}</h2><div class="champ">
       ${d.pieces.map((p,i)=>`<div class="piece">
-        <input aria-label="Descrição da peça ${i+1}" data-p="${i}" data-k="nom" value="${esc(p.nom)}" placeholder="Descrição">
-        <input aria-label="Quantidade da peça ${i+1}" data-p="${i}" data-k="qte" value="${esc(p.qte)}" inputmode="numeric">
-        <button class="suppr" data-a="suppr-piece" data-i="${i}" aria-label="Remover a peça ${i+1}">×</button></div>`).join('')}
-      <button class="lien" data-a="ajout-piece">+ Adicionar peça</button>
-    </div>`,
+        <input aria-label="${t('Descrição da peça')} ${i+1}" data-p="${i}" data-k="nom" value="${esc(p.nom)}" placeholder="${t('Descrição')}">
+        <input aria-label="${t('Quantidade da peça')} ${i+1}" data-p="${i}" data-k="qte" value="${esc(p.qte)}" inputmode="numeric">
+        <button class="suppr" data-a="suppr-piece" data-i="${i}" aria-label="${t('Remover a peça')} ${i+1}">×</button></div>`).join('')}
+      <button class="lien" data-a="ajout-piece">${t('+ Adicionar peça')}</button>
+    </div></section>`,
   ()=>`
-    ${champ('instrument','Instrumento usado',`<input id="instrument" data-f="instrument" list="li" value="${esc(d.instrument)}" autocomplete="off" placeholder="Modelo e número de série"><datalist id="li">${INSTRUMENTOS.map(m=>`<option value="${esc(m)}">`).join('')}</datalist>`)}
-    <p class="aide">Preencha somente o que foi verificado.</p>
+    <section class="bloc"><h2>${t('Medições')}</h2>
+    <p class="aide">${t('Preencha somente o que foi verificado.')}</p>
+    ${champ('instrument',t('Instrumento usado'),`<input id="instrument" data-f="instrument" list="li" value="${esc(d.instrument)}" autocomplete="off" placeholder="${t('Modelo e número de série')}"><datalist id="li">${INSTRUMENTOS.map(m=>`<option value="${esc(m)}">`).join('')}</datalist>`)}
     ${MESURES.map((m,i)=>{const r=d.mesures[i];return `<div class="mes">
-      <div class="mes-t" id="mt${i}">${esc(m.pt)}</div>
-      ${m.unite?`<div class="mes-v"><input aria-labelledby="mt${i}" data-m="${i}" value="${esc(r.v)}" inputmode="decimal" placeholder="Valor"><span>${esc(m.unite)}</span></div>`:''}
+      <div class="mes-t" id="mt${i}">${esc(m[langue])}</div>
+      ${m.unite?`<div class="mes-v"><input aria-labelledby="mt${i}" data-m="${i}" value="${esc(r.v)}" inputmode="decimal" placeholder="${t('Valor')}"><span>${esc(m.unite)}</span></div>`:''}
       <div class="seg" role="group" aria-labelledby="mt${i}">
-        ${Object.entries(RESULTATS).map(([k,l])=>`<button class="${k}" data-a="mesure" data-i="${i}" data-s="${k}" aria-pressed="${r.s===k}">${l.pt}</button>`).join('')}
+        ${Object.entries(RESULTATS).map(([k,l])=>`<button class="${k}" data-a="mesure" data-i="${i}" data-s="${k}" aria-pressed="${r.s===k}">${l[langue]}</button>`).join('')}
       </div></div>`;}).join('')}
-    <div class="champ"><span class="leg">Estado na saída <span class="req">*</span></span>
-      <div class="choix">${ETATS.map((e,i)=>`<button data-a="etat" data-i="${i}" aria-pressed="${d.etat===e.id}">${esc(e.pt)}</button>`).join('')}</div>
+    </section>
+    <section class="bloc"><h2>${t('Estado na saída')} <span class="req">*</span></h2><div class="champ">
+      <div class="choix">${ETATS.map((e,i)=>`<button data-a="etat" data-i="${i}" aria-pressed="${d.etat===e.id}">${esc(e[langue])}</button>`).join('')}</div>
     </div>
-    ${d.etat&&d.etat!=='ok'?champ('pendencia','O que falta fazer',`<textarea id="pendencia" data-f="pendencia" placeholder="Vira uma pendência no início do app">${esc(d.pendencia)}</textarea>`,1):''}
+    ${d.etat&&d.etat!=='ok'?champ('pendencia',t('O que falta fazer'),`<textarea id="pendencia" data-f="pendencia" placeholder="${t('Vira uma pendência no início do app')}">${esc(d.pendencia)}</textarea>`,1):''}
+    </section>
+    <section class="bloc"><h2>${t('Tempo de máquina parada')}</h2>
     <div class="deux">
-      ${champ('arretIni','Máquina parou às',`<input id="arretIni" type="time" data-f="arretIni" value="${esc(d.arretIni)}">`)}
-      ${champ('arretFim','Voltou às',`<input id="arretFim" type="time" data-f="arretFim" value="${esc(d.arretFim)}">`)}
+      ${champ('arretIni',t('Parou às'),`<input id="arretIni" type="time" data-f="arretIni" value="${esc(d.arretIni)}">`)}
+      ${champ('arretFim',t('Voltou às'),`<input id="arretFim" type="time" data-f="arretFim" value="${esc(d.arretFim)}">`)}
     </div>
-    <div class="calc"><span>Tempo de máquina parada</span><b id="t-arret">${texteArret()}</b></div>`,
+    <div class="calc"><span>${t('Tempo parada')}</span><b id="t-arret">${texteArret()}</b></div></section>`,
   ()=>`
-    <p class="aide">Opcional. As fotos são reduzidas antes de entrar na ordem.</p>
+    <section class="bloc"><h2>${t('Fotos do serviço')}</h2>
+    <p class="aide">${t('Opcional. As fotos são reduzidas antes de entrar na ordem.')}</p>
     <div class="ph-btn">
-      <button class="btn btn-s" data-a="photo" data-t="av">+ Foto antes</button>
-      <button class="btn btn-s" data-a="photo" data-t="ap">+ Foto depois</button>
+      <button class="btn btn-s" data-a="photo" data-t="av">${t('+ Foto antes')}</button>
+      <button class="btn btn-s" data-a="photo" data-t="ap">${t('+ Foto depois')}</button>
     </div>
     <input id="fichier" class="no-print" type="file" accept="image/*" hidden>
     ${d.photos.length?`<div class="ph-grille">${d.photos.map((p,i)=>`<div>
-      <div class="ph"><img src="${esc(p.src)}" alt="Foto ${esc(PHOTOS[p.t].pt)} ${i+1}"><em>${esc(PHOTOS[p.t].pt)}</em><button data-a="suppr-photo" data-i="${i}" aria-label="Remover a foto ${i+1}">×</button></div>
-      <input class="ph-leg" data-ph="${i}" value="${esc(p.leg)}" placeholder="Legenda" aria-label="Legenda da foto ${i+1}"></div>`).join('')}</div>`:'<p class="vide">Nenhuma foto por enquanto.</p>'}`,
+      <div class="ph"><img src="${esc(p.src)}" alt="${t('Foto')} ${esc(PHOTOS[p.t][langue])} ${i+1}"><em>${esc(PHOTOS[p.t][langue])}</em><button data-a="suppr-photo" data-i="${i}" aria-label="${t('Remover a foto')} ${i+1}">×</button></div>
+      <input class="ph-leg" data-ph="${i}" value="${esc(p.leg)}" placeholder="${t('Legenda')}" aria-label="${t('Legenda da foto')} ${i+1}"></div>`).join('')}</div>`:`<p class="vide">${t('Nenhuma foto por enquanto.')}</p>`}
+    </section>`,
   ()=>`
-    <div class="resume">
-      <div><span>Cliente</span><b>${esc(clientDe(d.client).nom)}</b></div>
-      <div><span>Máquina</span><b>${esc(d.machine)}</b></div>
-      <div><span>Total de horas</span><b>${heures(totaux(d.equipe).total)}</b></div>
-      <div><span>Estado</span><b>${esc(etatDe(d.etat).pt)}</b></div>
-    </div>
-    ${champ('reserves','Ressalvas do cliente',`<textarea id="reserves" data-f="reserves" placeholder="Opcional">${esc(d.reserves)}</textarea>`)}
-    <div class="champ"><div class="sig-a"><span class="leg" id="sigt">Assinatura de ${esc(d.equipe[0].tech)} <span class="req">*</span></span><button class="lien" data-a="eff-sig" data-c="sig-t">Limpar</button></div>
+    <section class="bloc resume">
+      <div><span>${t('Cliente')}</span><b>${esc(clientDe(d.client).nom)}</b></div>
+      <div><span>${t('Máquina')}</span><b>${esc(d.machine)}</b></div>
+      <div><span>${t('Total de horas')}</span><b>${heures(totaux(d.equipe).total)}</b></div>
+      <div><span>${t('Estado')}</span><b>${esc(etatDe(d.etat)[langue])}</b></div>
+    </section>
+    <section class="bloc"><h2>${t('Assinaturas')}</h2>
+    ${champ('reserves',t('Ressalvas do cliente'),`<textarea id="reserves" data-f="reserves" placeholder="${t('Opcional')}">${esc(d.reserves)}</textarea>`)}
+    <div class="champ"><div class="sig-a"><span class="leg" id="sigt">${t('Assinatura de')} ${esc(d.equipe[0].tech)} <span class="req">*</span></span><button class="lien" data-a="eff-sig" data-c="sig-t">${t('Limpar')}</button></div>
       <canvas id="sig-t" class="sig" role="img" aria-labelledby="sigt"></canvas></div>
-    ${champ('signataire','Nome de quem assina pelo cliente',`<input id="signataire" data-f="signataire" value="${esc(d.signataire)}" autocomplete="off">`,1)}
-    <div class="champ"><div class="sig-a"><span class="leg" id="sigc">Assinatura do cliente <span class="req">*</span></span><button class="lien" data-a="eff-sig" data-c="sig-c">Limpar</button></div>
-      <canvas id="sig-c" class="sig" role="img" aria-labelledby="sigc"></canvas></div>`
+    ${champ('signataire',t('Nome de quem assina pelo cliente'),`<input id="signataire" data-f="signataire" value="${esc(d.signataire)}" autocomplete="off">`,1)}
+    <div class="champ"><div class="sig-a"><span class="leg" id="sigc">${t('Assinatura do cliente')} <span class="req">*</span></span><button class="lien" data-a="eff-sig" data-c="sig-c">${t('Limpar')}</button></div>
+      <canvas id="sig-c" class="sig" role="img" aria-labelledby="sigc"></canvas></div>
+    </section>`
 ];
 
 function vueEtape(n){
-  return `${haut('Nova ordem')}
-  <div class="etapes no-print">
-    <div class="etapes-l"><span>Etapa ${n+1} de 5</span><span>Salvamento automático</span></div>
-    <div class="barre">${ETAPES.map((_,i)=>`<i class="${i<=n?'on':''}"></i>`).join('')}</div>
+  return coque(t('Nova ordem'),`<div class="etapes no-print">
+    <ol class="stepper">${ETAPES[langue].map((e,i)=>`<li class="${i<n?'fait':i===n?'actif':''}"${i===n?' aria-current="step"':''}><span>${i<n?'✓':i+1}</span>${e}</li>`).join('')}</ol>
   </div>
-  <main>
-    <h1 class="h-e" id="focus" tabindex="-1">${ETAPES[n]}</h1>
+  <main><div class="form-largura">
+    <div class="auto"><h1 class="h-e" id="focus" tabindex="-1">${ETAPES[langue][n]}</h1><small>${t('Salvamento automático')}</small></div>
     ${etapes[n]()}
     <div class="err" id="err" role="alert"></div>
-  </main>
-  <div class="bas">
-    <button class="btn btn-s" data-a="retour">${n?'Voltar':'Início'}</button>
-    <button class="btn btn-p" data-a="suite">${n<4?'Próximo':'Validar ordem'}</button>
-  </div>`;
+  </div></main>
+  <div class="bas"><div class="bas-i">
+    <button class="btn btn-s" data-a="retour">${t(n?'Voltar':'Início')}</button>
+    <button class="btn btn-p" data-a="suite">${t(n<4?'Próximo':'Validar ordem')}</button>
+  </div></div>`,false);
 }
 function erreurEtape(n){
   if(n===0){
-    if(!d.client)return ['client','Escolha um cliente.'];
-    if(!d.machine.trim())return ['machine','Informe a máquina ou o equipamento.'];
-    if(!d.type)return ['type','Escolha o tipo de serviço.'];
-    if(!d.date)return ['date','Informe a data.'];
+    if(!d.client)return ['client',t('Escolha um cliente.')];
+    if(!d.machine.trim())return ['machine',t('Informe a máquina ou o equipamento.')];
+    if(!d.type)return ['type',t('Escolha o tipo de serviço.')];
+    if(!d.date)return ['date',t('Informe a data.')];
     const i=d.equipe.findIndex(e=>!e.arrivee||!e.depart);
-    if(i>=0)return [(d.equipe[i].arrivee?'saida':'chegada')+i,'Informe a chegada e a saída de cada técnico.'];
+    if(i>=0)return [(d.equipe[i].arrivee?'saida':'chegada')+i,t('Informe a chegada e a saída de cada técnico.')];
   }
-  if(n===1&&!d.travaux.trim())return ['travaux','Descreva os serviços realizados.'];
+  if(n===1&&!d.travaux.trim())return ['travaux',t('Descreva os serviços realizados.')];
   if(n===2){
-    if(!d.etat)return [null,'Informe o estado da máquina na saída.'];
-    if(d.etat!=='ok'&&!d.pendencia.trim())return ['pendencia','Informe o que falta fazer.'];
-    if(d.arretFim&&!d.arretIni)return ['arretIni','Informe quando a máquina parou.'];
+    if(!d.etat)return [null,t('Informe o estado da máquina na saída.')];
+    if(d.etat!=='ok'&&!d.pendencia.trim())return ['pendencia',t('Informe o que falta fazer.')];
+    if(d.arretFim&&!d.arretIni)return ['arretIni',t('Informe quando a máquina parou.')];
   }
   if(n===4){
-    if(!d.sigTech)return [null,'A assinatura do técnico é obrigatória.'];
-    if(!d.signataire.trim())return ['signataire','Informe o nome de quem assina pelo cliente.'];
-    if(!d.signature)return [null,'A assinatura do cliente é obrigatória.'];
+    if(!d.sigTech)return [null,t('A assinatura do técnico é obrigatória.')];
+    if(!d.signataire.trim())return ['signataire',t('Informe o nome de quem assina pelo cliente.')];
+    if(!d.signature)return [null,t('A assinatura do cliente é obrigatória.')];
   }
   return null;
 }
+function reporterFiche(b){
+  let m=machineDe(b.client,b.machine);
+  if(!m){m={id:'m'+Date.now(),client:b.client,nom:b.machine.trim(),fiche:{},anexos:[]};machines.push(m);}
+  Object.entries(b.fiche).forEach(([k,v])=>{if(String(v).trim())m.fiche[k]=v;});
+  sauverMachines();
+}
 function valider(){
-  const b={...d,numero:prochainNumero(),pieces:d.pieces.filter(p=>p.nom.trim()),pendencia:d.etat==='ok'?'':d.pendencia,signeLe:new Date().toISOString()};
+  const {ficheOuverte,...base}=d;
+  const b={...base,machine:d.machine.trim(),numero:prochainNumero(),pieces:d.pieces.filter(p=>p.nom.trim()),pendencia:d.etat==='ok'?'':d.pendencia,signeLe:new Date().toISOString()};
   bons=[b,...bons];
+  reporterFiche(b);
   if(b.origem){resolues[b.origem]=b.numero;ecrire(CLES.resolues,resolues);}
   let ok=ecrire(CLES.bons,bons);
-  if(!ok){ok=ecrire(CLES.bons,bons.map(x=>({...x,photos:[]})));if(ok)toast('Ordem salva sem as fotos: memória do navegador cheia.');}
+  if(!ok){ok=ecrire(CLES.bons,bons.map(x=>({...x,photos:[]})));if(ok)toast(t('Ordem salva sem as fotos: memória do navegador cheia.'));}
   effacer(CLES.brouillon);d=null;
   aller({nom:'bon',id:b.id,neuf:true});
 }
@@ -527,38 +826,32 @@ function initSignature(id){
   c.onpointerup=c.onpointercancel=()=>{if(!actif)return;actif=false;d[cle]=c.toDataURL('image/png');sauverBrouillon();};
 }
 /* Photos */
-function ajouterPhoto(fichier,t){
-  const url=URL.createObjectURL(fichier),im=new Image();
-  im.onload=()=>{
-    const k=Math.min(1,1000/Math.max(im.width,im.height)),c=document.createElement('canvas');
-    c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);
-    c.getContext('2d').drawImage(im,0,0,c.width,c.height);
-    URL.revokeObjectURL(url);
-    d.photos.push({t,leg:'',src:c.toDataURL('image/jpeg',.72)});
+async function ajouterPhoto(fichier,t){
+  try{
+    const src=await reduireImage(fichier);
+    d.photos.push({t,leg:'',src});
     sauverBrouillon();aller(vue,true);
-  };
-  im.onerror=()=>{URL.revokeObjectURL(url);toast('Não foi possível ler esta imagem.');};
-  im.src=url;
+  }catch(e){toast(tr('Não foi possível ler esta imagem.'));}
 }
 
-/* ---------- Bon final ---------- */
+/* ---------- Documento ---------- */
 function vueBon(id,neuf){
   const b=tousLesBons().find(x=>x.id===id);
   if(!b)return vueAccueil();
-  const L=DOC[langueDoc],c=clientDe(b.client),orig=tousLesBons().find(x=>x.id===b.origem),t=totaux(b.equipe);
+  const L=DOC[langueDoc],c=clientDe(b.client),orig=tousLesBons().find(x=>x.id===b.origem),tot=totaux(b.equipe),f=b.fiche||{};
   const mes=MESURES.map((m,i)=>({...m,...b.mesures[i]})).filter(m=>m.v||m.s);
   const sec=(titre,h)=>h?`<section class="d-sec"><h2>${titre}</h2>${h}</section>`:'';
   const info=(l,v)=>v?`<div><span>${l}</span><b>${esc(v)}</b></div>`:'';
   const arret=b.arretIni?(b.arretFim?`${b.arretIni} – ${b.arretFim} (${heures(minutes(b.arretIni,b.arretFim))})`:`${L.arretCours} ${b.arretIni}`):'';
-  return `<div class="no-print">${haut('OS '+esc(b.numero))}</div>
-  <main>
+  const carac=[f.tension&&f.tension+' V',f.puissance&&f.puissance+' kW',f.courant&&f.courant+' A'].filter(Boolean).join(' · ');
+  return coque('OS '+esc(b.numero),`<main><div class="doc-l">
     <div class="no-print">
-      ${neuf?'<div class="ok-msg" role="status">Ordem validada e adicionada ao histórico.</div>':''}
+      ${neuf?`<div class="ok-msg" role="status">${t('Ordem validada. A ficha da máquina foi atualizada.')}</div>`:''}
       <div class="doc-actions">
-        <button class="btn btn-p" data-a="pdf">Salvar em PDF</button>
-        <button class="btn btn-s" data-a="accueil">Voltar ao início</button>
+        <button class="btn btn-p" data-a="pdf">${t('Salvar em PDF')}</button>
+        <button class="btn btn-s" data-a="nav" data-v="accueil">${t('Voltar ao início')}</button>
       </div>
-      <div class="seg lang" role="group" aria-label="Idioma do documento">
+      <div class="seg lang" role="group" aria-label="${t('Idioma do documento')}">
         <button class="c" data-a="lang" data-l="fr" aria-pressed="${langueDoc==='fr'}">Français</button>
         <button class="c" data-a="lang" data-l="pt" aria-pressed="${langueDoc==='pt'}">Português</button>
       </div>
@@ -567,12 +860,12 @@ function vueBon(id,neuf){
       <div class="d-head">${logo()}<div class="d-num"><strong>${L.titre}</strong><span>${esc(b.numero)}</span></div></div>
       <div class="d-body">
         <section class="d-sec"><div class="d-info">
-          ${info(L.client,c.nom)}${info(L.site,c.site)}${info(L.machine,b.machine)}${info(L.type,typeDe(b.type)[langueDoc])}
+          ${info(L.client,c.nom)}${info(L.site,c.site)}${info(L.machine,b.machine)}${info(L.equipement,[f.marque,f.modele].filter(Boolean).join(' '))}${info(L.serie,f.serie)}${info(L.carac,carac)}${info(L.type,typeDe(b.type)[langueDoc])}
           ${info(L.date,dateLoc(b.date,L.locale))}${info(L.etat,etatDe(b.etat)[langueDoc])}${info(L.commande,b.pedido)}${info(L.arret,arret)}${info(L.suite,orig&&orig.numero)}
         </div></section>
-        ${sec(L.equipe,`<table class="t-eq"><tr><th>${L.tech}</th><th>${L.arrivee}</th><th>${L.depart}</th><th>${L.surSite}</th><th>${L.trajet}</th></tr>
+        ${sec(L.equipe,`<table><tr><th>${L.tech}</th><th>${L.arrivee}</th><th>${L.depart}</th><th>${L.surSite}</th><th>${L.trajet}</th></tr>
           ${b.equipe.map(e=>`<tr><td>${esc(e.tech)}</td><td>${esc(e.arrivee)}</td><td>${esc(e.depart)}</td><td>${heures(minutes(e.arrivee,e.depart))}</td><td>${heures(parseInt(e.trajet,10)||0)}</td></tr>`).join('')}
-          <tr class="t-tot"><td colspan="3">${L.total} : ${heures(t.total)}</td><td>${heures(t.site)}</td><td>${heures(t.trajet)}</td></tr></table>`)}
+          <tr class="t-tot"><td colspan="3">${L.total} : ${heures(tot.total)}</td><td>${heures(tot.site)}</td><td>${heures(tot.trajet)}</td></tr></table>`)}
         ${sec(L.constat,b.constat?`<p class="d-txt">${esc(b.constat)}</p>`:'')}
         ${sec(L.travaux,`<p class="d-txt">${esc(b.travaux)}</p>`)}
         ${sec(L.pieces,b.pieces.length?`<table><tr><th>${L.design}</th><th>${L.qte}</th></tr>${b.pieces.map(p=>`<tr><td>${esc(p.nom)}</td><td>${esc(p.qte)}</td></tr>`).join('')}</table>`:'')}
@@ -594,31 +887,40 @@ function vueBon(id,neuf){
         <span class="d-demo">${L.demo}</span>
       </footer>
     </article>
-  </main>`;
+  </div></main>`,false);
 }
 
 /* ---------- Rendu ---------- */
+const VUES={accueil:vueAccueil,ordens:vueOrdens,machines:vueMachines,fiche:vueFiche,lecture:vueLecture};
 function render(){
   const a=$('#app');
-  a.classList.toggle('large',vue.nom==='bon');
-  if(vue.nom==='accueil')a.innerHTML=vueAccueil();
-  else if(vue.nom==='etape'){a.innerHTML=vueEtape(vue.n);if(vue.n===4){initSignature('sig-t');initSignature('sig-c');}}
-  else a.innerHTML=vueBon(vue.id,vue.neuf);
+  document.documentElement.lang=loc();document.title=t('Ordens de serviço')+' · Costa Energies ('+t('protótipo')+')';
+  if(vue.nom==='etape'){a.innerHTML=vueEtape(vue.n);if(vue.n===4){initSignature('sig-t');initSignature('sig-c');}}
+  else if(vue.nom==='bon')a.innerHTML=vueBon(vue.id,vue.neuf);
+  else a.innerHTML=VUES[vue.nom]();
 }
 
 let photoType='av';
 document.addEventListener('click',e=>{
   const t=e.target.closest('[data-a]');if(!t)return;
   const a=t.dataset.a,i=+t.dataset.i;
-  if(a==='nouveau'){d=nouveauBon();sauverBrouillon();aller({nom:'etape',n:0});}
+  if(a==='nav'){revue=null;aller({nom:t.dataset.v});}
+  else if(a==='nouveau'){d=nouveauBon();sauverBrouillon();aller({nom:'etape',n:0});}
   else if(a==='planifie'){const p=PLANNING[i];d=nouveauBon({client:p.client,machine:p.machine,type:p.type});sauverBrouillon();aller({nom:'etape',n:0});}
   else if(a==='reprendre'){d=lire(CLES.brouillon,null);if(d)aller({nom:'etape',n:0});}
   else if(a==='voir')aller({nom:'bon',id:t.dataset.id});
-  else if(a==='accueil')aller({nom:'accueil'});
+  else if(a==='filtre'){filtre=t.dataset.v;const q=$('#rech').value;aller(vue,true);$('#rech').value=q;$('#hist').innerHTML=cartesOrdem(ordensFiltrees());}
+  else if(a==='fiche')aller({nom:'fiche',id:t.dataset.id});
+  else if(a==='ordem-machine'){const m=cibleFiche();d=nouveauBon({client:m.client,machine:m.nom});sauverBrouillon();aller({nom:'etape',n:0});}
+  else if(a==='importer'){importCible=t.dataset.id||null;$('#fichier-f').click();}
+  else if(a==='fiche-ok')confirmerFiche();
+  else if(a==='fiche-annule'){const id=revue.id;revue=null;aller(id?{nom:'fiche',id}:{nom:'machines'});}
+  else if(a==='suppr-anexo'){const m=cibleFiche();m.anexos.splice(i,1);sauverMachines();aller(vue,true);}
   else if(a==='pend-retorno'){const b=tousLesBons().find(x=>x.id===t.dataset.id);d=nouveauBon({client:b.client,machine:b.machine,type:'cur',origem:b.id});sauverBrouillon();aller({nom:'etape',n:0});}
-  else if(a==='pend-resolver'){resolues[t.dataset.id]='manuel';ecrire(CLES.resolues,resolues);aller(vue,true);toast('Pendência marcada como resolvida.');}
+  else if(a==='pend-resolver'){resolues[t.dataset.id]='manuel';ecrire(CLES.resolues,resolues);aller(vue,true);toast(tr('Pendência marcada como resolvida.'));}
   else if(a==='lang'){langueDoc=t.dataset.l;aller(vue,true);}
-  else if(a==='reset'){if(confirm('Apagar as ordens, as pendências resolvidas e o rascunho desta demonstração?')){effacer(CLES.bons);effacer(CLES.brouillon);effacer(CLES.resolues);bons=[];resolues={};d=null;aller({nom:'accueil'});}}
+  else if(a==='langue'){langue=t.dataset.l;ecrire(CLES.langue,langue);aller(vue,true);}
+  else if(a==='reset'){if(confirm(tr('Apagar as ordens, as fichas alteradas e o rascunho desta demonstração?'))){Object.values(CLES).forEach(effacer);bons=[];resolues={};machines=copieBase();usuario=TECHS[0];langue='pt';d=null;aller({nom:'accueil'});}}
   else if(a==='retour'){if(vue.n)aller({nom:'etape',n:vue.n-1});else aller({nom:'accueil'});}
   else if(a==='suite'){
     const err=erreurEtape(vue.n);
@@ -643,22 +945,30 @@ document.addEventListener('click',e=>{
 });
 document.addEventListener('input',e=>{
   const t=e.target;
-  if(t.id==='rech'){$('#hist').innerHTML=listeHist(t.value);return;}
+  if(t.id==='rech'){$('#hist').innerHTML=cartesOrdem(ordensFiltrees());return;}
+  if(t.id==='rech-m'){$('#mlist').innerHTML=listeMachines(t.value);return;}
   if(t.id==='usuario'){usuario=t.value;ecrire(CLES.usuario,usuario);aller(vue,true);return;}
+  if(t.dataset.fi!==undefined){cibleFiche().fiche[t.dataset.fi]=t.value;if(!revue)sauverMachines();return;}
+  if(t.dataset.rv!==undefined){revue.m[t.dataset.rv]=t.value;return;}
   if(!d)return;
   if(t.dataset.f){
     d[t.dataset.f]=t.value;
-    if(t.dataset.f==='client'){d.machine='';aller(vue,true);}
+    if(t.dataset.f==='client'){d.machine='';d.fiche={};aller(vue,true);}
     if(t.dataset.f==='arretIni'||t.dataset.f==='arretFim')$('#t-arret').textContent=texteArret();
-  }else if(t.dataset.e!==undefined){d.equipe[+t.dataset.e][t.dataset.k]=t.value;afficherTotaux();}
+  }else if(t.dataset.bf!==undefined)d.fiche[t.dataset.bf]=t.value;
+  else if(t.dataset.e!==undefined){d.equipe[+t.dataset.e][t.dataset.k]=t.value;afficherTotaux();}
   else if(t.dataset.p!==undefined)d.pieces[+t.dataset.p][t.dataset.k]=t.value;
   else if(t.dataset.m!==undefined)d.mesures[+t.dataset.m].v=t.value;
   else if(t.dataset.ph!==undefined)d.photos[+t.dataset.ph].leg=t.value;
   sauverBrouillon();
 });
 document.addEventListener('change',e=>{
-  if(e.target.id==='fichier'&&e.target.files[0])ajouterPhoto(e.target.files[0],photoType);
+  const t=e.target;
+  if(t.id==='fichier'&&t.files[0])ajouterPhoto(t.files[0],photoType);
+  if(t.id==='fichier-f'&&t.files[0])importerFiche(t.files[0]);
+  if(t.id==='machine'&&d){d.fiche=ficheDe(d.client,d.machine);$('#fiche-bloc').innerHTML=blocFiche();sauverBrouillon();}
 });
+document.addEventListener('toggle',e=>{if(e.target.id==='fiche-in'&&d)d.ficheOuverte=e.target.open;},true);
 
 render();
 </script>
