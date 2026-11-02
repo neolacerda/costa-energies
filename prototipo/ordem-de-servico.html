@@ -298,15 +298,14 @@ th:last-child,td:last-child{padding-right:0;text-align:right;}
 <div id="app"></div>
 
 <script>
-/* Prototype : toutes les données sont fictives et restent dans ce navigateur. */
+/* Protótipo: todos os dados são fictícios e ficam só neste navegador. */
 const ENTREPRISE={nom:'Costa Energies',forme:'SARL',siret:'917 579 724 00027',adresse:'70 Rue Mathieu Dussurgey, 69190 Saint-Fons',tel:'+33 6 37 92 32 73'};
 const LOGO="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%22-12 -14 766 214%22 role=%22img%22 aria-label=%22Costa Energies%22%3E%3Ctitle%3ECosta Energies%3C/title%3E%3Cg fill=%22none%22 stroke=%22%23F97316%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%0A%3Ccircle cx=%2266%22 cy=%2272%22 r=%2217%22 stroke-width=%2213%22/%3E%0A%3Cpath stroke-width=%2213%22 d=%22M66 95V104%22/%3E%0A%3Cpath stroke-width=%2213%22 d=%22M36 118L96 108M36 138L96 128M36 158L96 148%22/%3E%0A%3Cpath stroke-width=%2213%22 d=%22M16 186V176H116V186%22/%3E%0A%3Cpath stroke-width=%2211%22 d=%22M66 40L56 22L74 18L64 -2%22/%3E%0A%3Cpath stroke-width=%2211%22 d=%22M28 42L12 34L22 22L4 12%22/%3E%0A%3Cpath stroke-width=%2211%22 d=%22M104 42L120 34L110 22L128 12%22/%3E%0A%3C/g%3E%3Cg fill=%22none%22 stroke=%22%23FFFFFF%22 stroke-width=%2217%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath transform=%22translate(176 0)%22 d=%22M78.98 18.58A44.72 52 0 1 0 78.98 85.42%22/%3E%3Cpath transform=%22translate(299.82 0)%22 d=%22M0 52A48.88 52 0 1 1 97.76 52A48.88 52 0 1 1 0 52%22/%3E%3Cpath transform=%22translate(431.96 0)%22 d=%22M68.43 17.68C58.24 -3.12 5.82 -4.16 3.64 26C2.18 54.08 70.62 47.84 69.89 76.96C68.43 108.16 13.1 107.12 3.64 86.32%22/%3E%3Cpath transform=%22translate(539.14 0)%22 d=%22M0 0H76.96M38.48 0V104%22/%3E%3Cpath transform=%22translate(650.48 0)%22 d=%22M0 104L45.76 0L91.52 104M18.3 68.64H73.22%22/%3E%3C/g%3E%3Cg fill=%22none%22 stroke=%22%23F97316%22 stroke-width=%2210.5%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath transform=%22translate(176 132)%22 d=%22M30.24 0H0V54H30.24M0 27H25.4%22/%3E%3Cpath transform=%22translate(250.53 132)%22 d=%22M0 54V0L38.88 54V0%22/%3E%3Cpath transform=%22translate(333.7 132)%22 d=%22M30.24 0H0V54H30.24M0 27H25.4%22/%3E%3Cpath transform=%22translate(408.23 132)%22 d=%22M0 54V0H24.3A14.58 14.58 0 0 1 24.3 29.16H0M20.9 29.16L38.88 54%22/%3E%3Cpath transform=%22translate(491.41 132)%22 d=%22M43.87 9.64A24.84 27 0 1 0 49.68 27H27.82%22/%3E%3Cpath transform=%22translate(585.38 132)%22 d=%22M0 0V54%22/%3E%3Cpath transform=%22translate(629.67 132)%22 d=%22M30.24 0H0V54H30.24M0 27H25.4%22/%3E%3Cpath transform=%22translate(704.2 132)%22 d=%22M35.53 9.18C30.24 -1.62 3.02 -2.16 1.89 13.5C1.13 28.08 36.67 24.84 36.29 39.96C35.53 56.16 6.8 55.62 1.89 44.82%22/%3E%3C/g%3E%3C/svg%3E";
 
-/* Les fiches clients restent en français : elles sont imprimées telles quelles sur le bon. */
 const CLIENTS=[
-  {id:'c1',nom:'Métallurgie Démo',site:'Atelier de presses'},
-  {id:'c2',nom:'Plasturgie Exemple',site:'Ligne d\'injection'},
-  {id:'c3',nom:'Agro Fictive',site:'Unité de conditionnement'}
+  {id:'c1',nom:'Metalúrgica Demo',site:'Galpão de prensas'},
+  {id:'c2',nom:'Plásticos Exemplo',site:'Linha de injeção'},
+  {id:'c3',nom:'Agro Fictícia',site:'Unidade de embalagem'}
 ];
 const CHAMPS_FICHE=[
   {k:'marque',pt:'Fabricante',fr:'Fabricant'},{k:'modele',pt:'Modelo',fr:'Modèle'},{k:'serie',pt:'Nº de série',fr:'N° de série'},{k:'annee',pt:'Ano',fr:'Année'},
@@ -315,17 +314,17 @@ const CHAMPS_FICHE=[
 ];
 const NB_FICHE=CHAMPS_FICHE.length-1;
 const MACHINES_BASE=[
-  {id:'m1',client:'c1',nom:'Presse hydraulique P-12',fiche:{marque:'Marque Démo',modele:'PH-250',serie:'PH250-1187',annee:'2016',tension:'400',puissance:'22',courant:'45',protection:'Disjoncteur 50 A',armoire:'Armoire TGBT-01'},anexos:[]},
-  {id:'m2',client:'c1',nom:'Armoire TGBT-01',fiche:{tension:'400',courant:'250'},anexos:[]},
-  {id:'m3',client:'c1',nom:'Convoyeur C-04',fiche:{marque:'Marque Démo',modele:'CV-90',serie:'CV90-3321',tension:'400',puissance:'4'},anexos:[]},
-  {id:'m4',client:'c2',nom:'Armoire de ligne L2',fiche:{},anexos:[]},
-  {id:'m5',client:'c2',nom:'Injecteuse I-07',fiche:{marque:'Marque Exemple',modele:'IJ-180',serie:'IJ180-0442',annee:'2019',tension:'400',puissance:'37'},anexos:[]},
-  {id:'m6',client:'c2',nom:'Compresseur K-02',fiche:{},anexos:[]},
-  {id:'m7',client:'c3',nom:'Ensacheuse E-03',fiche:{},anexos:[]},
-  {id:'m8',client:'c3',nom:'Tableau divisionnaire TD-5',fiche:{},anexos:[]}
+  {id:'m1',client:'c1',nom:'Prensa hidráulica P-12',fiche:{marque:'Marca Demo',modele:'PH-250',serie:'PH250-1187',annee:'2016',tension:'400',puissance:'22',courant:'45',protection:'Disjuntor 50 A',armoire:'Quadro TGBT-01'},anexos:[]},
+  {id:'m2',client:'c1',nom:'Quadro TGBT-01',fiche:{tension:'400',courant:'250'},anexos:[]},
+  {id:'m3',client:'c1',nom:'Esteira C-04',fiche:{marque:'Marca Demo',modele:'CV-90',serie:'CV90-3321',tension:'400',puissance:'4'},anexos:[]},
+  {id:'m4',client:'c2',nom:'Quadro da linha L2',fiche:{},anexos:[]},
+  {id:'m5',client:'c2',nom:'Injetora I-07',fiche:{marque:'Marca Exemplo',modele:'IJ-180',serie:'IJ180-0442',annee:'2019',tension:'400',puissance:'37'},anexos:[]},
+  {id:'m6',client:'c2',nom:'Compressor K-02',fiche:{},anexos:[]},
+  {id:'m7',client:'c3',nom:'Ensacadeira E-03',fiche:{},anexos:[]},
+  {id:'m8',client:'c3',nom:'Quadro de distribuição TD-5',fiche:{},anexos:[]}
 ];
-/* Valeurs d'exemple : la lecture automatique du fichier n'existe qu'avec un serveur. */
-const LECTURE_SIMULEE={marque:'Marque Lue',modele:'ML-400',serie:'ML400-7731',annee:'2021',tension:'400',puissance:'15',courant:'30',protection:'Disjoncteur 32 A'};
+/* Valores de exemplo: a leitura automática do arquivo só existe com um servidor. */
+const LECTURE_SIMULEE={marque:'Marca Lida',modele:'ML-400',serie:'ML400-7731',annee:'2021',tension:'400',puissance:'15',courant:'30',protection:'Disjuntor 32 A'};
 const TYPES=[
   {id:'prev',pt:'Manutenção preventiva',fr:'Maintenance préventive'},
   {id:'cur',pt:'Manutenção corretiva',fr:'Maintenance curative'},
@@ -335,11 +334,11 @@ const TYPES=[
   {id:'etud',pt:'Esquemas e estudos elétricos',fr:'Schémas et études électriques'},
   {id:'dist',pt:'Distribuição em baixa tensão',fr:'Distribution basse tension'}
 ];
-const TECHS=['Reubler Costa','Technicien Démo'];
-const INSTRUMENTOS=['Multimètre MX-200 · S/N 48213','Contrôleur d\'isolement IS-50 · S/N 10977','Caméra thermique TH-12 · S/N 30652'];
+const TECHS=['Reubler Costa','Técnico Demo'];
+const INSTRUMENTOS=['Multímetro MX-200 · Série 48213','Medidor de isolamento IS-50 · Série 10977','Câmera térmica TH-12 · Série 30652'];
 const PLANNING=[
-  {heure:'08:30',client:'c1',machine:'Presse hydraulique P-12',type:'prev'},
-  {heure:'14:00',client:'c2',machine:'Armoire de ligne L2',type:'cur'}
+  {heure:'08:30',client:'c1',machine:'Prensa hidráulica P-12',type:'prev'},
+  {heure:'14:00',client:'c2',machine:'Quadro da linha L2',type:'cur'}
 ];
 const MESURES=[
   {pt:'Continuidade do aterramento',fr:'Continuité de la terre',unite:'Ω'},
@@ -356,7 +355,7 @@ const ETATS=[
 const RESULTATS={c:{pt:'Conforme',fr:'Conforme'},n:{pt:'Não conforme',fr:'Non conforme'},a:{pt:'Não se aplica',fr:'Sans objet'}};
 const PHOTOS={av:{pt:'Antes',fr:'Avant'},ap:{pt:'Depois',fr:'Après'}};
 const ETAPES={pt:['Atendimento','Serviços','Medições','Fotos','Assinatura'],fr:['Intervention','Travaux','Mesures','Photos','Signature']};
-const CLES={bons:'ce-bons-v4',brouillon:'ce-brouillon-v4',resolues:'ce-resolues-v4',usuario:'ce-usuario-v4',machines:'ce-machines-v4',langue:'ce-langue-v4'};
+const CLES={bons:'ce-bons-v5',brouillon:'ce-brouillon-v5',resolues:'ce-resolues-v5',usuario:'ce-usuario-v5',machines:'ce-machines-v5',langue:'ce-langue-v5'};
 const SIGNATURES={'sig-t':'sigTech','sig-c':'signature'};
 const DOC={
   fr:{titre:'Bon d\'intervention',client:'Client',site:'Site',machine:'Machine',equipement:'Marque / modèle',serie:'N° de série',carac:'Caractéristiques',type:'Type',date:'Date',commande:'N° de commande',etat:'État à la sortie',suite:'Suite du bon',arret:'Arrêt machine',arretCours:'En cours depuis',
@@ -366,7 +365,8 @@ const DOC={
     equipe:'Equipe',tech:'Técnico',arrivee:'Chegada',depart:'Saída',surSite:'No local',trajet:'Deslocamento',total:'Total',constat:'Situação na chegada',travaux:'Serviços realizados',pieces:'Peças usadas',design:'Descrição',qte:'Qtd.',
     mesures:'Medições e verificações',controle:'Verificação',valeur:'Valor',resultat:'Resultado',instrument:'Instrumento usado',photos:'Fotos',reserves:'Ressalvas do cliente',suivi:'Serviços pendentes',signatures:'Assinaturas',pour:'Pela',pourClient:'Pelo cliente',signeLe:'Assinado em',exemple:'Exemplo sem assinatura',demo:'Documento de demonstração, sem valor contratual',locale:'pt-BR'}
 };
-const FR={"Início": "Accueil", "Ordens": "Bons", "Máquinas": "Machines", "+ Nova ordem": "+ Nouveau bon", "Protótipo · dados fictícios": "Prototype · données fictives", "Ordens<br>de serviço": "Bons<br>d'intervention", "Olá": "Bonjour", "Entrando como": "Connecté en tant que", "Visitas hoje": "Visites aujourd'hui", "Pendências": "En attente", "Ordens em 30 dias": "Bons sur 30 jours", "Horas em 30 dias": "Heures sur 30 jours", "+ Nova ordem de serviço": "+ Nouveau bon d'intervention", "Rascunho": "Brouillon", "Retomar": "Reprendre", "Agenda de hoje": "Agenda du jour", "Criar retorno": "Créer un retour", "Marcar como resolvida": "Marquer comme résolu", "Nenhuma pendência em aberto.": "Aucun point en attente.", "Últimas ordens": "Derniers bons", "Ver todas": "Tout voir", "Reiniciar a demonstração": "Réinitialiser la démonstration", "Nenhuma ordem encontrada.": "Aucun bon trouvé.", "Ordens de serviço": "Bons d'intervention", "protótipo": "prototype", "Todo o histórico, por cliente, máquina ou número.": "Tout l'historique, par client, machine ou numéro.", "Buscar ordens": "Rechercher un bon", "Buscar cliente, máquina ou número": "Client, machine ou numéro", "Filtrar por estado": "Filtrer par état", "Todas": "Tous", "Sem dados de fabricante": "Sans données fabricant", "Completa": "Complète", " de ": " sur ", "Nenhuma máquina encontrada.": "Aucune machine trouvée.", "Cada ficha preenchida fica aqui e reaparece nas próximas ordens.": "Chaque fiche remplie reste ici et revient dans les prochains bons.", "Buscar máquinas": "Rechercher une machine", "Buscar máquina, cliente ou fabricante": "Machine, client ou fabricant", "Enviar ficha técnica": "Envoyer une fiche technique", "Confira a ficha": "Vérifiez la fiche", "Leitura simulada.": "Lecture simulée.", "Neste protótipo os valores abaixo são de exemplo. Na versão real, eles virão do arquivo enviado. Corrija o que precisar antes de salvar.": "Dans ce prototype, les valeurs ci-dessous sont des exemples. Dans la version réelle, elles viendront du fichier envoyé. Corrigez ce qu'il faut avant d'enregistrer.", "Salvo automaticamente": "Enregistré automatiquement", "Enviar ficha": "Envoyer une fiche", "Máquina": "Machine", "Cliente": "Client", "Escolha um cliente": "Choisir un client", "Nome da máquina": "Nom de la machine", "Ficha técnica": "Fiche technique", "campos": "champs", "Arquivos da ficha": "Fichiers de la fiche", "Histórico da máquina": "Historique de la machine", "Conferir ficha": "Vérifier la fiche", "Cancelar": "Annuler", "Confirmar e salvar": "Confirmer et enregistrer", "Lendo a ficha": "Lecture de la fiche", "Remover": "Retirer", "Não foi possível ler esta imagem.": "Impossible de lire cette image.", "Envie uma foto ou um PDF.": "Envoyez une photo ou un PDF.", "Informe o cliente e o nome da máquina.": "Indiquez le client et le nom de la machine.", "Ficha salva na máquina.": "Fiche enregistrée sur la machine.", "Ainda parada": "Toujours à l'arrêt", "Máquina nova": "Nouvelle machine", "O que você preencher aqui entra sozinho na ficha da máquina ao validar a ordem.": "Ce que vous remplissez ici rejoint automatiquement la fiche machine à la validation du bon.", "Retorno da ordem": "Suite du bon", "Cliente e máquina": "Client et machine", "Local": "Site", "Máquina ou equipamento": "Machine ou équipement", "Ex.: Presse P-12": "Ex. : Presse P-12", "Serviço": "Intervention", "Tipo de serviço": "Type d'intervention", "Escolha um tipo": "Choisir un type", "Nº do pedido": "N° de commande", "Ex.: CMD-4471": "Ex. : CMD-4471", "Data": "Date", "Equipe e horas": "Équipe et heures", "Técnico": "Technicien", "Chegada": "Arrivée", "Saída": "Départ", "Deslocamento (minutos)": "Trajet (minutes)", "Ex.: 35": "Ex. : 35", "+ Adicionar técnico": "+ Ajouter un technicien", "No local": "Sur site", "Deslocamento": "Trajet", "Total": "Total", "O que foi feito": "Travaux effectués", "Escreva em francês: o texto vai para o relatório exatamente como digitado.": "Le texte apparaît sur le bon exactement comme il est saisi.", "Situação na chegada": "Constat à l'arrivée", "O que você encontrou no local": "Ce que vous avez trouvé sur place", "Serviços realizados": "Travaux réalisés", "Peças usadas": "Pièces utilisées", "Descrição da peça": "Désignation de la pièce", "Descrição": "Désignation", "Quantidade da peça": "Quantité de la pièce", "Remover a peça": "Retirer la pièce", "+ Adicionar peça": "+ Ajouter une pièce", "Medições": "Mesures", "Preencha somente o que foi verificado.": "Renseignez uniquement ce qui a été contrôlé.", "Instrumento usado": "Instrument utilisé", "Modelo e número de série": "Modèle et numéro de série", "Valor": "Valeur", "Estado na saída": "État à la sortie", "O que falta fazer": "Reste à faire", "Vira uma pendência no início do app": "Apparaît en attente sur l'accueil", "Tempo de máquina parada": "Temps d'arrêt machine", "Parou às": "Arrêtée à", "Voltou às": "Reprise à", "Tempo parada": "Temps d'arrêt", "Fotos do serviço": "Photos de l'intervention", "Opcional. As fotos são reduzidas antes de entrar na ordem.": "Facultatif. Les photos sont réduites avant d'être ajoutées au bon.", "+ Foto antes": "+ Photo avant", "+ Foto depois": "+ Photo après", "Foto": "Photo", "Remover a foto": "Retirer la photo", "Legenda": "Légende", "Legenda da foto": "Légende de la photo", "Nenhuma foto por enquanto.": "Aucune photo pour le moment.", "Total de horas": "Total des heures", "Estado": "État", "Assinaturas": "Signatures", "Ressalvas do cliente": "Réserves du client", "Opcional": "Facultatif", "Assinatura de": "Signature de", "Limpar": "Effacer", "Nome de quem assina pelo cliente": "Nom du signataire client", "Assinatura do cliente": "Signature du client", "Nova ordem": "Nouveau bon", "Salvamento automático": "Enregistrement automatique", "Voltar": "Retour", "Próximo": "Suivant", "Validar ordem": "Valider le bon", "Escolha um cliente.": "Choisissez un client.", "Informe a máquina ou o equipamento.": "Indiquez la machine ou l'équipement.", "Escolha o tipo de serviço.": "Choisissez le type d'intervention.", "Informe a data.": "Indiquez la date.", "Informe a chegada e a saída de cada técnico.": "Indiquez l'arrivée et le départ de chaque technicien.", "Descreva os serviços realizados.": "Décrivez les travaux réalisés.", "Informe o estado da máquina na saída.": "Indiquez l'état de la machine à la sortie.", "Informe o que falta fazer.": "Indiquez ce qui reste à faire.", "Informe quando a máquina parou.": "Indiquez l'heure d'arrêt de la machine.", "A assinatura do técnico é obrigatória.": "La signature du technicien est requise.", "Informe o nome de quem assina pelo cliente.": "Indiquez le nom du signataire client.", "A assinatura do cliente é obrigatória.": "La signature du client est requise.", "Ordem salva sem as fotos: memória do navegador cheia.": "Bon enregistré sans ses photos : mémoire du navigateur pleine.", "Memória do navegador cheia: os anexos não foram salvos.": "Mémoire du navigateur pleine : les fichiers n'ont pas été enregistrés.", "Ordem validada. A ficha da máquina foi atualizada.": "Bon validé. La fiche machine a été mise à jour.", "Salvar em PDF": "Enregistrer en PDF", "Voltar ao início": "Retour à l'accueil", "Idioma do documento": "Langue du document", "Pendência marcada como resolvida.": "Point marqué comme résolu.", "Apagar as ordens, as fichas alteradas e o rascunho desta demonstração?": "Effacer les bons, les fiches modifiées et le brouillon de cette démonstration ?", "Idioma": "Langue"};
+const FR={"Início": "Accueil", "Ordens": "Bons", "Máquinas": "Machines", "+ Nova ordem": "+ Nouveau bon", "Protótipo · dados fictícios": "Prototype · données fictives", "Ordens<br>de serviço": "Bons<br>d'intervention", "Olá": "Bonjour", "Entrando como": "Connecté en tant que", "Visitas hoje": "Visites aujourd'hui", "Pendências": "En attente", "Ordens em 30 dias": "Bons sur 30 jours", "Horas em 30 dias": "Heures sur 30 jours", "+ Nova ordem de serviço": "+ Nouveau bon d'intervention", "Rascunho": "Brouillon", "Retomar": "Reprendre", "Agenda de hoje": "Agenda du jour", "Criar retorno": "Créer un retour", "Marcar como resolvida": "Marquer comme résolu", "Nenhuma pendência em aberto.": "Aucun point en attente.", "Últimas ordens": "Derniers bons", "Ver todas": "Tout voir", "Reiniciar a demonstração": "Réinitialiser la démonstration", "Nenhuma ordem encontrada.": "Aucun bon trouvé.", "Ordens de serviço": "Bons d'intervention", "protótipo": "prototype", "Todo o histórico, por cliente, máquina ou número.": "Tout l'historique, par client, machine ou numéro.", "Buscar ordens": "Rechercher un bon", "Buscar cliente, máquina ou número": "Client, machine ou numéro", "Filtrar por estado": "Filtrer par état", "Todas": "Tous", "Sem dados de fabricante": "Sans données fabricant", "Completa": "Complète", " de ": " sur ", "Nenhuma máquina encontrada.": "Aucune machine trouvée.", "Cada ficha preenchida fica aqui e reaparece nas próximas ordens.": "Chaque fiche remplie reste ici et revient dans les prochains bons.", "Buscar máquinas": "Rechercher une machine", "Buscar máquina, cliente ou fabricante": "Machine, client ou fabricant", "Enviar ficha técnica": "Envoyer une fiche technique", "Confira a ficha": "Vérifiez la fiche", "Leitura simulada.": "Lecture simulée.", "Neste protótipo os valores abaixo são de exemplo. Na versão real, eles virão do arquivo enviado. Corrija o que precisar antes de salvar.": "Dans ce prototype, les valeurs ci-dessous sont des exemples. Dans la version réelle, elles viendront du fichier envoyé. Corrigez ce qu'il faut avant d'enregistrer.", "Salvo automaticamente": "Enregistré automatiquement", "Enviar ficha": "Envoyer une fiche", "Máquina": "Machine", "Cliente": "Client", "Escolha um cliente": "Choisir un client", "Nome da máquina": "Nom de la machine", "Ficha técnica": "Fiche technique", "campos": "champs", "Arquivos da ficha": "Fichiers de la fiche", "Histórico da máquina": "Historique de la machine", "Conferir ficha": "Vérifier la fiche", "Cancelar": "Annuler", "Confirmar e salvar": "Confirmer et enregistrer", "Lendo a ficha": "Lecture de la fiche", "Remover": "Retirer", "Não foi possível ler esta imagem.": "Impossible de lire cette image.", "Envie uma foto ou um PDF.": "Envoyez une photo ou un PDF.", "Informe o cliente e o nome da máquina.": "Indiquez le client et le nom de la machine.", "Ficha salva na máquina.": "Fiche enregistrée sur la machine.", "Ainda parada": "Toujours à l'arrêt", "Máquina nova": "Nouvelle machine", "O que você preencher aqui entra sozinho na ficha da máquina ao validar a ordem.": "Ce que vous remplissez ici rejoint automatiquement la fiche machine à la validation du bon.", "Retorno da ordem": "Suite du bon", "Cliente e máquina": "Client et machine", "Local": "Site", "Máquina ou equipamento": "Machine ou équipement", "Ex.: Prensa P-12": "Ex. : Presse P-12", "Serviço": "Intervention", "Tipo de serviço": "Type d'intervention", "Escolha um tipo": "Choisir un type", "Nº do pedido": "N° de commande", "Ex.: CMD-4471": "Ex. : CMD-4471", "Data": "Date", "Equipe e horas": "Équipe et heures", "Técnico": "Technicien", "Chegada": "Arrivée", "Saída": "Départ", "Deslocamento (minutos)": "Trajet (minutes)", "Ex.: 35": "Ex. : 35", "+ Adicionar técnico": "+ Ajouter un technicien", "No local": "Sur site", "Deslocamento": "Trajet", "Total": "Total", "O que foi feito": "Travaux effectués", "O texto vai para o relatório exatamente como digitado.": "Le texte apparaît sur le bon exactement comme il est saisi.", "Situação na chegada": "Constat à l'arrivée", "O que você encontrou no local": "Ce que vous avez trouvé sur place", "Serviços realizados": "Travaux réalisés", "Peças usadas": "Pièces utilisées", "Descrição da peça": "Désignation de la pièce", "Descrição": "Désignation", "Quantidade da peça": "Quantité de la pièce", "Remover a peça": "Retirer la pièce", "+ Adicionar peça": "+ Ajouter une pièce", "Medições": "Mesures", "Preencha somente o que foi verificado.": "Renseignez uniquement ce qui a été contrôlé.", "Instrumento usado": "Instrument utilisé", "Modelo e número de série": "Modèle et numéro de série", "Valor": "Valeur", "Estado na saída": "État à la sortie", "O que falta fazer": "Reste à faire", "Vira uma pendência no início do app": "Apparaît en attente sur l'accueil", "Tempo de máquina parada": "Temps d'arrêt machine", "Parou às": "Arrêtée à", "Voltou às": "Reprise à", "Tempo parada": "Temps d'arrêt", "Fotos do serviço": "Photos de l'intervention", "Opcional. As fotos são reduzidas antes de entrar na ordem.": "Facultatif. Les photos sont réduites avant d'être ajoutées au bon.", "+ Foto antes": "+ Photo avant", "+ Foto depois": "+ Photo après", "Foto": "Photo", "Remover a foto": "Retirer la photo", "Legenda": "Légende", "Legenda da foto": "Légende de la photo", "Nenhuma foto por enquanto.": "Aucune photo pour le moment.", "Total de horas": "Total des heures", "Estado": "État", "Assinaturas": "Signatures", "Ressalvas do cliente": "Réserves du client", "Opcional": "Facultatif", "Assinatura de": "Signature de", "Limpar": "Effacer", "Nome de quem assina pelo cliente": "Nom du signataire client", "Assinatura do cliente": "Signature du client", "Nova ordem": "Nouveau bon", "Salvamento automático": "Enregistrement automatique", "Voltar": "Retour", "Próximo": "Suivant", "Validar ordem": "Valider le bon", "Escolha um cliente.": "Choisissez un client.", "Informe a máquina ou o equipamento.": "Indiquez la machine ou l'équipement.", "Escolha o tipo de serviço.": "Choisissez le type d'intervention.", "Informe a data.": "Indiquez la date.", "Informe a chegada e a saída de cada técnico.": "Indiquez l'arrivée et le départ de chaque technicien.", "Descreva os serviços realizados.": "Décrivez les travaux réalisés.", "Informe o estado da máquina na saída.": "Indiquez l'état de la machine à la sortie.", "Informe o que falta fazer.": "Indiquez ce qui reste à faire.", "Informe quando a máquina parou.": "Indiquez l'heure d'arrêt de la machine.", "A assinatura do técnico é obrigatória.": "La signature du technicien est requise.", "Informe o nome de quem assina pelo cliente.": "Indiquez le nom du signataire client.", "A assinatura do cliente é obrigatória.": "La signature du client est requise.", "Ordem salva sem as fotos: memória do navegador cheia.": "Bon enregistré sans ses photos : mémoire du navigateur pleine.", "Memória do navegador cheia: os anexos não foram salvos.": "Mémoire du navigateur pleine : les fichiers n'ont pas été enregistrés.", "Ordem validada. A ficha da máquina foi atualizada.": "Bon validé. La fiche machine a été mise à jour.", "Salvar em PDF": "Enregistrer en PDF", "Voltar ao início": "Retour à l'accueil", "Idioma do documento": "Langue du document", "Pendência marcada como resolvida.": "Point marqué comme résolu.", "Apagar as ordens, as fichas alteradas e o rascunho desta demonstração?": "Effacer les bons, les fiches modifiées et le brouillon de cette démonstration ?", "Idioma": "Langue"};
+const DADOS_FR={"Metalúrgica Demo": "Métallurgie Démo", "Galpão de prensas": "Atelier de presses", "Plásticos Exemplo": "Plasturgie Exemple", "Linha de injeção": "Ligne d'injection", "Agro Fictícia": "Agro Fictive", "Unidade de embalagem": "Unité de conditionnement", "Prensa hidráulica P-12": "Presse hydraulique P-12", "Quadro TGBT-01": "Armoire TGBT-01", "Esteira C-04": "Convoyeur C-04", "Quadro da linha L2": "Armoire de ligne L2", "Injetora I-07": "Injecteuse I-07", "Compressor K-02": "Compresseur K-02", "Ensacadeira E-03": "Ensacheuse E-03", "Quadro de distribuição TD-5": "Tableau divisionnaire TD-5", "Marca Demo": "Marque Démo", "Marca Exemplo": "Marque Exemple", "Marca Lida": "Marque Lue", "Disjuntor 50 A": "Disjoncteur 50 A", "Disjuntor 32 A": "Disjoncteur 32 A", "Contator 25 A": "Contacteur 25 A", "Técnico Demo": "Technicien Démo", "Multímetro MX-200 · Série 48213": "Multimètre MX-200 · S/N 48213", "Medidor de isolamento IS-50 · Série 10977": "Contrôleur d'isolement IS-50 · S/N 10977", "Câmera térmica TH-12 · Série 30652": "Caméra thermique TH-12 · S/N 30652", "Esteira parada durante a produção. Disjuntor-motor desarmado.": "Arrêt du convoyeur en cours de production. Disjoncteur moteur déclenché.", "Busca do defeito, troca do contator KM2, verificação do motor e testes com carga.": "Recherche de panne, remplacement du contacteur KM2, contrôle du moteur puis essais en charge.", "Visita semestral prevista em contrato.": "Visite semestrielle prévue au contrat.", "Limpeza do quadro, reaperto dos bornes e termografia.": "Dépoussiérage de l'armoire, resserrage des borniers, contrôle thermographique.", "Refazer o aquecimento na saída Q3.": "Reprendre l'échauffement sur le départ Q3.", "Resolver antes da próxima visita.": "À traiter avant la prochaine visite.", "Responsável pela manutenção (exemplo)": "Responsable maintenance (exemple)", "Chefe de oficina (exemplo)": "Chef d'atelier (exemple)"};
 const ic=p=>`<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${p}</svg>`;
 const ICONES={
   accueil:ic('<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>'),
@@ -391,26 +391,27 @@ function effacer(k){try{localStorage.removeItem(k);}catch(e){}}
 const copieBase=()=>JSON.parse(JSON.stringify(MACHINES_BASE));
 
 const EXEMPLES=[
-  {id:'ex2',numero:'OS-2026-0042',exemple:true,client:'c1',machine:'Convoyeur C-04',fiche:MACHINES_BASE[2].fiche,type:'cur',pedido:'CMD-4471',date:ilYa(6),
+  {id:'ex2',numero:'OS-2026-0042',exemple:true,client:'c1',machine:'Esteira C-04',fiche:MACHINES_BASE[2].fiche,type:'cur',pedido:'CMD-4471',date:ilYa(6),
    equipe:[{tech:'Reubler Costa',arrivee:'09:15',depart:'11:45',trajet:'35'}],arretIni:'08:40',arretFim:'11:20',
-   constat:'Arrêt du convoyeur en cours de production. Disjoncteur moteur déclenché.',travaux:'Recherche de panne, remplacement du contacteur KM2, contrôle du moteur puis essais en charge.',
-   pieces:[{nom:'Contacteur 25 A',qte:'1'}],instrument:INSTRUMENTOS[0],mesures:[{v:'52',s:'c'},{v:'',s:''},{v:'398',s:'c'},{v:'',s:''},{v:'',s:'c'}],etat:'ok',pendencia:'',photos:[],reserves:'',signataire:'Responsable maintenance (exemple)',sigTech:'',signature:'',origem:''},
-  {id:'ex1',numero:'OS-2026-0041',exemple:true,client:'c2',machine:'Injecteuse I-07',fiche:MACHINES_BASE[4].fiche,type:'prev',pedido:'',date:ilYa(19),
-   equipe:[{tech:'Reubler Costa',arrivee:'08:00',depart:'12:00',trajet:'40'},{tech:'Technicien Démo',arrivee:'08:00',depart:'11:00',trajet:'40'}],arretIni:'',arretFim:'',
-   constat:'Visite semestrielle prévue au contrat.',travaux:'Dépoussiérage de l\'armoire, resserrage des borniers, contrôle thermographique.',
-   pieces:[],instrument:INSTRUMENTOS[2],mesures:[{v:'',s:''},{v:'',s:''},{v:'401',s:'c'},{v:'64',s:'n'},{v:'',s:'c'}],etat:'res',pendencia:'Reprendre l\'échauffement sur le départ Q3.',photos:[],reserves:'À traiter avant la prochaine visite.',signataire:'Chef d\'atelier (exemple)',sigTech:'',signature:'',origem:''}
+   constat:'Esteira parada durante a produção. Disjuntor-motor desarmado.',travaux:'Busca do defeito, troca do contator KM2, verificação do motor e testes com carga.',
+   pieces:[{nom:'Contator 25 A',qte:'1'}],instrument:INSTRUMENTOS[0],mesures:[{v:'52',s:'c'},{v:'',s:''},{v:'398',s:'c'},{v:'',s:''},{v:'',s:'c'}],etat:'ok',pendencia:'',photos:[],reserves:'',signataire:'Responsável pela manutenção (exemplo)',sigTech:'',signature:'',origem:''},
+  {id:'ex1',numero:'OS-2026-0041',exemple:true,client:'c2',machine:'Injetora I-07',fiche:MACHINES_BASE[4].fiche,type:'prev',pedido:'',date:ilYa(19),
+   equipe:[{tech:'Reubler Costa',arrivee:'08:00',depart:'12:00',trajet:'40'},{tech:'Técnico Demo',arrivee:'08:00',depart:'11:00',trajet:'40'}],arretIni:'',arretFim:'',
+   constat:'Visita semestral prevista em contrato.',travaux:'Limpeza do quadro, reaperto dos bornes e termografia.',
+   pieces:[],instrument:INSTRUMENTOS[2],mesures:[{v:'',s:''},{v:'',s:''},{v:'401',s:'c'},{v:'64',s:'n'},{v:'',s:'c'}],etat:'res',pendencia:'Refazer o aquecimento na saída Q3.',photos:[],reserves:'Resolver antes da próxima visita.',signataire:'Chefe de oficina (exemplo)',sigTech:'',signature:'',origem:''}
 ];
 
 let bons=lire(CLES.bons,[]);
 let resolues=lire(CLES.resolues,{});
 let usuario=lire(CLES.usuario,TECHS[0]);
 let machines=lire(CLES.machines,null)||copieBase();
-let d=null;              /* bon en cours de saisie */
-let revue=null;          /* fiche importée en attente de confirmation */
+let d=null;              /* ordem em preenchimento */
+let revue=null;          /* ficha enviada aguardando confirmação */
 let vue={nom:'accueil'};
-let langueDoc='fr';
 let langue=lire(CLES.langue,'pt');
+let langueDoc=langue;
 const tr=s=>langue==='fr'?(FR[s]??s):s;
+const dado=(s,l=langue)=>l==='fr'?(DADOS_FR[s]??s):s;
 const t=tr;
 const loc=()=>langue==='fr'?'fr-FR':'pt-BR';
 const court=e=>langue==='fr'?e.courtFr:e.court;
@@ -506,13 +507,13 @@ function vueAccueil(){
       <section><div class="sec-h"><h2>${t('Agenda de hoje')}</h2></div>
       ${PLANNING.map((p,i)=>`<button class="ligne" data-a="planifie" data-i="${i}">
         <span class="heure">${esc(p.heure)}</span>
-        <span class="l-c"><span class="l-t">${esc(clientDe(p.client).nom)}</span><span class="l-s">${esc(p.machine)} · ${esc(typeDe(p.type)[langue])}</span></span>
+        <span class="l-c"><span class="l-t">${esc(dado(clientDe(p.client).nom))}</span><span class="l-s">${esc(dado(p.machine))} · ${esc(typeDe(p.type)[langue])}</span></span>
         <span class="fleche" aria-hidden="true">›</span></button>`).join('')}</section>
       <section><div class="sec-h"><h2>${t('Pendências')}${pend.length?` <span class="compte">${pend.length}</span>`:''}</h2></div>
       ${pend.length?pend.map(b=>`<div class="pend">
-        <span class="l-t">${esc(b.machine)}</span>
-        <span class="l-s">${esc(clientDe(b.client).nom)} · ${esc(b.numero)}</span>
-        <p class="pend-t">${esc(b.pendencia)}</p>
+        <span class="l-t">${esc(dado(b.machine))}</span>
+        <span class="l-s">${esc(dado(clientDe(b.client).nom))} · ${esc(b.numero)}</span>
+        <p class="pend-t">${esc(dado(b.pendencia))}</p>
         <div class="pend-a"><button class="btn btn-s btn-mini" data-a="pend-retorno" data-id="${esc(b.id)}">${t('Criar retorno')}</button>
         <button class="lien" data-a="pend-resolver" data-id="${esc(b.id)}">${t('Marcar como resolvida')}</button></div>
       </div>`).join(''):`<p class="vide">${t('Nenhuma pendência em aberto.')}</p>`}</section>
@@ -525,7 +526,7 @@ function vueAccueil(){
 function cartesOrdem(l){
   if(!l.length)return `<p class="vide">${t('Nenhuma ordem encontrada.')}</p>`;
   return l.map(b=>{const e=etatDe(b.etat);return `<button class="ligne" data-a="voir" data-id="${esc(b.id)}">
-    <span class="l-c"><span class="l-t">${esc(b.machine)}</span><span class="l-s">${esc(clientDe(b.client).nom)} · ${esc(dateLoc(b.date,loc()))}</span><span class="l-s">${esc(b.numero)}</span></span>
+    <span class="l-c"><span class="l-t">${esc(dado(b.machine))}</span><span class="l-s">${esc(dado(clientDe(b.client).nom))} · ${esc(dateLoc(b.date,loc()))}</span><span class="l-s">${esc(b.numero)}</span></span>
     <span class="pastille ${e.classe}">${court(e)}</span></button>`;}).join('');
 }
 
@@ -555,10 +556,10 @@ function listeMachines(q){
   const groupes=CLIENTS.map(c=>{
     const l=machines.filter(m=>m.client===c.id&&(!q||norme(m.nom+' '+c.nom+' '+Object.values(m.fiche).join(' ')).includes(q)));
     if(!l.length)return '';
-    return `<h2 class="groupe">${esc(c.nom)}</h2><div class="cartes">${l.map(m=>{
+    return `<h2 class="groupe">${esc(dado(c.nom))}</h2><div class="cartes">${l.map(m=>{
       const n=nbRemplis(m.fiche);
       return `<button class="ligne" data-a="fiche" data-id="${esc(m.id)}">
-        <span class="l-c"><span class="l-t">${esc(m.nom)}</span><span class="l-s">${esc([m.fiche.marque,m.fiche.modele].filter(Boolean).join(' ')||t('Sem dados de fabricante'))}</span></span>
+        <span class="l-c"><span class="l-t">${esc(dado(m.nom))}</span><span class="l-s">${esc([dado(m.fiche.marque),m.fiche.modele].filter(Boolean).join(' ')||t('Sem dados de fabricante'))}</span></span>
         <span class="pastille ${n===NB_FICHE?'p-ok':n?'p-warn':'p-n'}">${n===NB_FICHE?t('Completa'):n+t(' de ')+NB_FICHE}</span></button>`;}).join('')}</div>`;
   }).join('');
   return groupes||`<p class="vide">${t('Nenhuma máquina encontrada.')}</p>`;
@@ -585,11 +586,11 @@ function vueFiche(){
   const tete=revue
     ?`<h1 class="h-p" id="focus" tabindex="-1">${t('Confira a ficha')}</h1>
       <div class="alerte-sim"><b>${t('Leitura simulada.')}</b> ${t('Neste protótipo os valores abaixo são de exemplo. Na versão real, eles virão do arquivo enviado. Corrija o que precisar antes de salvar.')}</div>`
-    :`<div class="auto"><h1 class="h-p" id="focus" tabindex="-1">${esc(m.nom)}</h1><small>${t('Salvo automaticamente')}</small></div>
-      <p class="sub">${esc(c.nom)} · ${esc(c.site)}</p>
+    :`<div class="auto"><h1 class="h-p" id="focus" tabindex="-1">${esc(dado(m.nom))}</h1><small>${t('Salvo automaticamente')}</small></div>
+      <p class="sub">${esc(dado(c.nom))} · ${esc(dado(c.site))}</p>
       <div class="ph-btn"><button class="btn btn-p" data-a="ordem-machine">${t('+ Nova ordem')}</button><button class="btn btn-s" data-a="importer" data-id="${esc(m.id)}">${ICONES.envoi}${t('Enviar ficha')}</button></div>`;
   const principal=`${revue&&revue.nouveau?`<section class="bloc"><h2>${t('Máquina')}</h2>
-      <div class="champ"><label for="rv-client">${t('Cliente')} <span class="req">*</span></label><select id="rv-client" data-rv="client"><option value="">${t('Escolha um cliente')}</option>${CLIENTS.map(o=>`<option value="${o.id}"${o.id===m.client?' selected':''}>${esc(o.nom)}</option>`).join('')}</select></div>
+      <div class="champ"><label for="rv-client">${t('Cliente')} <span class="req">*</span></label><select id="rv-client" data-rv="client"><option value="">${t('Escolha um cliente')}</option>${CLIENTS.map(o=>`<option value="${o.id}"${o.id===m.client?' selected':''}>${esc(dado(o.nom))}</option>`).join('')}</select></div>
       <div class="champ"><label for="rv-nom">${t('Nome da máquina')} <span class="req">*</span></label><input id="rv-nom" data-rv="nom" value="${esc(m.nom)}" autocomplete="off"></div>
     </section>`:''}
     <section class="bloc"><div class="auto"><h2>${t('Ficha técnica')}</h2><small>${n}${t(' de ')}${NB_FICHE} ${t('campos')}</small></div>${grilleFiche(m.fiche,'fi')}</section>
@@ -644,7 +645,7 @@ function confirmerFiche(){
   toast(t('Ficha salva na máquina.'));
 }
 
-/* ---------- Saisie ---------- */
+/* ---------- Preenchimento ---------- */
 function champ(id,label,html,req){return `<div class="champ"><label for="${id}">${label}${req?' <span class="req">*</span>':''}</label>${html}</div>`;}
 function afficherTotaux(){
   const t=totaux(d.equipe);
@@ -667,9 +668,9 @@ const etapes=[
   ()=>{const c=clientDe(d.client),tot=totaux(d.equipe),orig=tousLesBons().find(b=>b.id===d.origem);return `
     ${orig?`<div class="calc"><span>${t('Retorno da ordem')}</span><b>${esc(orig.numero)}</b></div>`:''}
     <section class="bloc"><h2>${t('Cliente e máquina')}</h2>
-    ${champ('client',t('Cliente'),`<select id="client" data-f="client"><option value="">${t('Escolha um cliente')}</option>${CLIENTS.map(o=>`<option value="${o.id}"${o.id===d.client?' selected':''}>${esc(o.nom)}</option>`).join('')}</select>`,1)}
-    ${c.site?`<p class="aide">${t('Local')}: ${esc(c.site)}</p>`:''}
-    ${champ('machine',t('Máquina ou equipamento'),`<input id="machine" data-f="machine" list="lm" value="${esc(d.machine)}" autocomplete="off" placeholder="${t('Ex.: Presse P-12')}"><datalist id="lm">${machines.filter(m=>m.client===d.client).map(m=>`<option value="${esc(m.nom)}">`).join('')}</datalist>`,1)}
+    ${champ('client',t('Cliente'),`<select id="client" data-f="client"><option value="">${t('Escolha um cliente')}</option>${CLIENTS.map(o=>`<option value="${o.id}"${o.id===d.client?' selected':''}>${esc(dado(o.nom))}</option>`).join('')}</select>`,1)}
+    ${c.site?`<p class="aide">${t('Local')}: ${esc(dado(c.site))}</p>`:''}
+    ${champ('machine',t('Máquina ou equipamento'),`<input id="machine" data-f="machine" list="lm" value="${esc(d.machine)}" autocomplete="off" placeholder="${t('Ex.: Prensa P-12')}"><datalist id="lm">${machines.filter(m=>m.client===d.client).map(m=>`<option value="${esc(m.nom)}">`).join('')}</datalist>`,1)}
     <div id="fiche-bloc">${blocFiche()}</div>
     </section>
     <section class="bloc"><h2>${t('Serviço')}</h2>
@@ -696,7 +697,7 @@ const etapes=[
     </div></section>`;},
   ()=>`
     <section class="bloc"><h2>${t('O que foi feito')}</h2>
-    <p class="aide">${t('Escreva em francês: o texto vai para o relatório exatamente como digitado.')}</p>
+    <p class="aide">${t('O texto vai para o relatório exatamente como digitado.')}</p>
     ${champ('constat',t('Situação na chegada'),`<textarea id="constat" data-f="constat" placeholder="${t('O que você encontrou no local')}">${esc(d.constat)}</textarea>`)}
     ${champ('travaux',t('Serviços realizados'),`<textarea id="travaux" data-f="travaux" placeholder="${t('O que foi feito')}">${esc(d.travaux)}</textarea>`,1)}
     </section>
@@ -743,8 +744,8 @@ const etapes=[
     </section>`,
   ()=>`
     <section class="bloc resume">
-      <div><span>${t('Cliente')}</span><b>${esc(clientDe(d.client).nom)}</b></div>
-      <div><span>${t('Máquina')}</span><b>${esc(d.machine)}</b></div>
+      <div><span>${t('Cliente')}</span><b>${esc(dado(clientDe(d.client).nom))}</b></div>
+      <div><span>${t('Máquina')}</span><b>${esc(dado(d.machine))}</b></div>
       <div><span>${t('Total de horas')}</span><b>${heures(totaux(d.equipe).total)}</b></div>
       <div><span>${t('Estado')}</span><b>${esc(etatDe(d.etat)[langue])}</b></div>
     </section>
@@ -812,7 +813,7 @@ function valider(){
   aller({nom:'bon',id:b.id,neuf:true});
 }
 
-/* Signature */
+/* Assinatura */
 function initSignature(id){
   const c=$('#'+id),cle=SIGNATURES[id];if(!c)return;
   const r=c.getBoundingClientRect(),dpr=window.devicePixelRatio||1;
@@ -825,7 +826,7 @@ function initSignature(id){
   c.onpointermove=e=>{if(!actif)return;x.lineTo(...pos(e));x.stroke();};
   c.onpointerup=c.onpointercancel=()=>{if(!actif)return;actif=false;d[cle]=c.toDataURL('image/png');sauverBrouillon();};
 }
-/* Photos */
+/* Fotos */
 async function ajouterPhoto(fichier,t){
   try{
     const src=await reduireImage(fichier);
@@ -839,6 +840,7 @@ function vueBon(id,neuf){
   const b=tousLesBons().find(x=>x.id===id);
   if(!b)return vueAccueil();
   const L=DOC[langueDoc],c=clientDe(b.client),orig=tousLesBons().find(x=>x.id===b.origem),tot=totaux(b.equipe),f=b.fiche||{};
+  const tx=s=>dado(s,langueDoc);
   const mes=MESURES.map((m,i)=>({...m,...b.mesures[i]})).filter(m=>m.v||m.s);
   const sec=(titre,h)=>h?`<section class="d-sec"><h2>${titre}</h2>${h}</section>`:'';
   const info=(l,v)=>v?`<div><span>${l}</span><b>${esc(v)}</b></div>`:'';
@@ -852,32 +854,32 @@ function vueBon(id,neuf){
         <button class="btn btn-s" data-a="nav" data-v="accueil">${t('Voltar ao início')}</button>
       </div>
       <div class="seg lang" role="group" aria-label="${t('Idioma do documento')}">
-        <button class="c" data-a="lang" data-l="fr" aria-pressed="${langueDoc==='fr'}">Français</button>
         <button class="c" data-a="lang" data-l="pt" aria-pressed="${langueDoc==='pt'}">Português</button>
+        <button class="c" data-a="lang" data-l="fr" aria-pressed="${langueDoc==='fr'}">Français</button>
       </div>
     </div>
     <article class="doc" id="focus" tabindex="-1" lang="${langueDoc==='fr'?'fr':'pt-BR'}">
       <div class="d-head">${logo()}<div class="d-num"><strong>${L.titre}</strong><span>${esc(b.numero)}</span></div></div>
       <div class="d-body">
         <section class="d-sec"><div class="d-info">
-          ${info(L.client,c.nom)}${info(L.site,c.site)}${info(L.machine,b.machine)}${info(L.equipement,[f.marque,f.modele].filter(Boolean).join(' '))}${info(L.serie,f.serie)}${info(L.carac,carac)}${info(L.type,typeDe(b.type)[langueDoc])}
+          ${info(L.client,tx(c.nom))}${info(L.site,tx(c.site))}${info(L.machine,tx(b.machine))}${info(L.equipement,[tx(f.marque),f.modele].filter(Boolean).join(' '))}${info(L.serie,f.serie)}${info(L.carac,carac)}${info(L.type,typeDe(b.type)[langueDoc])}
           ${info(L.date,dateLoc(b.date,L.locale))}${info(L.etat,etatDe(b.etat)[langueDoc])}${info(L.commande,b.pedido)}${info(L.arret,arret)}${info(L.suite,orig&&orig.numero)}
         </div></section>
         ${sec(L.equipe,`<table><tr><th>${L.tech}</th><th>${L.arrivee}</th><th>${L.depart}</th><th>${L.surSite}</th><th>${L.trajet}</th></tr>
-          ${b.equipe.map(e=>`<tr><td>${esc(e.tech)}</td><td>${esc(e.arrivee)}</td><td>${esc(e.depart)}</td><td>${heures(minutes(e.arrivee,e.depart))}</td><td>${heures(parseInt(e.trajet,10)||0)}</td></tr>`).join('')}
-          <tr class="t-tot"><td colspan="3">${L.total} : ${heures(tot.total)}</td><td>${heures(tot.site)}</td><td>${heures(tot.trajet)}</td></tr></table>`)}
-        ${sec(L.constat,b.constat?`<p class="d-txt">${esc(b.constat)}</p>`:'')}
-        ${sec(L.travaux,`<p class="d-txt">${esc(b.travaux)}</p>`)}
-        ${sec(L.pieces,b.pieces.length?`<table><tr><th>${L.design}</th><th>${L.qte}</th></tr>${b.pieces.map(p=>`<tr><td>${esc(p.nom)}</td><td>${esc(p.qte)}</td></tr>`).join('')}</table>`:'')}
-        ${sec(L.mesures,mes.length?`<table><tr><th>${L.controle}</th><th>${L.valeur}</th><th>${L.resultat}</th></tr>${mes.map(m=>`<tr><td>${esc(m[langueDoc])}</td><td>${m.v?esc(m.v)+' '+esc(m.unite):'—'}</td><td>${m.s?RESULTATS[m.s][langueDoc]:'—'}</td></tr>`).join('')}</table>${b.instrument?`<p class="d-inst">${L.instrument} : ${esc(b.instrument)}</p>`:''}`:'')}
+          ${b.equipe.map(e=>`<tr><td>${esc(tx(e.tech))}</td><td>${esc(e.arrivee)}</td><td>${esc(e.depart)}</td><td>${heures(minutes(e.arrivee,e.depart))}</td><td>${heures(parseInt(e.trajet,10)||0)}</td></tr>`).join('')}
+          <tr class="t-tot"><td colspan="3">${L.total}${langueDoc==='fr'?' : ':': '}${heures(tot.total)}</td><td>${heures(tot.site)}</td><td>${heures(tot.trajet)}</td></tr></table>`)}
+        ${sec(L.constat,b.constat?`<p class="d-txt">${esc(tx(b.constat))}</p>`:'')}
+        ${sec(L.travaux,`<p class="d-txt">${esc(tx(b.travaux))}</p>`)}
+        ${sec(L.pieces,b.pieces.length?`<table><tr><th>${L.design}</th><th>${L.qte}</th></tr>${b.pieces.map(p=>`<tr><td>${esc(tx(p.nom))}</td><td>${esc(p.qte)}</td></tr>`).join('')}</table>`:'')}
+        ${sec(L.mesures,mes.length?`<table><tr><th>${L.controle}</th><th>${L.valeur}</th><th>${L.resultat}</th></tr>${mes.map(m=>`<tr><td>${esc(m[langueDoc])}</td><td>${m.v?esc(m.v)+' '+esc(m.unite):'—'}</td><td>${m.s?RESULTATS[m.s][langueDoc]:'—'}</td></tr>`).join('')}</table>${b.instrument?`<p class="d-inst">${L.instrument}${langueDoc==='fr'?' : ':': '}${esc(tx(b.instrument))}</p>`:''}`:'')}
         ${sec(L.photos,b.photos.length?`<div class="d-ph">${b.photos.map((p,i)=>`<figure><img src="${esc(p.src)}" alt="${esc(PHOTOS[p.t][langueDoc])} ${i+1}"><figcaption>${esc(PHOTOS[p.t][langueDoc])}${p.leg?' · '+esc(p.leg):''}</figcaption></figure>`).join('')}</div>`:'')}
-        ${sec(L.reserves,b.reserves?`<p class="d-txt">${esc(b.reserves)}</p>`:'')}
-        ${sec(L.suivi,b.pendencia?`<p class="d-txt">${esc(b.pendencia)}</p>`:'')}
+        ${sec(L.reserves,b.reserves?`<p class="d-txt">${esc(tx(b.reserves))}</p>`:'')}
+        ${sec(L.suivi,b.pendencia?`<p class="d-txt">${esc(tx(b.pendencia))}</p>`:'')}
         <section class="d-sec"><h2>${L.signatures}</h2><div class="d-sign">
-          <div><small>${L.pour} ${esc(ENTREPRISE.nom)}</small><b>${esc(b.equipe[0].tech)}</b>
+          <div><small>${L.pour} ${esc(ENTREPRISE.nom)}</small><b>${esc(tx(b.equipe[0].tech))}</b>
             ${b.sigTech?`<img src="${esc(b.sigTech)}" alt="${L.signatures} ${esc(b.equipe[0].tech)}">`:`<small>${L.exemple}</small>`}
           </div>
-          <div><small>${L.pourClient}</small><b>${esc(b.signataire)}</b>
+          <div><small>${L.pourClient}</small><b>${esc(tx(b.signataire))}</b>
             ${b.signature?`<img src="${esc(b.signature)}" alt="${L.signatures} ${esc(b.signataire)}"><small>${L.signeLe} ${esc(new Date(b.signeLe).toLocaleString(L.locale,{dateStyle:'short',timeStyle:'short'}))}</small>`:`<small>${L.exemple}</small>`}
           </div>
         </div></section>
@@ -890,7 +892,7 @@ function vueBon(id,neuf){
   </div></main>`,false);
 }
 
-/* ---------- Rendu ---------- */
+/* ---------- Renderização ---------- */
 const VUES={accueil:vueAccueil,ordens:vueOrdens,machines:vueMachines,fiche:vueFiche,lecture:vueLecture};
 function render(){
   const a=$('#app');
@@ -919,8 +921,8 @@ document.addEventListener('click',e=>{
   else if(a==='pend-retorno'){const b=tousLesBons().find(x=>x.id===t.dataset.id);d=nouveauBon({client:b.client,machine:b.machine,type:'cur',origem:b.id});sauverBrouillon();aller({nom:'etape',n:0});}
   else if(a==='pend-resolver'){resolues[t.dataset.id]='manuel';ecrire(CLES.resolues,resolues);aller(vue,true);toast(tr('Pendência marcada como resolvida.'));}
   else if(a==='lang'){langueDoc=t.dataset.l;aller(vue,true);}
-  else if(a==='langue'){langue=t.dataset.l;ecrire(CLES.langue,langue);aller(vue,true);}
-  else if(a==='reset'){if(confirm(tr('Apagar as ordens, as fichas alteradas e o rascunho desta demonstração?'))){Object.values(CLES).forEach(effacer);bons=[];resolues={};machines=copieBase();usuario=TECHS[0];langue='pt';d=null;aller({nom:'accueil'});}}
+  else if(a==='langue'){langue=t.dataset.l;langueDoc=langue;ecrire(CLES.langue,langue);aller(vue,true);}
+  else if(a==='reset'){if(confirm(tr('Apagar as ordens, as fichas alteradas e o rascunho desta demonstração?'))){Object.values(CLES).forEach(effacer);bons=[];resolues={};machines=copieBase();usuario=TECHS[0];langue='pt';langueDoc='pt';d=null;aller({nom:'accueil'});}}
   else if(a==='retour'){if(vue.n)aller({nom:'etape',n:vue.n-1});else aller({nom:'accueil'});}
   else if(a==='suite'){
     const err=erreurEtape(vue.n);
